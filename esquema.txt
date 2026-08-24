@@ -1,0 +1,21 @@
+notas-redes/
+├── mkdocs.yml  (Arquivo de configuração da página)
+├── venv/
+├── docs/
+│   ├── assets/
+│   │   ├── akimgj.png <-- Imagem j da aula k
+│   │   └── ...
+│   ├── aulas/
+│   │   ├── Aulai.md  <-- Conteúdo da Aula i
+│   │   └── ...
+│   ├── javascripts/
+│   ├── listas/
+│   │   └── ...
+│   ├── provas/
+│   │   └── ...
+│   └── index.md
+├── .gitignore
+├── esquema.txt <-- Este documento
+├── LICENSE
+├── README.md
+└── requirements.txt
