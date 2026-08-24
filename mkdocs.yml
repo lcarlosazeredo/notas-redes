@@ -1,0 +1,40 @@
+site_name: Redes de Computadores - 26.2
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/lcarlosazeredo/notas-redes
+      name: Repositório no GitHub
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  features:
+    - navigation.footer
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - toc:
+      permalink: false
+  - pymdownx.superfences
+
+extra_javascript:
+  - javascripts/mathjax.js
+
+nav:
+  - Início: index.md
+  - Aulas: []
+  - Listas: []
+  - Provas: []

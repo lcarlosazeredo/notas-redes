@@ -1,0 +1,25 @@
+# --- DEPENDÊNCIAS ---
+#mkdocs>=1.5.0
+mkdocs-material>=9.0.0
+#pymdown-extensions>=10.0
+
+# --- INSTRUÇÕES DE USO (COPIAR PARA OUTRO PC) ---
+
+# NO WINDOWS:
+# 1. Abrir o terminal na pasta do projeto
+# 2. Criar ambiente:  python -m venv venv
+# 3. Ativar:          .\venv\Scripts\activate
+# 4. Instalar:        pip install -r requirements.txt
+# 5. Rodar:           mkdocs serve
+
+# NO LINUX (Pop!_OS, Ubuntu, Mint):
+# 1. Abrir o terminal na pasta do projeto
+# 2. Criar ambiente:  python3 -m venv venv
+# 3. Ativar:          source venv/bin/activate
+# 4. Instalar:        pip3 install -r requirements.txt
+# 5. Rodar:           mkdocs serve
+
+# --- DICA PARA ATUALIZAR ESTE ARQUIVO ---
+# Se instalar algo novo, usa:
+# (Windows) pip freeze > requirements.txt
+# (Linux)   pip3 freeze > requirements.txt
