@@ -33,8 +33,10 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Início: index.md
-  - Aulas: []
-  - Listas: []
-  - Provas: []
+  - Aulas:
+    - Aula 01 | 12/08/2026: aulas/Aula01.md

@@ -1,27 +1,14 @@
-# Redes de Computadores - IM/UFRJ
+# Redes de Computadores
 
-Bem-vindo ao repositório de notas de aula da disciplina de **Redes de Computadores**. Este portal foi desenvolvido para centralizar o material teórico, exercícios, listas e revisões de provas ao longo do semestre de 26.2.
+Bem-vindo ao repositório de notas de aula da disciplina de **Redes de Computadores**. Este portal foi desenvolvido para centralizar o material do semestre de 26.2.
 
 ---
 
 ### 📚 Sumário das Aulas
 
-As notas de cada aula serão adicionadas ao longo do semestre.
+Acesse diretamente as notas de cada encontro:
 
----
+| Aula | Título/Assunto | Link |
+| :--- | :--- | :--- |
+| **Aula 01** | Introdução às redes, Internet, network edge/core, estatística, estimadores e protocolos | [:material-file-document: Ver Notas](aulas/Aula01.md) |
 
-### 📝 Listas de Exercícios
-
-As listas e suas resoluções serão adicionadas conforme forem trabalhadas.
-
----
-
-### 📄 Provas Anteriores
-
-As análises e resoluções de provas anteriores serão adicionadas conforme forem estudadas.
-
----
-
-<p align="center">
-  <small>Instituto de Matemática - UFRJ | 2026</small>
-</p>
