@@ -1,0 +1,1444 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula11/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 12 | 18/09/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-12-18092026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 12 | 18/09/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conteudo-da-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conteúdo da aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conteudo-da-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conteúdo da aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-12-18092026">Aula 12 — 18/09/2026</h1>
+<h2 id="conteudo-da-aula">Conteúdo da aula</h2>
+<p>Nesta aula foram trabalhados principalmente:</p>
+<ul>
+<li>uma retomada de <strong>teoria de filas</strong>;</li>
+<li>programação com <strong>sockets TCP e UDP</strong>;</li>
+<li>início do <strong>Capítulo 3 — Camada de Transporte</strong>;</li>
+<li><strong>multiplexação e demultiplexação</strong>;</li>
+<li>características do <strong>UDP</strong>;</li>
+<li><strong>checksum</strong>;</li>
+<li>introdução à ideia de <strong>Reliable Data Transfer (RDT)</strong>.</li>
+</ul>
+<hr />
+<h1 id="revisao-teoria-de-filas">Revisão — Teoria de Filas</h1>
+<h2 id="notacao">Notação</h2>
+<p>Considere um sistema de fila com:</p>
+<ul>
+<li>taxa de chegada:</li>
+</ul>
+<div class="arithmatex">\[
+\lambda;
+\]</div>
+<ul>
+<li>taxa de serviço:</li>
+</ul>
+<div class="arithmatex">\[
+\mu;
+\]</div>
+<ul>
+<li>utilização:</li>
+</ul>
+<div class="arithmatex">\[
+\rho=\frac{\lambda}{\mu}.
+\]</div>
+<p>No contexto de uma fila de pacotes em um enlace, podemos escrever:</p>
+<ul>
+<li>taxa de chegada de pacotes:</li>
+</ul>
+<div class="arithmatex">\[
+\lambda=a;
+\]</div>
+<ul>
+<li>taxa de serviço:</li>
+</ul>
+<div class="arithmatex">\[
+\mu=\frac{R}{L},
+\]</div>
+<p>onde:</p>
+<ul>
+<li><span class="arithmatex">\(R\)</span> é a taxa do enlace em bits/s;</li>
+<li><span class="arithmatex">\(L\)</span> é o tamanho médio dos pacotes em bits.</li>
+</ul>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\rho
+=
+\frac{\lambda}{\mu}
+=
+\frac{a}{R/L}
+=
+\frac{aL}{R}.
+\]</div>
+<p>Nas anotações, a utilização também é indicada por <span class="arithmatex">\(I\)</span>:</p>
+<div class="arithmatex">\[
+\boxed{
+I=\rho=\frac{aL}{R}.
+}
+\]</div>
+<hr />
+<h2 id="sistema-em-equilibrio">Sistema em equilíbrio</h2>
+<p>Em equilíbrio, a taxa média de saída deve ser igual à taxa média de chegada.</p>
+<p>Quando o servidor está ocupado, ele atende à taxa:</p>
+<div class="arithmatex">\[
+\frac{R}{L}.
+\]</div>
+<p>Quando está ocioso, a taxa de serviço efetiva é zero.</p>
+<p>Como o servidor está ocupado uma fração <span class="arithmatex">\(I\)</span> do tempo:</p>
+<div class="arithmatex">\[
+a
+=
+\frac{R}{L}I
++
+0(1-I).
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+\boxed{
+I=\frac{aL}{R}.
+}
+\]</div>
+<hr />
+<h1 id="tempo-medio-de-espera">Tempo médio de espera</h1>
+<p>Considere:</p>
+<ul>
+<li><span class="arithmatex">\(\bar W\)</span>: tempo médio de espera na fila;</li>
+<li><span class="arithmatex">\(\bar N_q\)</span>: número médio de clientes/pacotes esperando;</li>
+<li><span class="arithmatex">\(\bar S\)</span>: tempo médio de serviço;</li>
+<li><span class="arithmatex">\(\bar S_R\)</span>: tempo residual médio de serviço;</li>
+<li><span class="arithmatex">\(\rho\)</span>: probabilidade de o servidor estar ocupado.</li>
+</ul>
+<p>Uma chegada precisa esperar:</p>
+<ol>
+<li>o atendimento dos pacotes que já estão na fila;</li>
+<li>o tempo restante do pacote que está sendo atendido, caso o servidor esteja ocupado.</li>
+</ol>
+<p>Usando a propriedade <strong>PASTA</strong> para chegadas Poisson, uma chegada observa, em média, o mesmo número de clientes que a média temporal do sistema.</p>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W
+=
+\bar N_q\bar S
++
+\rho\bar S_R.
+}
+\]</div>
+<p>Para um enlace:</p>
+<div class="arithmatex">\[
+\bar S=\frac{L}{R}.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W
+=
+\bar N_q\frac{L}{R}
++
+I\bar S_R.
+}
+\]</div>
+<p>Pela Lei de Little aplicada à fila:</p>
+<div class="arithmatex">\[
+\bar N_q=a\bar W.
+\]</div>
+<hr />
+<h2 id="caso-mm1">Caso M/M/1</h2>
+<p>No modelo <span class="arithmatex">\(M/M/1\)</span>, o tempo de serviço é exponencial.</p>
+<p>Pela propriedade de falta de memória:</p>
+<div class="arithmatex">\[
+\bar S_R=\bar S.
+\]</div>
+<p>Como:</p>
+<div class="arithmatex">\[
+\bar S=\frac{L}{R},
+\]</div>
+<p>temos:</p>
+<div class="arithmatex">\[
+\bar W
+=
+a\bar W\frac{L}{R}
++
+I\frac{L}{R}.
+\]</div>
+<p>Como:</p>
+<div class="arithmatex">\[
+a\frac{L}{R}=I,
+\]</div>
+<p>segue que:</p>
+<div class="arithmatex">\[
+\bar W
+=
+I\bar W
++
+I\frac{L}{R}.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+(1-I)\bar W
+=
+I\frac{L}{R}.
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W_{M/M/1}
+=
+\frac{I}{1-I}\frac{L}{R}.
+}
+\]</div>
+<hr />
+<h2 id="caso-md1">Caso M/D/1</h2>
+<p>No modelo <span class="arithmatex">\(M/D/1\)</span>, o tempo de serviço é determinístico.</p>
+<p>Nesse caso, para uma chegada que encontra o servidor ocupado, o tempo residual médio é metade do tempo de serviço:</p>
+<div class="arithmatex">\[
+\bar S_R
+=
+\frac{\bar S}{2}.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+\bar W
+=
+a\bar W\frac{L}{R}
++
+I\frac{L}{2R}.
+\]</div>
+<p>Como:</p>
+<div class="arithmatex">\[
+a\frac{L}{R}=I,
+\]</div>
+<p>temos:</p>
+<div class="arithmatex">\[
+\bar W
+=
+I\bar W
++
+I\frac{L}{2R}.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+(1-I)\bar W
+=
+I\frac{L}{2R}.
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W_{M/D/1}
+=
+\frac{I}{1-I}\frac{L}{2R}.
+}
+\]</div>
+<p>Comparando:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W_{M/D/1}
+=
+\frac{1}{2}\bar W_{M/M/1}.
+}
+\]</div>
+<p>para a mesma taxa de chegada, mesmo tempo médio de serviço e mesma utilização.</p>
+<hr />
+<h1 id="programacao-com-sockets">Programação com Sockets</h1>
+<h2 id="tcp">TCP</h2>
+<p>TCP é:</p>
+<ul>
+<li><strong>orientado à conexão</strong>;</li>
+<li><strong>confiável</strong>;</li>
+<li>implementado pela pilha de protocolos do sistema operacional.</li>
+</ul>
+<p>Antes de cliente e servidor trocarem dados, uma conexão TCP precisa ser estabelecida.</p>
+<hr />
+<h2 id="chamadas-tipicas-servidor-tcp">Chamadas típicas — Servidor TCP</h2>
+<p>Uma sequência típica no servidor é:</p>
+<div class="highlight"><pre><span></span><code>socket()
+   ↓
+bind()
+   ↓
+listen()
+   ↓
+accept()
+   ↓
+recv()/read()
+   ↓
+send()/write()
+   ↓
+close()
+</code></pre></div>
+<h3 id="socket"><code>socket()</code></h3>
+<p>Cria o socket.</p>
+<h3 id="bind"><code>bind()</code></h3>
+<p>Associa o socket a um endereço local, normalmente:</p>
+<div class="arithmatex">\[
+(\text{IP},\text{porta}).
+\]</div>
+<h3 id="listen"><code>listen()</code></h3>
+<p>Coloca o socket em modo de espera por conexões TCP.</p>
+<h3 id="accept"><code>accept()</code></h3>
+<p>Espera uma nova conexão.</p>
+<p>Quando uma conexão chega, <code>accept()</code> cria um novo socket associado especificamente àquele cliente.</p>
+<h3 id="recv-read"><code>recv()</code> / <code>read()</code></h3>
+<p>Recebe dados da conexão.</p>
+<h3 id="send-write"><code>send()</code> / <code>write()</code></h3>
+<p>Envia dados pela conexão.</p>
+<h3 id="close"><code>close()</code></h3>
+<p>Encerra o socket.</p>
+<hr />
+<h2 id="chamadas-tipicas-cliente-tcp">Chamadas típicas — Cliente TCP</h2>
+<p>No cliente:</p>
+<div class="highlight"><pre><span></span><code>socket()
+   ↓
+connect()
+   ↓
+send()/write()
+   ↓
+recv()/read()
+   ↓
+close()
+</code></pre></div>
+<h3 id="connect"><code>connect()</code></h3>
+<p>O cliente solicita o estabelecimento da conexão TCP com o servidor.</p>
+<p>Isso inicia o processo de estabelecimento da conexão, incluindo o handshake TCP.</p>
+<hr />
+<h2 id="chamadas-locais-operacoes-que-envolvem-a-rede">Chamadas locais × operações que envolvem a rede</h2>
+<p>Nem toda chamada de socket produz imediatamente mensagens na rede.</p>
+<p>Por exemplo:</p>
+<ul>
+<li><code>socket()</code> cria uma estrutura local no sistema operacional;</li>
+<li><code>bind()</code> associa um endereço local;</li>
+<li><code>listen()</code> coloca o socket em estado de escuta.</li>
+</ul>
+<p>Já chamadas como:</p>
+<ul>
+<li><code>connect()</code>;</li>
+<li><code>send()</code>;</li>
+<li><code>write()</code>;</li>
+<li><code>close()</code>;</li>
+</ul>
+<p>podem provocar ações efetivas do protocolo TCP na rede.</p>
+<p>A chamada:</p>
+<div class="highlight"><pre><span></span><code>accept()
+</code></pre></div>
+<p>aguarda até que uma conexão seja estabelecida.</p>
+<hr />
+<h2 id="chamadas-bloqueantes">Chamadas bloqueantes</h2>
+<p>Uma chamada <strong>bloqueante</strong> pode suspender o processo até que o evento esperado ocorra.</p>
+<p>Exemplos típicos:</p>
+<div class="highlight"><pre><span></span><code><span class="n">accept</span><span class="p">()</span>
+</code></pre></div>
+<p>pode esperar até que algum cliente se conecte.</p>
+<p>E:</p>
+<div class="highlight"><pre><span></span><code><span class="n">recv</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<p>pode esperar até que dados estejam disponíveis.</p>
+<p>Dependendo da configuração do socket, <code>connect()</code> e operações de envio também podem bloquear por algum período.</p>
+<hr />
+<h1 id="tcp-udp">TCP × UDP</h1>
+<h2 id="tcp_1">TCP</h2>
+<p>TCP oferece:</p>
+<ul>
+<li>orientação à conexão;</li>
+<li>transferência confiável;</li>
+<li>entrega ordenada;</li>
+<li>controle de fluxo;</li>
+<li>controle de congestionamento.</li>
+</ul>
+<h2 id="udp">UDP</h2>
+<p>UDP:</p>
+<ul>
+<li>não estabelece conexão;</li>
+<li>não garante entrega;</li>
+<li>não garante ordem;</li>
+<li>possui menor complexidade;</li>
+<li>fornece multiplexação/demultiplexação e detecção de erros por checksum.</li>
+</ul>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{TCP: orientado à conexão e confiável}
+}
+\]</div>
+<div class="arithmatex">\[
+\boxed{
+\text{UDP: não orientado à conexão e não confiável}
+}
+\]</div>
+<p>onde “não confiável” significa que o protocolo não garante que os dados chegarão corretamente ou sequer chegarão ao destino.</p>
+<hr />
+<h1 id="capitulo-3-camada-de-transporte">Capítulo 3 — Camada de Transporte</h1>
+<p>A camada de transporte oferece comunicação lógica entre <strong>processos</strong> executando em hosts distintos.</p>
+<p>A camada de rede entrega dados entre hosts:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{host}
+\longleftrightarrow
+\text{host}
+}
+\]</div>
+<p>enquanto a camada de transporte estende esse serviço para:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{processo}
+\longleftrightarrow
+\text{processo}.
+}
+\]</div>
+<hr />
+<h2 id="host-e-processo">Host e processo</h2>
+<p>Um host é identificado na camada de rede por um endereço IP.</p>
+<p>Um processo é identificado, para fins de comunicação de transporte, por um <strong>número de porta</strong> associado ao socket.</p>
+<p>De forma simplificada:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{IP identifica o host}
+}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{porta identifica o processo/socket}.
+}
+\]</div>
+<hr />
+<h1 id="funcoes-importantes-da-camada-de-transporte">Funções importantes da camada de transporte</h1>
+<p>Nesta introdução ao Capítulo 3 foram destacadas funções como:</p>
+<ul>
+<li>multiplexação e demultiplexação;</li>
+<li>transferência confiável de dados;</li>
+<li>controle de fluxo;</li>
+<li>controle de congestionamento.</li>
+</ul>
+<p>A sequência do capítulo estuda primeiro os princípios gerais e depois como o TCP implementa esses mecanismos.</p>
+<hr />
+<h1 id="multiplexacao-e-demultiplexacao">Multiplexação e Demultiplexação</h1>
+<h2 id="multiplexacao">Multiplexação</h2>
+<p>No host remetente, vários processos podem utilizar simultaneamente a rede.</p>
+<p>A camada de transporte recebe dados de diferentes sockets, adiciona informações de cabeçalho e entrega os segmentos à camada de rede.</p>
+<p>Esse processo é chamado de <strong>multiplexação</strong>.</p>
+<p>De forma conceitual:</p>
+<div class="highlight"><pre><span></span><code>Processo 1 ─┐
+Processo 2 ─┼─&gt; Camada de Transporte ─&gt; Camada de Rede
+Processo 3 ─┘
+</code></pre></div>
+<hr />
+<h2 id="demultiplexacao">Demultiplexação</h2>
+<p>No host receptor, o processo inverso precisa ocorrer.</p>
+<p>Ao receber um segmento, a camada de transporte precisa determinar para qual socket/processo os dados devem ser entregues.</p>
+<p>Esse processo é chamado de <strong>demultiplexação</strong>.</p>
+<div class="highlight"><pre><span></span><code>Camada de Rede
+      |
+      v
+Camada de Transporte
+   /     |     \
+  v      v      v
+P1      P2      P3
+</code></pre></div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{demultiplexação}
+=
+\text{entregar o segmento ao socket correto}.
+}
+\]</div>
+<hr />
+<h1 id="demultiplexacao-no-udp">Demultiplexação no UDP</h1>
+<p>Para UDP, o socket receptor é identificado principalmente pelo endereço de destino:</p>
+<div class="arithmatex">\[
+(\text{IP de destino},\text{porta de destino}).
+\]</div>
+<p>Datagramas UDP provenientes de diferentes remetentes podem ser entregues ao mesmo socket quando possuem o mesmo destino.</p>
+<p>Por isso, quando um servidor UDP recebe um datagrama, ele também precisa saber <strong>quem o enviou</strong> caso queira responder.</p>
+<p>Em programação de sockets, uma chamada como:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">recvfrom</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<p>retorna:</p>
+<ul>
+<li>os dados;</li>
+<li>o endereço do remetente.</li>
+</ul>
+<p>Depois, o servidor pode utilizar:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sendto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+</code></pre></div>
+<p>para enviar a resposta ao cliente correto.</p>
+<hr />
+<h1 id="demultiplexacao-no-tcp">Demultiplexação no TCP</h1>
+<p>Uma conexão TCP é identificada por quatro valores:</p>
+<div class="arithmatex">\[
+\boxed{
+(
+IP_{\text{origem}},
+porta_{\text{origem}},
+IP_{\text{destino}},
+porta_{\text{destino}}
+)
+}
+\]</div>
+<p>Portanto, diferentes clientes podem utilizar a mesma porta de destino do servidor e ainda assim possuir conexões TCP diferentes.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>Cliente A: 10.0.0.1:50000 ─┐
+                            ├─&gt; Servidor: 10.0.0.10:80
+Cliente B: 10.0.0.2:51000 ─┘
+</code></pre></div>
+<p>As duas conexões são diferenciadas pelos quatro campos.</p>
+<hr />
+<h1 id="servidor-udp">Servidor UDP</h1>
+<p>Um servidor UDP típico pode executar continuamente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">client_address</span> <span class="o">=</span> <span class="n">recvfrom</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="o">...</span>
+    <span class="n">sendto</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">client_address</span><span class="p">)</span>
+</code></pre></div>
+<p>Como UDP não estabelece uma conexão, a aplicação precisa conservar, para cada datagrama recebido, a informação necessária para saber a qual cliente enviar a resposta.</p>
+<p>Isso não significa que UDP não possua demultiplexação: a demultiplexação UDP é realizada pela camada de transporte usando os campos de destino.</p>
+<p>O endereço retornado por <code>recvfrom()</code> é utilizado pela aplicação quando ela precisa responder ao remetente correto.</p>
+<hr />
+<h1 id="udp-e-o-sistema-operacional">UDP e o sistema operacional</h1>
+<p>UDP também é implementado pelo sistema operacional, assim como TCP.</p>
+<p>A diferença é que UDP oferece um serviço muito mais simples.</p>
+<p>Mecanismos que não são fornecidos pelo UDP, como:</p>
+<ul>
+<li>retransmissão;</li>
+<li>ordenação;</li>
+<li>controle de sessão;</li>
+<li>confiabilidade adicional;</li>
+</ul>
+<p>precisam ser implementados pela aplicação caso sejam necessários.</p>
+<hr />
+<h1 id="udp-checksum">UDP Checksum</h1>
+<p>UDP utiliza um <strong>checksum</strong> para detectar corrupção de bits.</p>
+<p>A ideia básica é:</p>
+<ol>
+<li>dividir os dados em palavras;</li>
+<li>realizar uma soma utilizando aritmética de complemento de 1;</li>
+<li>inserir o complemento do resultado no campo de checksum;</li>
+<li>no receptor, refazer o cálculo para verificar a integridade.</li>
+</ol>
+<p>O checksum fornece:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{detecção de erros}
+}
+\]</div>
+<p>mas não fornece, sozinho:</p>
+<ul>
+<li>correção do erro;</li>
+<li>retransmissão;</li>
+<li>garantia de entrega.</li>
+</ul>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{checksum detecta; não corrige}.
+}
+\]</div>
+<p>Outra característica é que o checksum da Internet é relativamente simples e não consegue detectar absolutamente todos os padrões possíveis de corrupção.</p>
+<hr />
+<h2 id="por-que-usar-checksum-no-udp">Por que usar checksum no UDP?</h2>
+<p>Mesmo que algumas tecnologias de enlace também realizem detecção de erros, não há garantia de que todos os enlaces do caminho façam isso.</p>
+<p>Além disso, erros também podem ocorrer durante processamento ou armazenamento intermediário.</p>
+<p>Por isso, o UDP realiza detecção de erros fim a fim na camada de transporte.</p>
+<hr />
+<h1 id="ausencia-de-handshake-no-udp">Ausência de Handshake no UDP</h1>
+<p>TCP realiza um handshake antes da troca normal de dados.</p>
+<p>UDP não.</p>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{UDP não possui handshake de estabelecimento de conexão}.
+}
+\]</div>
+<p>Isso contribui para que seja um protocolo mais simples e leve.</p>
+<hr />
+<h1 id="introducao-ao-reliable-data-transfer-rdt">Introdução ao Reliable Data Transfer — RDT</h1>
+<p>A aula termina preparando o estudo de <strong>Reliable Data Transfer (RDT)</strong>.</p>
+<p>O problema central é:</p>
+<blockquote>
+<p>Como construir transferência confiável quando o canal subjacente pode apresentar erros?</p>
+</blockquote>
+<p>Entre os problemas que serão considerados estão:</p>
+<ul>
+<li>corrupção de bits;</li>
+<li>perda de pacotes;</li>
+<li>necessidade de saber se uma mensagem chegou corretamente.</li>
+</ul>
+<p>Uma ideia inicial é o modelo <strong>stop-and-wait</strong>:</p>
+<ol>
+<li>o emissor envia um pacote;</li>
+<li>espera uma confirmação;</li>
+<li>só depois envia o próximo.</li>
+</ol>
+<p>Esse princípio será refinado nas diferentes versões do RDT.</p>
+<hr />
+<h2 id="ack-e-nak">ACK e NAK</h2>
+<p>Uma forma de informar ao emissor o resultado da recepção é utilizar:</p>
+<ul>
+<li><strong>ACK</strong> (<em>Acknowledgment</em>): confirmação de que o pacote foi recebido corretamente;</li>
+<li><strong>NAK</strong> (<em>Negative Acknowledgment</em>): indicação de que houve problema na recepção.</li>
+</ul>
+<p>Esses mecanismos serão utilizados no desenvolvimento dos protocolos de transferência confiável.</p>
+<blockquote>
+<p><strong>Observação:</strong> as versões específicas do RDT aparecem apenas como indicação para a continuação da matéria nesta aula. O desenvolvimento detalhado fica para a aula seguinte.</p>
+</blockquote>
+<hr />
+<h1 id="resumo">Resumo</h1>
+<p>Os principais tópicos desta aula foram:</p>
+<ul>
+<li>revisão dos modelos <span class="arithmatex">\(M/M/1\)</span> e <span class="arithmatex">\(M/D/1\)</span>;</li>
+<li>PASTA e tempo residual de serviço;</li>
+<li>programação com sockets TCP;</li>
+<li>operações bloqueantes;</li>
+<li>início da camada de transporte;</li>
+<li>host identificado por IP e processo identificado por porta;</li>
+<li>multiplexação e demultiplexação;</li>
+<li>diferenças entre demultiplexação UDP e TCP;</li>
+<li>UDP como protocolo connectionless;</li>
+<li>checksum UDP;</li>
+<li>introdução à transferência confiável de dados;</li>
+<li>ideia de stop-and-wait e ACK/NAK.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula11/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 11 | 16/09/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 11 | 16/09/2026
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>

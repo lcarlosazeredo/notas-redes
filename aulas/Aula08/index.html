@@ -1,0 +1,1503 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula07/">
+      
+      
+        <link rel="next" href="../Aula09/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 08 | 04/09/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-08-04092026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 08 | 04/09/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-08-04092026">Aula 08 — 04/09/2026</h1>
+<h1 id="teoria-de-filas-continuacao">Teoria de Filas — Continuação</h1>
+<h2 id="um-sistema-pode-ser-estavel-com-i1">Um sistema pode ser estável com <span class="arithmatex">\(I=1\)</span>?</h2>
+<p>Pergunta levantada em aula:</p>
+<blockquote>
+<p>É possível existir um sistema estável mesmo com <span class="arithmatex">\(I=1\)</span>?</p>
+</blockquote>
+<p>Sim, em situações especiais.</p>
+<p>Um exemplo é uma fila:</p>
+<div class="arithmatex">\[
+D/D/1,
+\]</div>
+<p>na qual:</p>
+<ul>
+<li>as chegadas são determinísticas;</li>
+<li>os tempos de serviço são determinísticos;</li>
+<li>existe um único servidor.</li>
+</ul>
+<p>Se as chegadas e os serviços ocorrerem de forma perfeitamente regular e sincronizada, é possível ter:</p>
+<div class="arithmatex">\[
+\lambda=\mu
+\]</div>
+<p>e, portanto,</p>
+<div class="arithmatex">\[
+I=\frac{\lambda}{\mu}=1,
+\]</div>
+<p>sem que a fila cresça indefinidamente.</p>
+<blockquote>
+<p><strong>Observação:</strong> esse é um caso limite e altamente regular. Para o modelo
+<span class="arithmatex">\(M/M/1\)</span>, a condição usual de estabilidade é estritamente <span class="arithmatex">\(I&lt;1\)</span>.</p>
+</blockquote>
+<hr />
+<h1 id="mm1-e-md1">M/M/1 e M/D/1</h1>
+<h2 id="fila-mm1">Fila M/M/1</h2>
+<p>No modelo <span class="arithmatex">\(M/M/1\)</span>:</p>
+<ul>
+<li>as chegadas são Poisson;</li>
+<li>os tempos entre chegadas são exponenciais;</li>
+<li>os tempos de serviço são exponenciais;</li>
+<li>existe um único servidor.</li>
+</ul>
+<p>A condição de estabilidade é:</p>
+<div class="arithmatex">\[
+\boxed{I&lt;1}.
+\]</div>
+<p>Como o tempo de serviço é exponencial, ele possui a propriedade de <strong>falta de memória</strong>.</p>
+<p>Isso terá uma consequência importante para o tempo residual de serviço.</p>
+<hr />
+<h2 id="fila-md1">Fila M/D/1</h2>
+<p>No modelo <span class="arithmatex">\(M/D/1\)</span>:</p>
+<ul>
+<li>as chegadas são Poisson;</li>
+<li>o tempo de serviço é determinístico;</li>
+<li>existe um único servidor.</li>
+</ul>
+<p>A diferença fundamental em relação ao <span class="arithmatex">\(M/M/1\)</span> é que o tempo de serviço não é aleatório.</p>
+<p>Essa diferença altera o atraso médio de fila.</p>
+<hr />
+<h1 id="vida-residual-de-servico">Vida residual de serviço</h1>
+<p>Quando um pacote chega e encontra o servidor ocupado, ele não necessariamente precisa esperar um tempo de serviço completo.</p>
+<p>Ele precisa esperar apenas o <strong>tempo restante</strong> do serviço que já estava em andamento.</p>
+<p>Defina:</p>
+<div class="arithmatex">\[
+S_R=\text{vida residual do serviço}.
+\]</div>
+<p>Para um tempo de serviço geral <span class="arithmatex">\(S\)</span>, a vida residual média é:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar S_R
+=
+\frac{E[S^2]}{2E[S]}.
+}
+\]</div>
+<hr />
+<h2 id="caso-exponencial-mm1">Caso exponencial — M/M/1</h2>
+<p>A distribuição exponencial possui a propriedade de falta de memória.</p>
+<p>Logo, ao observar um serviço exponencial que já está em andamento, o tempo médio restante é igual ao tempo médio de serviço original:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar S_R=\bar S.
+}
+\]</div>
+<hr />
+<h2 id="caso-deterministico-md1">Caso determinístico — M/D/1</h2>
+<p>Se todos os serviços possuem exatamente duração <span class="arithmatex">\(S\)</span>, uma chegada que encontra o servidor ocupado pode encontrá-lo em qualquer ponto do intervalo de serviço.</p>
+<p>Em média, resta metade do serviço:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar S_R=\frac{S}{2}.
+}
+\]</div>
+<p>Essa diferença é uma das razões pelas quais uma fila com serviços determinísticos possui menor atraso médio que uma fila com serviços exponenciais de mesma média.</p>
+<hr />
+<h1 id="atraso-medio-de-fila">Atraso médio de fila</h1>
+<p>Defina:</p>
+<ul>
+<li><span class="arithmatex">\(\bar W\)</span>: atraso médio de fila;</li>
+<li><span class="arithmatex">\(\bar N_q\)</span>: número médio de pacotes esperando na fila;</li>
+<li><span class="arithmatex">\(\bar N_s\)</span>: número médio de pacotes no servidor;</li>
+<li><span class="arithmatex">\(\bar S\)</span>: tempo médio de serviço;</li>
+<li><span class="arithmatex">\(\bar S_R\)</span>: tempo residual médio do serviço.</li>
+</ul>
+<p>Um pacote que chega precisa esperar:</p>
+<ol>
+<li>os pacotes que já estão na fila;</li>
+<li>o tempo restante do eventual pacote que está sendo atendido.</li>
+</ol>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W
+=
+\bar N_q\bar S
++
+\bar N_s\bar S_R.
+}
+\]</div>
+<p>Como existe no máximo um pacote no servidor,</p>
+<div class="arithmatex">\[
+\bar N_s=P(\text{ocupado}).
+\]</div>
+<p>Além disso,</p>
+<div class="arithmatex">\[
+P(\text{ocupado})=I.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar N_s=I.
+}
+\]</div>
+<hr />
+<h2 id="atraso-no-mm1">Atraso no M/M/1</h2>
+<p>No <span class="arithmatex">\(M/M/1\)</span>:</p>
+<div class="arithmatex">\[
+\bar S_R=\bar S.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+\bar W
+=
+\bar N_q\bar S
++
+I\bar S.
+\]</div>
+<p>Pela Lei de Little aplicada à fila:</p>
+<div class="arithmatex">\[
+\bar N_q=\lambda\bar W.
+\]</div>
+<p>Então:</p>
+<div class="arithmatex">\[
+\bar W
+=
+\lambda\bar W\bar S+I\bar S.
+\]</div>
+<p>Como</p>
+<div class="arithmatex">\[
+\lambda\bar S=I,
+\]</div>
+<p>temos:</p>
+<div class="arithmatex">\[
+\bar W
+=
+I\bar W+I\bar S.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+(1-I)\bar W=I\bar S,
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W_{M/M/1}
+=
+\frac{I\bar S}{1-I}.
+}
+\]</div>
+<hr />
+<h2 id="atraso-no-md1">Atraso no M/D/1</h2>
+<p>No <span class="arithmatex">\(M/D/1\)</span>:</p>
+<div class="arithmatex">\[
+\bar S_R=\frac{\bar S}{2}.
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\bar W
+=
+\bar N_q\bar S
++
+I\frac{\bar S}{2}.
+\]</div>
+<p>Novamente:</p>
+<div class="arithmatex">\[
+\bar N_q=\lambda\bar W.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+\bar W
+=
+\lambda\bar W\bar S
++
+I\frac{\bar S}{2}.
+\]</div>
+<p>Como:</p>
+<div class="arithmatex">\[
+\lambda\bar S=I,
+\]</div>
+<p>segue que:</p>
+<div class="arithmatex">\[
+\bar W
+=
+I\bar W
++
+I\frac{\bar S}{2}.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+(1-I)\bar W
+=
+I\frac{\bar S}{2}.
+\]</div>
+<p>Finalmente:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W_{M/D/1}
+=
+\frac{I\bar S}{2(1-I)}.
+}
+\]</div>
+<p>Comparando os dois modelos com a mesma utilização e o mesmo tempo médio de serviço:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W_{M/D/1}
+=
+\frac{1}{2}\bar W_{M/M/1}.
+}
+\]</div>
+<p>A menor variabilidade do serviço reduz o atraso de fila.</p>
+<hr />
+<h2 id="forma-geral">Forma geral</h2>
+<p>Partindo de:</p>
+<div class="arithmatex">\[
+\bar W
+=
+\bar N_q\bar S
++
+I\bar S_R
+\]</div>
+<p>e usando:</p>
+<div class="arithmatex">\[
+\bar N_q=\lambda\bar W,
+\]</div>
+<p>temos:</p>
+<div class="arithmatex">\[
+\bar W
+=
+\lambda\bar W\bar S
++
+I\bar S_R.
+\]</div>
+<p>Como:</p>
+<div class="arithmatex">\[
+\lambda\bar S=I,
+\]</div>
+<p>segue que:</p>
+<div class="arithmatex">\[
+\bar W(1-I)=I\bar S_R.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W
+=
+\frac{I\bar S_R}{1-I}.
+}
+\]</div>
+<p>Utilizando:</p>
+<div class="arithmatex">\[
+\bar S_R
+=
+\frac{E[S^2]}{2E[S]},
+\]</div>
+<p>obtemos:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W
+=
+\frac{\lambda E[S^2]}
+{2(1-I)}.
+}
+\]</div>
+<blockquote>
+<p><strong>Observação:</strong> essa expressão deixa explícito que não apenas a média,
+mas também a variabilidade do tempo de serviço influencia o atraso.</p>
+</blockquote>
+<hr />
+<h1 id="mesma-media-comportamentos-diferentes">Mesma média, comportamentos diferentes</h1>
+<p>Dois sistemas podem possuir a mesma taxa média de chegadas ou a mesma taxa média de serviço e ainda assim apresentar desempenhos diferentes.</p>
+<p>Considere dois padrões:</p>
+<ol>
+<li>um padrão regular, com eventos mais igualmente espaçados;</li>
+<li>um padrão mais concentrado, com períodos de maior agrupamento.</li>
+</ol>
+<p>Mesmo que ambos possuam a mesma média, o primeiro tende a produzir filas menores.</p>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{média igual}
+\not\Rightarrow
+\text{mesmo atraso de fila}.
+}
+\]</div>
+<p>A <strong>variabilidade</strong> dos processos também é importante.</p>
+<blockquote>
+<p><strong>[Inserir figura]</strong> Comparação feita em sala entre dois padrões com a
+mesma média, sendo o padrão mais regular mais vantajoso.</p>
+</blockquote>
+<hr />
+<h1 id="throughput">Throughput</h1>
+<p>O <strong>throughput</strong> representa a taxa efetiva com que dados são entregues.</p>
+<p>Podemos calculá-lo condicionando no estado do servidor.</p>
+<p>Se o servidor está:</p>
+<ul>
+<li>ocupado, transmite à taxa <span class="arithmatex">\(\mu\)</span> pacotes/s;</li>
+<li>ocioso, transmite <span class="arithmatex">\(0\)</span> pacotes/s.</li>
+</ul>
+<p>Assim:</p>
+<div class="arithmatex">\[
+E[\text{throughput}]
+=
+E[\text{throughput}\mid\text{ocupado}]
+P(\text{ocupado})
++
+E[\text{throughput}\mid\text{ocioso}]
+P(\text{ocioso}).
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+E[\text{throughput}]
+=
+\mu I+0(1-I).
+\]</div>
+<p>Como:</p>
+<div class="arithmatex">\[
+I=\frac{\lambda}{\mu},
+\]</div>
+<p>temos:</p>
+<div class="arithmatex">\[
+\boxed{
+E[\text{throughput}]
+=
+\lambda
+}
+\]</div>
+<p>em pacotes/s, para um sistema estável em equilíbrio.</p>
+<p>Se cada pacote possui <span class="arithmatex">\(L\)</span> bits, então em bits/s:</p>
+<div class="arithmatex">\[
+\boxed{
+E[\text{throughput}]
+=
+\lambda L
+=
+IR.
+}
+\]</div>
+<hr />
+<h1 id="probabilidade-de-o-sistema-estar-vazio">Probabilidade de o sistema estar vazio</h1>
+<p>No modelo <span class="arithmatex">\(M/M/1\)</span>, denote por:</p>
+<div class="arithmatex">\[
+\pi_0=P(N=0)
+\]</div>
+<p>a probabilidade de não haver nenhum pacote no sistema.</p>
+<p>Como:</p>
+<div class="arithmatex">\[
+P(\text{ocupado})=I,
+\]</div>
+<p>temos:</p>
+<div class="arithmatex">\[
+P(\text{ocioso})=1-I.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\pi_0
+=
+1-I.
+}
+\]</div>
+<p>Equivalentemente:</p>
+<div class="arithmatex">\[
+\pi_0
+=
+1-\rho
+=
+1-U
+=
+1-P(\text{ocupado}).
+\]</div>
+<blockquote>
+<p><strong>[Inserir figura]</strong> Cadeia de estados <span class="arithmatex">\(0,1,2,\ldots\)</span> com taxas de
+chegada <span class="arithmatex">\(\lambda\)</span> e serviço <span class="arithmatex">\(\mu\)</span>.</p>
+</blockquote>
+<hr />
+<h1 id="traceroute">Traceroute</h1>
+<p>O <strong>traceroute</strong> é uma ferramenta utilizada para observar o caminho percorrido pelos pacotes entre uma origem e um destino.</p>
+<p>Além de identificar roteadores intermediários, ele permite obter medidas de atraso até diferentes pontos do caminho.</p>
+<p>A ideia utiliza o campo <strong>TTL — Time To Live</strong> do pacote.</p>
+<p>Variando o TTL, é possível fazer com que o pacote expire sucessivamente em diferentes roteadores do caminho e, assim, descobrir esses roteadores.</p>
+<p>Por exemplo:</p>
+<ul>
+<li>TTL <span class="arithmatex">\(=1\)</span>: alcança o primeiro roteador;</li>
+<li>TTL <span class="arithmatex">\(=2\)</span>: alcança o segundo;</li>
+<li>TTL <span class="arithmatex">\(=3\)</span>: alcança o terceiro;</li>
+<li>e assim por diante.</li>
+</ul>
+<p>Normalmente são enviadas múltiplas sondagens (<em>probes</em>) para cada valor de TTL, permitindo observar os tempos medidos.</p>
+<blockquote>
+<p><strong>[Inserir figura]</strong> Esquema feito em sala com três probes e TTL
+crescente para observar o atraso da origem ao destino.</p>
+</blockquote>
+<hr />
+<h1 id="gargalos-e-cache">Gargalos e Cache</h1>
+<p>Foram discutidas formas de reduzir o impacto de um gargalo na rede.</p>
+<h2 id="upgrade-da-infraestrutura">Upgrade da infraestrutura</h2>
+<p>Uma possibilidade é aumentar a capacidade do sistema, por exemplo aumentando a capacidade de determinado enlace.</p>
+<p>Essa alternativa pode reduzir congestionamento e atraso, porém pode possuir custo elevado.</p>
+<h2 id="uso-de-cache">Uso de cache</h2>
+<p>Outra estratégia é utilizar <strong>cache</strong> para responder parte das requisições mais próximo do usuário.</p>
+<p>Nesse caso, uma requisição que encontra o conteúdo na cache não precisa atravessar todo o caminho até o servidor original.</p>
+<p>Entre os possíveis benefícios estão:</p>
+<ul>
+<li>redução do atraso percebido pelo usuário;</li>
+<li>redução do tráfego atravessando o gargalo;</li>
+<li>redução da capacidade necessária em determinados enlaces.</li>
+</ul>
+<hr />
+<h1 id="camadas-e-encapsulamento">Camadas e Encapsulamento</h1>
+<h2 id="comunicacao-entre-hosts-e-entre-vizinhos">Comunicação entre hosts e entre vizinhos</h2>
+<p>A pilha de protocolos permite observar diferentes tipos de comunicação lógica.</p>
+<p>Na <strong>camada de rede</strong>, consideramos a comunicação entre hosts:</p>
+<div class="arithmatex">\[
+\text{host de origem}
+\longleftrightarrow
+\text{host de destino}.
+\]</div>
+<p>Na <strong>camada de enlace</strong>, a comunicação ocorre entre nós diretamente conectados:</p>
+<div class="arithmatex">\[
+\text{nó}
+\longleftrightarrow
+\text{nó vizinho}.
+\]</div>
+<p>Assim:</p>
+<ul>
+<li><strong>Network layer</strong>: comunicação host a host;</li>
+<li><strong>Link layer</strong>: comunicação entre nós vizinhos.</li>
+</ul>
+<hr />
+<h2 id="encapsulamento">Encapsulamento</h2>
+<p>À medida que os dados descem pela pilha de protocolos, cada camada acrescenta suas próprias informações de controle.</p>
+<p>De forma simplificada:</p>
+<div class="arithmatex">\[
+\text{mensagem da aplicação}
+\]</div>
+<p>torna-se:</p>
+<div class="arithmatex">\[
+\text{segmento da camada de transporte},
+\]</div>
+<p>que é encapsulado em:</p>
+<div class="arithmatex">\[
+\text{datagrama da camada de rede},
+\]</div>
+<p>que, por sua vez, é encapsulado em:</p>
+<div class="arithmatex">\[
+\text{quadro da camada de enlace}.
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Mensagem}
+\rightarrow
+\text{Segmento}
+\rightarrow
+\text{Datagrama}
+\rightarrow
+\text{Frame}.
+}
+\]</div>
+<p>No destino ocorre o processo inverso, com cada camada removendo e interpretando as informações correspondentes.</p>
+<hr />
+<h1 id="seguranca-em-redes">Segurança em Redes</h1>
+<p>Foram destacados três objetivos clássicos de segurança:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Availability}
+\qquad
+\text{Integrity}
+\qquad
+\text{Confidentiality}
+}
+\]</div>
+<p>ou:</p>
+<ul>
+<li><strong>Disponibilidade</strong>;</li>
+<li><strong>Integridade</strong>;</li>
+<li><strong>Confidencialidade</strong>.</li>
+</ul>
+<hr />
+<h2 id="availability-disponibilidade">Availability — Disponibilidade</h2>
+<p>A disponibilidade está relacionada à capacidade de manter o serviço acessível aos usuários legítimos.</p>
+<p>Um exemplo de ataque associado é o:</p>
+<p><strong>DoS — Denial of Service</strong>.</p>
+<p>Nesse tipo de ataque, busca-se impedir ou dificultar o acesso ao serviço.</p>
+<p>Uma possível linha de defesa envolve o uso de mecanismos como:</p>
+<ul>
+<li>firewall;</li>
+<li>filtragem de tráfego.</li>
+</ul>
+<hr />
+<h2 id="integrity-integridade">Integrity — Integridade</h2>
+<p>A integridade está relacionada a impedir alterações indevidas nas informações.</p>
+<p>Um ataque pode tentar modificar, falsificar ou produzir informações que aparentem vir de outra origem.</p>
+<p>Foi mencionado em aula o conceito de <strong>spoofing</strong>.</p>
+<p>Mecanismos de autenticação e verificação de integridade podem ser utilizados como defesa.</p>
+<hr />
+<h2 id="confidentiality-confidencialidade">Confidentiality — Confidencialidade</h2>
+<p>A confidencialidade busca impedir que terceiros não autorizados tenham acesso ao conteúdo da comunicação.</p>
+<p>Um exemplo é o <strong>sniffing</strong>, no qual um atacante observa o tráfego que passa pela rede.</p>
+<p>Uma defesa importante é a utilização de:</p>
+<div class="arithmatex">\[
+\boxed{\text{criptografia}}.
+\]</div>
+<hr />
+<h2 id="caso-citado">Caso citado</h2>
+<p>Foi citado em aula:</p>
+<p><strong>Fancy Bear Goes Phishing</strong>.</p>
+<blockquote>
+<p><strong>Observação:</strong> o caso foi mencionado em conexão com segurança,
+sem desenvolvimento detalhado nas anotações.</p>
+</blockquote>
+<hr />
+<h1 id="camada-de-aplicacao">Camada de Aplicação</h1>
+<h2 id="comunicacao-entre-processos">Comunicação entre processos</h2>
+<p>Uma aplicação distribuída é formada por processos executando em sistemas finais diferentes.</p>
+<p>Para que esses processos se comuniquem através da rede, é necessário algum mecanismo de <strong>comunicação entre processos — IPC</strong> (<em>Inter-Process Communication</em>).</p>
+<p>Alguns mecanismos citados em aula foram:</p>
+<ul>
+<li>pipes;</li>
+<li>sinais;</li>
+<li>mensagens;</li>
+<li>memória compartilhada.</li>
+</ul>
+<p>Quando a comunicação ocorre entre processos através da rede, os <strong>sockets</strong> são um mecanismo fundamental.</p>
+<hr />
+<h1 id="socket">Socket</h1>
+<p>Um <strong>socket</strong> é a interface através da qual um processo da camada de aplicação envia e recebe dados utilizando a camada de transporte.</p>
+<p>Podemos visualizar:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Aplicação}
+\longleftrightarrow
+\text{Socket}
+\longleftrightarrow
+\text{Transporte}.
+}
+\]</div>
+<p>Para enviar dados, a aplicação escreve no socket.</p>
+<p>Para receber dados, a aplicação lê do socket.</p>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\text{processo}
+\rightarrow
+\text{socket}
+\rightarrow
+\text{rede}
+\]</div>
+<p>e, no destino:</p>
+<div class="arithmatex">\[
+\text{rede}
+\rightarrow
+\text{socket}
+\rightarrow
+\text{processo}.
+\]</div>
+<hr />
+<h2 id="ip-e-portas">IP e portas</h2>
+<p>Conhecer apenas o endereço IP de um host não é suficiente para identificar a aplicação com a qual queremos nos comunicar.</p>
+<p>Em um mesmo host podem existir simultaneamente vários processos utilizando a rede.</p>
+<p>Por isso, utilizamos <strong>números de porta</strong>.</p>
+<p>De maneira simplificada:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{IP}
+\rightarrow
+\text{identifica o host}
+}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{porta}
+\rightarrow
+\text{identifica o processo/serviço no host}.
+}
+\]</div>
+<p>Um endpoint de comunicação pode então ser associado ao par:</p>
+<div class="arithmatex">\[
+(\text{endereço IP},\text{porta}).
+\]</div>
+<p>No caso de uma conexão TCP, a conexão é distinguida pelas duas extremidades:</p>
+<div class="arithmatex">\[
+(
+IP_{\text{origem}},
+porta_{\text{origem}},
+IP_{\text{destino}},
+porta_{\text{destino}}
+).
+\]</div>
+<hr />
+<h1 id="requisitos-das-aplicacoes">Requisitos das Aplicações</h1>
+<p>Diferentes aplicações possuem diferentes necessidades em relação ao serviço oferecido pela camada de transporte.</p>
+<p>Foram destacadas características como:</p>
+<ul>
+<li><strong>integridade dos dados</strong>;</li>
+<li><strong>timing</strong>;</li>
+<li><strong>throughput</strong>.</li>
+</ul>
+<p>Por exemplo, determinada aplicação pode exigir entrega confiável de todos os dados, enquanto outra pode priorizar baixa latência mesmo tolerando alguma perda.</p>
+<p>A escolha do protocolo de transporte depende dessas necessidades.</p>
+<hr />
+<h1 id="tcp-e-udp-para-aplicacoes">TCP e UDP para Aplicações</h1>
+<p>Os dois principais protocolos de transporte estudados são:</p>
+<ul>
+<li>TCP;</li>
+<li>UDP.</li>
+</ul>
+<h2 id="udp">UDP</h2>
+<p>O UDP é um protocolo relativamente <strong>leve</strong>.</p>
+<p>Ele possui pouca sobrecarga e não estabelece uma conexão antes de transmitir os dados.</p>
+<p>De forma simplificada:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{UDP}
+\rightarrow
+\text{serviço mais simples}.
+}
+\]</div>
+<hr />
+<h2 id="tcp">TCP</h2>
+<p>O TCP oferece mais mecanismos para a aplicação e, por isso, pode ser visto como um protocolo mais <strong>pesado</strong> que o UDP.</p>
+<p>Ele estabelece uma conexão e oferece mecanismos de transferência confiável de dados.</p>
+<p>De forma simplificada:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{TCP}
+\rightarrow
+\text{mais funcionalidades e maior controle}.
+}
+\]</div>
+<hr />
+<h2 id="a-aplicacao-escolhe-o-transporte">A aplicação escolhe o transporte</h2>
+<p>Ao desenvolver uma aplicação de rede, é necessário escolher qual protocolo de transporte atende melhor às suas necessidades.</p>
+<p>Portanto, para estudar uma aplicação de rede, também é importante entender o serviço de transporte utilizado por ela.</p>
+<hr />
+<h1 id="http-e-https">HTTP e HTTPS</h1>
+<p>Historicamente, versões tradicionais do HTTP utilizam TCP como protocolo de transporte.</p>
+<p>De maneira simplificada:</p>
+<div class="arithmatex">\[
+\text{HTTP}
+\rightarrow
+\text{TCP}.
+\]</div>
+<p>Versões mais recentes também podem utilizar QUIC:</p>
+<div class="arithmatex">\[
+\text{HTTP}
+\rightarrow
+\text{QUIC}
+\rightarrow
+\text{UDP}.
+\]</div>
+<p>O HTTP, sozinho, não fornece proteção criptográfica para a comunicação.</p>
+<p>No HTTPS, mecanismos de segurança são adicionados à comunicação HTTP.</p>
+<hr />
+<h1 id="aplicacoes-citadas">Aplicações citadas</h1>
+<p>Entre as aplicações/protocolos da camada de aplicação mencionados em aula estão:</p>
+<ul>
+<li>HTTP;</li>
+<li>e-mail;</li>
+<li>DNS.</li>
+</ul>
+<p>Essas aplicações utilizam sockets para acessar os serviços da camada de transporte.</p>
+<blockquote>
+<p><strong>Observação importante sobre DNS:</strong> DNS não deve ser classificado
+simplesmente como um serviço TCP. Consultas DNS normalmente utilizam
+UDP, embora TCP também possa ser utilizado em situações específicas.</p>
+</blockquote>
+<hr />
+<h1 id="proximo-topico">Próximo tópico</h1>
+<p>A sequência da disciplina passa a estudar com mais detalhes a <strong>camada de aplicação</strong> e a construção de aplicações que se comunicam através de sockets.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula07/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 07 | 02/09/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 07 | 02/09/2026
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Aula09/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 09 | 09/09/2026">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 09 | 09/09/2026
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>

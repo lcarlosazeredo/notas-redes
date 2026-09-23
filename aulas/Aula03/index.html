@@ -1,0 +1,1214 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula02/">
+      
+      
+        <link rel="next" href="../Aula04/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 03 | 19/08/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-03-19082026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 03 | 19/08/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-03-19082026">Aula 03 — 19/08/2026</h1>
+<h1 id="introducao-as-redes-continuacao">Introdução às Redes — Continuação</h1>
+<h2 id="packet-switching-e-circuit-switching">Packet Switching e Circuit Switching</h2>
+<p>Uma diferença importante entre redes está na maneira como seus recursos são utilizados.</p>
+<h3 id="packet-switching">Packet Switching</h3>
+<p>No <strong>packet switching</strong> (comutação de pacotes), os recursos da rede são <strong>compartilhados</strong>.</p>
+<p>Os pacotes de diferentes usuários podem utilizar os mesmos enlaces, sem que uma parcela fixa da capacidade seja permanentemente reservada para cada usuário.</p>
+<p>A Internet utiliza predominantemente <strong>packet switching</strong>.</p>
+<h3 id="circuit-switching">Circuit Switching</h3>
+<p>No <strong>circuit switching</strong> (comutação de circuitos), recursos são <strong>reservados</strong> para uma determinada comunicação.</p>
+<p>Essa reserva pode ser implementada por técnicas como:</p>
+<ul>
+<li><strong>FDMA</strong> — divisão por frequência;</li>
+<li><strong>TDMA</strong> — divisão por tempo;</li>
+<li><strong>CDMA</strong> — divisão por código.</li>
+</ul>
+<p>Um exemplo tradicional de utilização de circuit switching é a telefonia.</p>
+<p>Assim, de maneira simplificada:</p>
+<table>
+<thead>
+<tr>
+<th>Packet Switching</th>
+<th>Circuit Switching</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recursos compartilhados</td>
+<td>Recursos reservados</td>
+</tr>
+<tr>
+<td>Utilizado na Internet</td>
+<td>Tradicionalmente associado à telefonia</td>
+</tr>
+<tr>
+<td>Maior aproveitamento estatístico dos recursos</td>
+<td>Garantia de recursos durante a comunicação</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="atrasos-em-redes">Atrasos em Redes</h1>
+<p>Ao transmitir um pacote pela rede, diferentes tipos de atraso podem ser introduzidos.</p>
+<p>Nesta aula foram considerados principalmente:</p>
+<ul>
+<li><strong>atraso de transmissão</strong>;</li>
+<li><strong>atraso de propagação</strong>;</li>
+<li><strong>atraso de fila</strong>.</li>
+</ul>
+<hr />
+<h2 id="atraso-de-transmissao">Atraso de Transmissão</h2>
+<p>Considere:</p>
+<ul>
+<li><span class="arithmatex">\(L\)</span>: tamanho do pacote, em bits;</li>
+<li><span class="arithmatex">\(R\)</span>: taxa de transmissão do enlace, em bits/s.</li>
+</ul>
+<p>O <strong>atraso de transmissão</strong> é o tempo necessário para colocar todos os bits do pacote no enlace:</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{trans}}=\frac{L}{R}
+}
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+d_{\text{trans}}
+=
+\frac{\text{bits}}{\text{bits/s}}
+=
+\text{s}.
+\]</div>
+<p>O atraso de transmissão depende:</p>
+<ul>
+<li>do tamanho <span class="arithmatex">\(L\)</span> do pacote;</li>
+<li>da taxa <span class="arithmatex">\(R\)</span> do enlace.</li>
+</ul>
+<p>Quanto maior o pacote, maior o tempo necessário para transmiti-lo.</p>
+<p>Quanto maior a taxa de transmissão, menor o atraso:</p>
+<div class="arithmatex">\[
+R\uparrow
+\quad\Longrightarrow\quad
+d_{\text{trans}}\downarrow.
+\]</div>
+<hr />
+<h2 id="atraso-de-propagacao">Atraso de Propagação</h2>
+<p>Depois que um bit é colocado no enlace, ele precisa se propagar fisicamente pelo meio até o receptor.</p>
+<p>Considere:</p>
+<ul>
+<li><span class="arithmatex">\(D\)</span>: distância percorrida;</li>
+<li><span class="arithmatex">\(v_{\text{prop}}\)</span>: velocidade de propagação do sinal no meio.</li>
+</ul>
+<p>O <strong>atraso de propagação</strong> é:</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{prop}}
+=
+\frac{D}{v_{\text{prop}}}
+}
+\]</div>
+<p>Esse atraso depende da distância e da velocidade de propagação do meio.</p>
+<p>É importante distinguir:</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{trans}}=\frac{L}{R}
+}
+\qquad\text{e}\qquad
+\boxed{
+d_{\text{prop}}=\frac{D}{v_{\text{prop}}}
+}
+\]</div>
+<p>O primeiro está relacionado ao tempo para <strong>inserir o pacote no enlace</strong>; o segundo, ao tempo para o sinal <strong>percorrer fisicamente o enlace</strong>.</p>
+<hr />
+<h2 id="representacao-da-transmissao-de-um-pacote">Representação da transmissão de um pacote</h2>
+<p>Considere um emissor <span class="arithmatex">\(E\)</span> e um receptor separados por um enlace.</p>
+<p>No instante inicial, o transmissor começa a inserir os bits no enlace.</p>
+<p>Após</p>
+<div class="arithmatex">\[
+\frac{L}{R},
+\]</div>
+<p>o último bit do pacote termina de ser colocado no enlace.</p>
+<p>Esse último bit ainda precisa percorrer o meio físico até o receptor, acrescentando o atraso de propagação.</p>
+<p>Portanto, considerando apenas transmissão e propagação:</p>
+<div class="arithmatex">\[
+\boxed{
+d
+=
+\frac{L}{R}
++
+\frac{D}{v_{\text{prop}}}
+}
+\]</div>
+<blockquote>
+<p><strong>[Inserir figura]</strong> Diagrama espaço-tempo feito em sala mostrando
+emissor, receptor, transmissão do pacote e propagação pelo enlace.</p>
+</blockquote>
+<hr />
+<h1 id="transmissao-atraves-de-dois-enlaces">Transmissão através de dois enlaces</h1>
+<p>Considere agora um pacote de tamanho <span class="arithmatex">\(L\)</span> que precisa atravessar dois enlaces:</p>
+<div class="arithmatex">\[
+E
+\xrightarrow{R_1}
+\text{Roteador}
+\xrightarrow{R_2}
+D.
+\]</div>
+<p>Supondo que o roteador utilize <strong>store-and-forward</strong>, ele precisa receber o pacote antes de encaminhá-lo pelo próximo enlace.</p>
+<p>Desconsiderando inicialmente propagação e filas, o atraso de transmissão é:</p>
+<div class="arithmatex">\[
+d_{\text{trans}}
+=
+\frac{L}{R_1}
++
+\frac{L}{R_2}.
+\]</div>
+<hr />
+<h2 id="caso-r_1-gg-r_2">Caso <span class="arithmatex">\(R_1 \gg R_2\)</span></h2>
+<p>Se</p>
+<div class="arithmatex">\[
+R_1 \gg R_2,
+\]</div>
+<p>então:</p>
+<div class="arithmatex">\[
+\frac{L}{R_1}
+\ll
+\frac{L}{R_2}.
+\]</div>
+<p>O segundo enlace é muito mais lento e passa a dominar o tempo de transmissão.</p>
+<p>Assim,</p>
+<div class="arithmatex">\[
+d_{\text{trans}}
+=
+\frac{L}{R_1}
++
+\frac{L}{R_2}
+\approx
+\frac{L}{R_2}.
+\]</div>
+<p>Nesse caso, <span class="arithmatex">\(R_2\)</span> funciona como um <strong>gargalo</strong> (<em>bottleneck</em>).</p>
+<hr />
+<h2 id="caso-r_1-ll-r_2">Caso <span class="arithmatex">\(R_1 \ll R_2\)</span></h2>
+<p>Se</p>
+<div class="arithmatex">\[
+R_1 \ll R_2,
+\]</div>
+<p>então:</p>
+<div class="arithmatex">\[
+\frac{L}{R_1}
+\gg
+\frac{L}{R_2}.
+\]</div>
+<p>Agora, o primeiro enlace é o mais lento e domina o tempo de transmissão.</p>
+<p>De maneira geral, a taxa efetiva da comunicação é limitada pelo enlace de menor capacidade:</p>
+<div class="arithmatex">\[
+\boxed{
+R_{\text{efetiva}}
+=
+\min(R_1,R_2)
+}
+\]</div>
+<p>Esse enlace é denominado <strong>gargalo</strong> da comunicação.</p>
+<hr />
+<h1 id="multiplos-enlaces">Múltiplos enlaces</h1>
+<p>Considere um caminho formado por <span class="arithmatex">\(N\)</span> enlaces.</p>
+<p>Para um único pacote de tamanho <span class="arithmatex">\(L\)</span>, se todos os enlaces possuem taxa <span class="arithmatex">\(R\)</span> e utilizam store-and-forward, o pacote precisa ser transmitido em cada um dos <span class="arithmatex">\(N\)</span> enlaces.</p>
+<p>Desconsiderando propagação, filas e processamento:</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{trans}}
+=
+N\frac{L}{R}
+}
+\]</div>
+<p>Se os enlaces tiverem taxas diferentes <span class="arithmatex">\(R_1,\ldots,R_N\)</span>, então:</p>
+<div class="arithmatex">\[
+d_{\text{trans}}
+=
+\sum_{i=1}^{N}\frac{L}{R_i}.
+\]</div>
+<hr />
+<h1 id="transmissao-de-varios-pacotes">Transmissão de vários pacotes</h1>
+<p>Considere agora:</p>
+<ul>
+<li><span class="arithmatex">\(P\)</span> pacotes;</li>
+<li>cada pacote com tamanho <span class="arithmatex">\(L\)</span>;</li>
+<li><span class="arithmatex">\(N\)</span> enlaces;</li>
+<li>todos os enlaces com taxa <span class="arithmatex">\(R\)</span>.</li>
+</ul>
+<p>O primeiro pacote precisa atravessar os <span class="arithmatex">\(N\)</span> enlaces:</p>
+<div class="arithmatex">\[
+N\frac{L}{R}.
+\]</div>
+<p>Entretanto, depois que ele deixa o primeiro enlace, o segundo pacote pode começar a utilizá-lo.</p>
+<p>Isso permite um funcionamento em <strong>pipeline</strong>.</p>
+<h2 id="pipeline">Pipeline</h2>
+<p>Depois que o pipeline está preenchido, novos pacotes podem chegar ao destino separados por:</p>
+<div class="arithmatex">\[
+\frac{L}{R}.
+\]</div>
+<p>Assim:</p>
+<ul>
+<li>o primeiro pacote leva <span class="arithmatex">\(N\frac{L}{R}\)</span>;</li>
+<li>cada um dos <span class="arithmatex">\(P-1\)</span> pacotes restantes acrescenta <span class="arithmatex">\(\frac{L}{R}\)</span>.</li>
+</ul>
+<p>Logo:</p>
+<div class="arithmatex">\[
+d_{\text{trans}}
+=
+N\frac{L}{R}
++
+(P-1)\frac{L}{R}.
+\]</div>
+<p>Portanto,</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{trans}}
+=
+\frac{(N+P-1)L}{R}
+}
+\]</div>
+<p>ou, equivalentemente,</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{trans}}
+=
+\frac{PL+(N-1)L}{R}
+}
+\]</div>
+<blockquote>
+<p><strong>[Inserir figura]</strong> Diagrama temporal feito em sala mostrando vários
+pacotes sendo transmitidos em pipeline através de vários enlaces.</p>
+</blockquote>
+<hr />
+<h2 id="forma-mais-geral">Forma mais geral</h2>
+<p>Se o tamanho total original da informação for <span class="arithmatex">\(L'\)</span> e ela for dividida em <span class="arithmatex">\(P\)</span> pacotes de tamanho <span class="arithmatex">\(L\)</span>, então:</p>
+<div class="arithmatex">\[
+L'=PL.
+\]</div>
+<p>Substituindo na expressão anterior:</p>
+<div class="arithmatex">\[
+d_{\text{trans}}
+=
+\frac{L'+(N-1)L}{R}.
+\]</div>
+<p>Essa expressão mostra que a divisão da informação em pacotes permite que diferentes enlaces trabalhem simultaneamente, formando um pipeline.</p>
+<hr />
+<h1 id="filas">Filas</h1>
+<p>As <strong>filas</strong> se formam principalmente nos enlaces de saída dos roteadores.</p>
+<p>Quando pacotes chegam a um roteador mais rapidamente do que conseguem ser transmitidos pelo enlace de saída, eles precisam aguardar.</p>
+<p>Assim, o atraso experimentado por um pacote não depende apenas de transmissão e propagação: ele também pode incluir um <strong>atraso de fila</strong>.</p>
+<hr />
+<h2 id="atraso-de-fila">Atraso de fila</h2>
+<p>O atraso de fila depende do nível de utilização do enlace.</p>
+<p>Uma medida importante é a <strong>intensidade de tráfego</strong>:</p>
+<div class="arithmatex">\[
+\boxed{
+\rho = \frac{La}{R}
+}
+\]</div>
+<p>onde:</p>
+<ul>
+<li><span class="arithmatex">\(L\)</span> é o tamanho médio dos pacotes, em bits;</li>
+<li><span class="arithmatex">\(a\)</span> é a taxa média de chegada de pacotes, em pacotes/s;</li>
+<li><span class="arithmatex">\(R\)</span> é a taxa de transmissão do enlace, em bits/s.</li>
+</ul>
+<p>O produto</p>
+<div class="arithmatex">\[
+La
+\]</div>
+<p>representa a taxa média de chegada de dados, em bits/s.</p>
+<p>Assim, <span class="arithmatex">\(\rho\)</span> compara a carga oferecida à capacidade disponível no enlace.</p>
+<hr />
+<h2 id="comportamento-da-fila">Comportamento da fila</h2>
+<p>Quando a intensidade de tráfego é pequena, o enlace consegue transmitir os pacotes sem acumular uma fila significativa.</p>
+<p>À medida que</p>
+<div class="arithmatex">\[
+\rho \rightarrow 1,
+\]</div>
+<p>o atraso médio de fila cresce rapidamente.</p>
+<p>Uma expressão utilizada para representar esse comportamento é:</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{fila}}
+\propto
+\frac{\rho}{1-\rho}
+}
+\]</div>
+<p>O ponto importante é o comportamento do denominador:</p>
+<div class="arithmatex">\[
+1-\rho \rightarrow 0
+\qquad\text{quando}\qquad
+\rho\rightarrow1.
+\]</div>
+<p>Consequentemente, o atraso pode crescer muito quando a taxa de chegada se aproxima da capacidade de serviço do enlace.</p>
+<blockquote>
+<p><strong>[Inserir figura]</strong> Gráfico feito em sala mostrando o crescimento do
+atraso de fila à medida que a intensidade de tráfego se aproxima de <span class="arithmatex">\(1\)</span>.</p>
+</blockquote>
+<hr />
+<h1 id="packet-switching-circuit-switching">Packet Switching × Circuit Switching</h1>
+<p>A discussão sobre filas ajuda a entender uma diferença importante entre <strong>packet switching</strong> e <strong>circuit switching</strong>.</p>
+<h2 id="packet-switching_1">Packet Switching</h2>
+<p>No packet switching:</p>
+<ul>
+<li>os recursos são compartilhados;</li>
+<li>não existe necessariamente uma parcela fixa da capacidade reservada para cada usuário;</li>
+<li>a utilização da capacidade pode ser mais eficiente;</li>
+<li>podem surgir filas quando muitos pacotes disputam simultaneamente os mesmos recursos.</li>
+</ul>
+<h3 id="vantagem">Vantagem</h3>
+<p>O compartilhamento permite aproveitar a capacidade que não está sendo utilizada por outros usuários.</p>
+<h3 id="desvantagem">Desvantagem</h3>
+<p>Não existe necessariamente uma garantia fixa de recursos, e congestionamentos podem produzir filas e atrasos.</p>
+<hr />
+<h2 id="circuit-switching_1">Circuit Switching</h2>
+<p>No circuit switching:</p>
+<ul>
+<li>recursos são reservados;</li>
+<li>uma parcela da capacidade é destinada à comunicação;</li>
+<li>há maior previsibilidade de recursos durante a conexão.</li>
+</ul>
+<h3 id="vantagem_1">Vantagem</h3>
+<div class="arithmatex">\[
+\boxed{\text{Garantia de recursos}}
+\]</div>
+<h3 id="desvantagem_1">Desvantagem</h3>
+<p>Se o recurso reservado não estiver sendo utilizado, ele pode permanecer ocioso, produzindo desperdício.</p>
+<hr />
+<h2 id="comparacao">Comparação</h2>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Packet Switching</th>
+<th>Circuit Switching</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recursos</td>
+<td>Compartilhados</td>
+<td>Reservados</td>
+</tr>
+<tr>
+<td>Utilização</td>
+<td>Dinâmica</td>
+<td>Pré-alocada</td>
+</tr>
+<tr>
+<td>Filas</td>
+<td>Podem ocorrer</td>
+<td>Evitadas pela reserva de capacidade</td>
+</tr>
+<tr>
+<td>Garantia de capacidade</td>
+<td>Não necessariamente</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Aproveitamento de capacidade ociosa</td>
+<td>Maior</td>
+<td>Menor</td>
+</tr>
+<tr>
+<td>Possibilidade de desperdício por reserva</td>
+<td>Menor</td>
+<td>Maior</td>
+</tr>
+</tbody>
+</table>
+<p>A escolha entre as duas abordagens envolve, portanto, um compromisso entre <strong>eficiência no compartilhamento dos recursos</strong> e <strong>garantia de capacidade</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula02/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 02 | 14/08/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 02 | 14/08/2026
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Aula04/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 04 | 21/08/2026">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 04 | 21/08/2026
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>
