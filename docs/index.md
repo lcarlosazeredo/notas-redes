@@ -21,3 +21,4 @@ Acesse diretamente as notas de cada encontro:
 | **Aula 09** | HTTP, conexões persistentes, HTTP/2 e HTTP/3, HTTPS, cookies e cache Web | [:material-file-document: Ver Notas](aulas/Aula09.md) |
 | **Aula 10** | Cookies e Web caching, e-mail/SMTP, DNS hierárquico e resolução iterativa/recursiva | [:material-file-document: Ver Notas](aulas/Aula10.md) |
 | **Aula 11** | DNS e Resource Records, P2P/BitTorrent, streaming e programação com sockets UDP/TCP | [:material-file-document: Ver Notas](aulas/Aula11.md) |
+| **Aula 12** | Filas M/M/1 e M/D/1, sockets TCP/UDP, multiplexação, checksum e introdução ao RDT | [:material-file-document: Ver Notas](aulas/Aula12.md) |
