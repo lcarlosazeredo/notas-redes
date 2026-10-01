@@ -1,7 +1,5 @@
 # Aula 03 — 19/08/2026
 
-# Introdução às Redes — Continuação
-
 ## Packet Switching e Circuit Switching
 
 Uma diferença importante entre redes está na maneira como seus recursos são utilizados.
@@ -36,7 +34,7 @@ Assim, de maneira simplificada:
 
 ---
 
-# Atrasos em Redes
+## Atrasos em Redes
 
 Ao transmitir um pacote pela rede, diferentes tipos de atraso podem ser introduzidos.
 
@@ -46,9 +44,7 @@ Nesta aula foram considerados principalmente:
 - **atraso de propagação**;
 - **atraso de fila**.
 
----
-
-## Atraso de Transmissão
+### Atraso de transmissão
 
 Considere:
 
@@ -57,21 +53,21 @@ Considere:
 
 O **atraso de transmissão** é o tempo necessário para colocar todos os bits do pacote no enlace:
 
-\[
+$$
 \boxed{
 d_{\text{trans}}=\frac{L}{R}
 }
-\]
+$$
 
 Portanto:
 
-\[
+$$
 d_{\text{trans}}
 =
 \frac{\text{bits}}{\text{bits/s}}
 =
 \text{s}.
-\]
+$$
 
 O atraso de transmissão depende:
 
@@ -82,15 +78,13 @@ Quanto maior o pacote, maior o tempo necessário para transmiti-lo.
 
 Quanto maior a taxa de transmissão, menor o atraso:
 
-\[
+$$
 R\uparrow
 \quad\Longrightarrow\quad
 d_{\text{trans}}\downarrow.
-\]
+$$
 
----
-
-## Atraso de Propagação
+### Atraso de propagação
 
 Depois que um bit é colocado no enlace, ele precisa se propagar fisicamente pelo meio até o receptor.
 
@@ -101,19 +95,19 @@ Considere:
 
 O **atraso de propagação** é:
 
-\[
+$$
 \boxed{
 d_{\text{prop}}
 =
 \frac{D}{v_{\text{prop}}}
 }
-\]
+$$
 
 Esse atraso depende da distância e da velocidade de propagação do meio.
 
 É importante distinguir:
 
-\[
+$$
 \boxed{
 d_{\text{trans}}=\frac{L}{R}
 }
@@ -121,23 +115,21 @@ d_{\text{trans}}=\frac{L}{R}
 \boxed{
 d_{\text{prop}}=\frac{D}{v_{\text{prop}}}
 }
-\]
+$$
 
 O primeiro está relacionado ao tempo para **inserir o pacote no enlace**; o segundo, ao tempo para o sinal **percorrer fisicamente o enlace**.
 
----
-
-## Representação da transmissão de um pacote
+### Representação da transmissão de um pacote
 
 Considere um emissor $E$ e um receptor separados por um enlace.
 
 No instante inicial, o transmissor começa a inserir os bits no enlace.
 
-Após
+Após:
 
-\[
+$$
 \frac{L}{R},
-\]
+$$
 
 o último bit do pacote termina de ser colocado no enlace.
 
@@ -145,7 +137,7 @@ Esse último bit ainda precisa percorrer o meio físico até o receptor, acresce
 
 Portanto, considerando apenas transmissão e propagação:
 
-\[
+$$
 \boxed{
 d
 =
@@ -153,60 +145,57 @@ d
 +
 \frac{D}{v_{\text{prop}}}
 }
-\]
+$$
 
-> **[Inserir figura]** Diagrama espaço-tempo feito em sala mostrando
-> emissor, receptor, transmissão do pacote e propagação pelo enlace.
+> **[Inserir figura]** Diagrama espaço-tempo feito em sala mostrando emissor, receptor, transmissão do pacote e propagação pelo enlace.
 
 ---
 
-# Transmissão através de dois enlaces
+## Transmissão através de dois enlaces
 
 Considere agora um pacote de tamanho $L$ que precisa atravessar dois enlaces:
 
-\[
+$$
 E
 \xrightarrow{R_1}
 \text{Roteador}
 \xrightarrow{R_2}
 D.
-\]
+$$
 
 Supondo que o roteador utilize **store-and-forward**, ele precisa receber o pacote antes de encaminhá-lo pelo próximo enlace.
 
 Desconsiderando inicialmente propagação e filas, o atraso de transmissão é:
 
-\[
+$$
 d_{\text{trans}}
 =
 \frac{L}{R_1}
 +
 \frac{L}{R_2}.
-\]
+$$
 
----
+### Caso $R_1 \gg R_2$
 
-## Caso $R_1 \gg R_2$
+Se:
 
-Se
-
-\[
+$$
 R_1 \gg R_2,
-\]
+$$
 
 então:
 
-\[
+$$
 \frac{L}{R_1}
 \ll
 \frac{L}{R_2}.
-\]
+$$
 
 O segundo enlace é muito mais lento e passa a dominar o tempo de transmissão.
 
-Assim,
+Assim:
 
-\[
+$$
 d_{\text{trans}}
 =
 \frac{L}{R_1}
@@ -214,71 +203,69 @@ d_{\text{trans}}
 \frac{L}{R_2}
 \approx
 \frac{L}{R_2}.
-\]
+$$
 
 Nesse caso, $R_2$ funciona como um **gargalo** (*bottleneck*).
 
----
+### Caso $R_1 \ll R_2$
 
-## Caso $R_1 \ll R_2$
+Se:
 
-Se
-
-\[
+$$
 R_1 \ll R_2,
-\]
+$$
 
 então:
 
-\[
+$$
 \frac{L}{R_1}
 \gg
 \frac{L}{R_2}.
-\]
+$$
 
 Agora, o primeiro enlace é o mais lento e domina o tempo de transmissão.
 
 De maneira geral, a taxa efetiva da comunicação é limitada pelo enlace de menor capacidade:
 
-\[
+$$
 \boxed{
 R_{\text{efetiva}}
 =
 \min(R_1,R_2)
 }
-\]
+$$
 
 Esse enlace é denominado **gargalo** da comunicação.
 
 ---
 
-# Múltiplos enlaces
+## Múltiplos enlaces
 
 Considere um caminho formado por $N$ enlaces.
 
-Para um único pacote de tamanho $L$, se todos os enlaces possuem taxa $R$ e utilizam store-and-forward, o pacote precisa ser transmitido em cada um dos $N$ enlaces.
+Para um único pacote de tamanho $L$, se todos os enlaces possuem taxa $R$ e utilizam *store-and-forward*, o pacote precisa ser transmitido em cada um dos $N$ enlaces.
 
 Desconsiderando propagação, filas e processamento:
 
-\[
+$$
 \boxed{
 d_{\text{trans}}
 =
 N\frac{L}{R}
 }
-\]
+$$
 
 Se os enlaces tiverem taxas diferentes $R_1,\ldots,R_N$, então:
 
-\[
+$$
 d_{\text{trans}}
 =
 \sum_{i=1}^{N}\frac{L}{R_i}.
-\]
+$$
 
 ---
 
-# Transmissão de vários pacotes
+## Transmissão de vários pacotes
 
 Considere agora:
 
@@ -289,21 +276,21 @@ Considere agora:
 
 O primeiro pacote precisa atravessar os $N$ enlaces:
 
-\[
+$$
 N\frac{L}{R}.
-\]
+$$
 
 Entretanto, depois que ele deixa o primeiro enlace, o segundo pacote pode começar a utilizá-lo.
 
 Isso permite um funcionamento em **pipeline**.
 
-## Pipeline
+### Pipeline
 
 Depois que o pipeline está preenchido, novos pacotes podem chegar ao destino separados por:
 
-\[
+$$
 \frac{L}{R}.
-\]
+$$
 
 Assim:
 
@@ -312,60 +299,57 @@ Assim:
 
 Logo:
 
-\[
+$$
 d_{\text{trans}}
 =
 N\frac{L}{R}
 +
 (P-1)\frac{L}{R}.
-\]
+$$
 
-Portanto,
+Portanto:
 
-\[
+$$
 \boxed{
 d_{\text{trans}}
 =
 \frac{(N+P-1)L}{R}
 }
-\]
+$$
 
-ou, equivalentemente,
+ou, equivalentemente:
 
-\[
+$$
 \boxed{
 d_{\text{trans}}
 =
 \frac{PL+(N-1)L}{R}
 }
-\]
+$$
 
-> **[Inserir figura]** Diagrama temporal feito em sala mostrando vários
-> pacotes sendo transmitidos em pipeline através de vários enlaces.
+> **[Inserir figura]** Diagrama temporal feito em sala mostrando vários pacotes sendo transmitidos em pipeline através de vários enlaces.
 
----
-
-## Forma mais geral
+### Forma mais geral
 
 Se o tamanho total original da informação for $L'$ e ela for dividida em $P$ pacotes de tamanho $L$, então:
 
-\[
+$$
 L'=PL.
-\]
+$$
 
 Substituindo na expressão anterior:
 
-\[
+$$
 d_{\text{trans}}
 =
 \frac{L'+(N-1)L}{R}.
-\]
+$$
 
 Essa expressão mostra que a divisão da informação em pacotes permite que diferentes enlaces trabalhem simultaneamente, formando um pipeline.
 
 ---
 
-# Filas
+## Filas
 
 As **filas** se formam principalmente nos enlaces de saída dos roteadores.
 
@@ -373,19 +357,17 @@ Quando pacotes chegam a um roteador mais rapidamente do que conseguem ser transm
 
 Assim, o atraso experimentado por um pacote não depende apenas de transmissão e propagação: ele também pode incluir um **atraso de fila**.
 
----
-
-## Atraso de fila
+### Atraso de fila
 
 O atraso de fila depende do nível de utilização do enlace.
 
 Uma medida importante é a **intensidade de tráfego**:
 
-\[
+$$
 \boxed{
-\rho = \frac{La}{R}
+\rho=\frac{La}{R}
 }
-\]
+$$
 
 onde:
 
@@ -393,60 +375,57 @@ onde:
 - $a$ é a taxa média de chegada de pacotes, em pacotes/s;
 - $R$ é a taxa de transmissão do enlace, em bits/s.
 
-O produto
+O produto:
 
-\[
+$$
 La
-\]
+$$
 
 representa a taxa média de chegada de dados, em bits/s.
 
 Assim, $\rho$ compara a carga oferecida à capacidade disponível no enlace.
 
----
-
-## Comportamento da fila
+### Comportamento da fila
 
 Quando a intensidade de tráfego é pequena, o enlace consegue transmitir os pacotes sem acumular uma fila significativa.
 
-À medida que
+À medida que:
 
-\[
-\rho \rightarrow 1,
-\]
+$$
+\rho\rightarrow1,
+$$
 
 o atraso médio de fila cresce rapidamente.
 
 Uma expressão utilizada para representar esse comportamento é:
 
-\[
+$$
 \boxed{
 d_{\text{fila}}
 \propto
 \frac{\rho}{1-\rho}
 }
-\]
+$$
 
 O ponto importante é o comportamento do denominador:
 
-\[
-1-\rho \rightarrow 0
+$$
+1-\rho\rightarrow0
 \qquad\text{quando}\qquad
 \rho\rightarrow1.
-\]
+$$
 
 Consequentemente, o atraso pode crescer muito quando a taxa de chegada se aproxima da capacidade de serviço do enlace.
 
-> **[Inserir figura]** Gráfico feito em sala mostrando o crescimento do
-> atraso de fila à medida que a intensidade de tráfego se aproxima de $1$.
+> **[Inserir figura]** Gráfico feito em sala mostrando o crescimento do atraso de fila à medida que a intensidade de tráfego se aproxima de $1$.
 
 ---
 
-# Packet Switching × Circuit Switching
+## Packet Switching × Circuit Switching
 
 A discussão sobre filas ajuda a entender uma diferença importante entre **packet switching** e **circuit switching**.
 
-## Packet Switching
+### Packet Switching
 
 No packet switching:
 
@@ -455,17 +434,15 @@ No packet switching:
 - a utilização da capacidade pode ser mais eficiente;
 - podem surgir filas quando muitos pacotes disputam simultaneamente os mesmos recursos.
 
-### Vantagem
+**Vantagem.**
 
 O compartilhamento permite aproveitar a capacidade que não está sendo utilizada por outros usuários.
 
-### Desvantagem
+**Desvantagem.**
 
 Não existe necessariamente uma garantia fixa de recursos, e congestionamentos podem produzir filas e atrasos.
 
----
-
-## Circuit Switching
+### Circuit Switching
 
 No circuit switching:
 
@@ -473,19 +450,17 @@ No circuit switching:
 - uma parcela da capacidade é destinada à comunicação;
 - há maior previsibilidade de recursos durante a conexão.
 
-### Vantagem
+**Vantagem.**
 
-\[
+$$
 \boxed{\text{Garantia de recursos}}
-\]
+$$
 
-### Desvantagem
+**Desvantagem.**
 
 Se o recurso reservado não estiver sendo utilizado, ele pode permanecer ocioso, produzindo desperdício.
 
----
-
-## Comparação
+### Comparação
 
 | Característica | Packet Switching | Circuit Switching |
 |---|---|---|

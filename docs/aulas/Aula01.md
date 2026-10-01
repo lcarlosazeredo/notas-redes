@@ -1,97 +1,21 @@
 # Aula 01 — 12/08/2026
 
-## Informações da disciplina
-
-### Professor
-
-Daniel Sadoc  
-E-mail: `sadoc@ic.ufrj.br`
-
-### Materiais e organização
-
-- Classroom;
-- Google Sheets — cronograma:
-    - presenças;
-    - agenda;
-    - trabalhos em grupo;
-    - provas antigas.
-
----
-
-## Avaliação
-
-Serão realizadas três provas:
-
-\[
-(P_1,P_2,P_3).
-\]
-
-A média das provas é calculada utilizando duas das três provas:
-
-\[
-MP = \frac{P_A+P_B}{2}.
-\]
-
-Além disso:
-
-- $ME$: média dos exercícios;
-- $NT$: nota do trabalho em grupo.
-
-A média final é dada por:
-
-\[
-MF = 0{,}7MP + 0{,}15ME + 0{,}15NT + \text{bônus}.
-\]
-
-> **Observação:** há uma anotação associada à fórmula da média final
-> envolvendo uma condição com $7{,}5$, mas o trecho manuscrito não está
-> suficientemente legível para determinar seu significado com segurança.
-
----
-
 ## Livro-texto
 
 **Computer Networking: A Top-Down Approach**, de James F. Kurose e Keith W. Ross.
 
-Foram mencionadas as edições:
-
-- 7ª;
-- 8ª;
-- 9ª.
-
 ---
 
-## Organização do conteúdo
+## Capítulo 1 — Uma visão geral sobre redes
 
-A disciplina está organizada em seis grandes tópicos.
-
-### P1
-
-1. Introdução;
-2. Aplicação.
-
-### P2
-
-3. Transporte;
-4. Rede — nível de dados.
-
-### P3
-
-5. Rede — nível de controle;
-6. Acesso ao meio.
-
----
-
-# Capítulo 1 — Uma visão geral sobre redes
-
-## 1.1 — O que é a Internet?
+### 1.1 — O que é a Internet?
 
 A Internet pode ser estudada a partir de duas perspectivas:
 
 - **visão física**;
 - **visão lógica**.
 
-### Visão física
+**Visão física.**
 
 Na visão física, observamos os componentes que formam a Internet e como eles estão interligados.
 
@@ -106,11 +30,11 @@ Os hosts ficam nas extremidades da rede e são os dispositivos nos quais as apli
 
 Assim:
 
-\[
+$$
 \text{host} = \text{endpoint} = \text{end system}.
-\]
+$$
 
-### Visão lógica
+**Visão lógica.**
 
 Na visão lógica, a Internet pode ser entendida a partir dos **serviços de comunicação** oferecidos às aplicações.
 
@@ -120,7 +44,7 @@ A comunicação é realizada de acordo com **protocolos**, que estabelecem as re
 
 ---
 
-## 1.2 — Network Edge
+### 1.2 — Network Edge
 
 A **network edge** (borda da rede) é a região da rede na qual estão localizados os sistemas finais (*end systems*).
 
@@ -137,20 +61,19 @@ Os sistemas finais acessam o restante da Internet por meio de uma **rede de aces
 
 Assim, de forma simplificada:
 
-\[
+$$
 \text{Host}
 \longrightarrow
 \text{Rede de acesso}
 \longrightarrow
 \text{Internet}.
-\]
+$$
 
-> **[Inserir figura]** Representação feita em sala contendo um host,
-> um roteador e o meio/rede de acesso.
+> **[Inserir figura]** Representação feita em sala contendo um host, um roteador e o meio/rede de acesso.
 
 ---
 
-## 1.3 — Network Core
+### 1.3 — Network Core
 
 A **network core** (núcleo da rede) corresponde à parte da infraestrutura responsável por interligar diferentes regiões da rede e permitir que os dados sejam encaminhados entre os sistemas finais.
 
@@ -158,17 +81,17 @@ Enquanto os hosts encontram-se na borda, o núcleo contém os dispositivos respo
 
 De maneira simplificada:
 
-\[
+$$
 \text{Network Edge}
 \longleftrightarrow
 \text{Network Core}
 \longleftrightarrow
 \text{Network Edge}.
-\]
+$$
 
 ---
 
-## 1.4 — Desempenho
+### 1.4 — Desempenho
 
 Outro aspecto importante no estudo de redes é o seu **desempenho**.
 
@@ -186,27 +109,27 @@ Uma **estatística** é uma variável aleatória definida como função de outra
 
 Considere, por exemplo, três dados observados:
 
-\[
+$$
 D_1,D_2,D_3.
-\]
+$$
 
 Diferentes funções desses dados podem produzir estatísticas.
 
 Por exemplo:
 
-\[
+$$
 P=D_1D_2D_3,
-\]
+$$
 
-\[
+$$
 S=D_1+D_2+D_3,
-\]
+$$
 
 ou
 
-\[
+$$
 X=D_1^2+D_2^2+6D_1.
-\]
+$$
 
 Existem, portanto, diversas estatísticas que podem ser construídas a partir de um mesmo conjunto de dados.
 
@@ -216,11 +139,11 @@ Um **estimador** é uma estatística utilizada para estimar um parâmetro descon
 
 Por exemplo, a média das observações pode ser utilizada como estimador:
 
-\[
+$$
 \hat{\mu}
 =
 \frac{D_1+D_2+D_3}{3}.
-\]
+$$
 
 A ideia é utilizar informações observáveis para inferir uma quantidade que não conhecemos diretamente.
 
@@ -232,11 +155,11 @@ O TCP utiliza estimadores para obter informações sobre características da red
 
 Uma observação pode ser utilizada para atualizar uma estimativa:
 
-\[
+$$
 \text{observação}
 \longrightarrow
 \text{estimativa}.
-\]
+$$
 
 Um exemplo importante é a observação do **atraso** da comunicação.
 
@@ -256,11 +179,11 @@ Em outras palavras, busca-se obter informações sobre o que ocorre no interior 
 
 ---
 
-## 1.5 — Pilha de protocolos
+### 1.5 — Pilha de protocolos
 
 A comunicação em uma rede é organizada por meio de **protocolos**.
 
-### Protocolos
+**Protocolos.**
 
 Um protocolo é um conjunto de regras que determina como ocorre a comunicação entre duas ou mais partes.
 
@@ -280,24 +203,23 @@ A **semântica** está relacionada ao significado daquela informação dentro da
 
 Portanto, não basta que duas máquinas consigam fisicamente trocar dados: ambas precisam seguir regras compatíveis para interpretar corretamente a comunicação.
 
-### Troca de mensagens
+**Troca de mensagens.**
 
 O funcionamento de um protocolo pode ser representado através de um diagrama temporal.
 
 De maneira simplificada:
 
-\[
+$$
 \begin{array}{ccc}
 \text{Parte A} & & \text{Parte B} \\
 & \xrightarrow{\text{mensagem}} & \\
 & \xleftarrow{\text{resposta}} &
 \end{array}
-\]
+$$
 
 A ordem das mensagens e as ações realizadas após cada mensagem fazem parte da definição do protocolo.
 
-> **[Inserir figura]** Diagrama temporal desenhado em sala representando
-> a troca de mensagens entre duas partes.
+> **[Inserir figura]** Diagrama temporal desenhado em sala representando a troca de mensagens entre duas partes.
 
 ---
 

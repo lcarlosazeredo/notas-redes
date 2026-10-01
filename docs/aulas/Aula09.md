@@ -1,6 +1,6 @@
 # Aula 09 — 09/09/2026
 
-# Camada de Aplicação — HTTP
+## Camada de Aplicação — HTTP
 
 Na camada de aplicação, alguns protocolos importantes são:
 
@@ -12,7 +12,7 @@ Nesta aula, o foco é o **HTTP**.
 
 ---
 
-# HTTP — Hypertext Transfer Protocol
+## HTTP — Hypertext Transfer Protocol
 
 O **HTTP (Hypertext Transfer Protocol)** é o protocolo da camada de aplicação utilizado para a comunicação entre clientes e servidores Web.
 
@@ -23,25 +23,23 @@ Em uma interação típica:
 
 De maneira simplificada:
 
-\[
+$$
 \text{Cliente}
 \xrightarrow{\text{HTTP Request}}
 \text{Servidor}
-\]
+$$
 
-\[
+$$
 \text{Cliente}
 \xleftarrow{\text{HTTP Response}}
 \text{Servidor}.
-\]
+$$
 
----
-
-## Métodos HTTP
+### Métodos HTTP
 
 Uma requisição HTTP contém um **método**, que indica a operação desejada sobre determinado recurso.
 
-### GET
+**GET.**
 
 O método `GET` é utilizado para solicitar um recurso.
 
@@ -57,25 +55,25 @@ ou:
 GET /img1.png
 ```
 
-### HEAD
+**HEAD.**
 
 O método `HEAD` é semelhante ao `GET`, mas solicita apenas os cabeçalhos da resposta, sem o corpo do objeto.
 
 Pode ser utilizado, por exemplo, para obter informações sobre um recurso sem transferi-lo integralmente.
 
-### POST
+**POST.**
 
 O método `POST` permite enviar dados ao servidor para serem processados.
 
-### PUT
+**PUT.**
 
 O método `PUT` é utilizado para criar ou substituir o conteúdo associado a determinado recurso.
 
-### DELETE
+**DELETE.**
 
 O método `DELETE` solicita a remoção de determinado recurso.
 
-### PATCH
+**PATCH.**
 
 O método `PATCH` permite realizar uma modificação parcial em um recurso.
 
@@ -83,7 +81,7 @@ O método `PATCH` permite realizar uma modificação parcial em um recurso.
 
 ---
 
-# Evolução do HTTP
+## Evolução do HTTP
 
 As diferentes versões do HTTP buscaram melhorar principalmente o desempenho da transferência de vários objetos pela Web.
 
@@ -91,7 +89,7 @@ Uma página Web normalmente não é constituída apenas pelo arquivo HTML.
 
 Por exemplo:
 
-\[
+$$
 \text{HTML}
 +
 \text{imagem}_1
@@ -99,51 +97,47 @@ Por exemplo:
 \text{imagem}_2
 +
 \cdots
-\]
+$$
 
 O cliente pode primeiro solicitar o HTML e, ao interpretar esse arquivo, descobrir que também precisa solicitar outros objetos.
 
----
-
-## HTTP/1.x
+### HTTP/1.x
 
 No HTTP/1.x, as requisições são transportadas tradicionalmente sobre **TCP**.
 
-\[
+$$
 \text{HTTP}
 \longrightarrow
 \text{TCP}.
-\]
+$$
 
 Em um modelo sequencial, podemos ter:
 
-\[
+$$
 GET(\text{HTML})
 \rightarrow
 \text{resposta}
-\]
+$$
 
 seguido de:
 
-\[
+$$
 GET(\text{img}_1)
 \rightarrow
 \text{resposta}
-\]
+$$
 
 e depois:
 
-\[
+$$
 GET(\text{img}_2)
 \rightarrow
 \text{resposta}.
-\]
+$$
 
 Uma dificuldade é que a espera por uma resposta pode impedir o avanço das respostas seguintes.
 
----
-
-## HTTP/2
+### HTTP/2
 
 O **HTTP/2** foi projetado para melhorar o desempenho permitindo **multiplexação/interleaving** de diferentes objetos dentro de uma mesma conexão.
 
@@ -151,7 +145,7 @@ Em vez de tratar toda a resposta de um objeto antes de avançar para outro, os d
 
 Por exemplo:
 
-\[
+$$
 \text{objeto 1}
 \rightarrow
 \text{objeto 2}
@@ -161,27 +155,27 @@ Por exemplo:
 \text{objeto 3}
 \rightarrow
 \cdots
-\]
+$$
 
 Isso permite inclusive atribuir diferentes prioridades aos objetos.
 
-### Multiplexação
+**Multiplexação.**
 
 O HTTP/2 pode manter vários **streams** lógicos na mesma conexão TCP.
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{vários streams HTTP}
 \longrightarrow
 \text{uma conexão TCP}
 }
-\]
+$$
 
 Esse mecanismo permite melhorar a utilização da conexão.
 
-### Limitação relacionada ao TCP
+**Limitação relacionada ao TCP.**
 
 Apesar de o HTTP/2 permitir multiplexação no nível HTTP, os dados continuam sendo transportados por uma única conexão TCP.
 
@@ -191,21 +185,19 @@ Portanto, se ocorre perda de dados no TCP, os dados posteriores precisam aguarda
 
 Isso pode produzir **Head-of-Line Blocking (HOL Blocking)** no nível de transporte:
 
-\[
+$$
 \text{perda em um ponto do fluxo TCP}
 \Rightarrow
 \text{outros dados posteriores também aguardam}.
-\]
+$$
 
 Assim, a multiplexação do HTTP/2 resolve problemas no nível HTTP, mas ainda está sujeita ao comportamento do TCP.
 
----
-
-## HTTP/3
+### HTTP/3
 
 O **HTTP/3** modifica essa arquitetura utilizando **QUIC**.
 
-\[
+$$
 \boxed{
 \text{HTTP/3}
 \longrightarrow
@@ -213,7 +205,7 @@ O **HTTP/3** modifica essa arquitetura utilizando **QUIC**.
 \longrightarrow
 \text{UDP}
 }
-\]
+$$
 
 O QUIC implementa mecanismos que tradicionalmente seriam associados ao transporte, mas utiliza UDP como base.
 
@@ -225,7 +217,9 @@ O QUIC também possui mecanismos de segurança integrados ao estabelecimento da 
 
 ---
 
-# HTTP não persistente
+## Conexões HTTP
+
+### HTTP não persistente
 
 No **HTTP não persistente**, cada conexão TCP é utilizada para transferir um objeto e depois é encerrada.
 
@@ -237,29 +231,27 @@ Por exemplo, para uma página contendo:
 
 podemos ter:
 
-\[
+$$
 \text{TCP}_1
 \rightarrow
 GET(\text{HTML})
-\]
+$$
 
-\[
+$$
 \text{TCP}_2
 \rightarrow
 GET(\text{img}_1)
-\]
+$$
 
-\[
+$$
 \text{TCP}_3
 \rightarrow
 GET(\text{img}_2).
-\]
+$$
 
 Cada objeto pode, portanto, exigir uma nova conexão.
 
----
-
-## Custo de estabelecer uma conexão
+**Custo de estabelecer uma conexão.**
 
 Antes de utilizar TCP para transportar a requisição HTTP, é necessário estabelecer a conexão TCP.
 
@@ -272,53 +264,51 @@ De forma simplificada:
 
 Considerando apenas RTTs e ignorando o tempo de transmissão do objeto, uma conexão não persistente exige aproximadamente:
 
-\[
+$$
 1\,RTT
-\]
+$$
 
 para estabelecer o TCP e mais:
 
-\[
+$$
 1\,RTT
-\]
+$$
 
 para enviar a requisição e começar a receber a resposta.
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{aproximadamente }2\,RTT+\text{tempo de transmissão do objeto}
 }
-\]
+$$
 
 por conexão.
 
----
-
-## Conexões TCP paralelas
+**Conexões TCP paralelas.**
 
 Uma maneira de melhorar o desempenho do HTTP não persistente é abrir várias conexões TCP simultaneamente.
 
 Por exemplo:
 
-\[
+$$
 \text{TCP}_1
 \rightarrow
 \text{img}_1
-\]
+$$
 
-\[
+$$
 \text{TCP}_2
 \rightarrow
 \text{img}_2
-\]
+$$
 
-\[
+$$
 \text{TCP}_3
 \rightarrow
 \text{img}_3.
-\]
+$$
 
 Dessa forma, vários objetos podem ser transferidos em paralelo.
 
@@ -326,15 +316,13 @@ Entretanto, isso exige a criação de várias conexões TCP.
 
 > **[Inserir figura]** Diagramas feitos em sala mostrando conexões TCP paralelas para buscar diferentes imagens.
 
----
-
-# HTTP persistente
+### HTTP persistente
 
 No **HTTP persistente**, a conexão TCP permanece aberta e pode ser reutilizada para várias requisições e respostas.
 
 Assim:
 
-\[
+$$
 \text{TCP}
 \rightarrow
 \begin{cases}
@@ -343,15 +331,13 @@ GET(\text{img}_1)\\
 GET(\text{img}_2)\\
 \vdots
 \end{cases}
-\]
+$$
 
 Não é necessário estabelecer uma nova conexão TCP para cada objeto.
 
 Isso reduz o custo de criação repetida de conexões.
 
----
-
-## Reutilização da conexão
+**Reutilização da conexão.**
 
 Uma sequência pode ser:
 
@@ -375,9 +361,7 @@ resposta img2
 
 A mesma conexão pode permanecer disponível para novas requisições.
 
----
-
-## Persistência e paralelismo
+### Persistência e paralelismo
 
 Os conceitos de **persistência** e **paralelismo** são diferentes.
 
@@ -392,7 +376,7 @@ Portanto:
 
 ---
 
-# HTTP e segurança
+## HTTP e segurança
 
 HTTP puro não fornece, sozinho, mecanismos de:
 
@@ -402,15 +386,13 @@ HTTP puro não fornece, sozinho, mecanismos de:
 
 Para isso, utiliza-se **TLS (Transport Layer Security)**.
 
----
-
-## HTTPS
+### HTTPS
 
 O **HTTPS** corresponde ao uso de HTTP com proteção TLS.
 
 Para HTTP/1.1 e HTTP/2, podemos representar:
 
-\[
+$$
 \boxed{
 \text{HTTP}
 \longrightarrow
@@ -418,7 +400,7 @@ Para HTTP/1.1 e HTTP/2, podemos representar:
 \longrightarrow
 \text{TCP}
 }
-\]
+$$
 
 O TLS acrescenta mecanismos como:
 
@@ -428,25 +410,25 @@ O TLS acrescenta mecanismos como:
 
 > **Observação:** disponibilidade também é um objetivo importante de segurança, mas não é algo garantido pelo HTTPS/TLS. TLS está relacionado principalmente à confidencialidade, integridade e autenticação da comunicação.
 
----
-
-## TLS e HTTP/3
+### TLS e HTTP/3
 
 No HTTP/3:
 
-\[
+$$
 \text{HTTP/3}
 \longrightarrow
 \text{QUIC}
 \longrightarrow
 \text{UDP}.
-\]
+$$
 
 O QUIC integra o estabelecimento da segurança TLS ao próprio processo de criação da conexão.
 
 ---
 
-# HTTP é Stateless
+## HTTP Stateless e TCP Stateful
+
+### HTTP é Stateless
 
 Uma característica fundamental do HTTP é que ele é um protocolo **stateless**.
 
@@ -459,19 +441,15 @@ Isso vale independentemente de a conexão utilizada ser:
 
 Também não depende da versão do HTTP.
 
----
-
-## O que significa Stateless?
-
 Por padrão, uma requisição HTTP é tratada de forma independente das requisições anteriores.
 
 Em outras palavras:
 
-\[
+$$
 \boxed{
 \text{a resposta à requisição atual não depende automaticamente do histórico das requisições anteriores}
 }
-\]
+$$
 
 Por exemplo:
 
@@ -485,9 +463,7 @@ O protocolo HTTP, por si só, não exige que o servidor mantenha um histórico d
 
 Isso simplifica a implementação e aumenta a escalabilidade do serviço.
 
----
-
-# TCP é Stateful
+### TCP é Stateful
 
 É importante não confundir o estado da conexão de transporte com o estado da aplicação HTTP.
 
@@ -503,25 +479,25 @@ Durante uma conexão, o TCP mantém informações como:
 
 Portanto:
 
-\[
+$$
 \boxed{
 \text{HTTP é stateless}
 }
-\]
+$$
 
 enquanto:
 
-\[
+$$
 \boxed{
-\text{TCP é stateful}.
+\text{TCP é stateful}
 }
-\]
+$$
 
 Uma conexão HTTP persistente sobre TCP não transforma o HTTP em um protocolo stateful.
 
 ---
 
-# Cookies
+## Cookies
 
 Embora o HTTP seja stateless, muitas aplicações Web precisam manter algum tipo de estado entre requisições.
 
@@ -534,15 +510,13 @@ Exemplos:
 
 Para isso, pode-se utilizar **cookies**.
 
----
-
-## Ideia do Cookie
+### Funcionamento básico
 
 O cookie permite associar várias requisições HTTP ao mesmo contexto de aplicação.
 
-Uma interação simplificada pode ocorrer assim:
+Uma interação simplificada pode ocorrer assim.
 
-### Primeira resposta
+**Primeira resposta.**
 
 O servidor envia:
 
@@ -552,7 +526,7 @@ Set-Cookie: id=12345
 
 O navegador armazena esse cookie.
 
-### Requisições posteriores
+**Requisições posteriores.**
 
 O navegador envia:
 
@@ -564,13 +538,13 @@ O servidor pode utilizar o identificador para consultar informações associadas
 
 Assim:
 
-\[
+$$
 \text{HTTP stateless}
 +
 \text{cookie}
 +
 \text{estado mantido pela aplicação}
-\]
+$$
 
 permite construir uma experiência que aparenta possuir estado entre requisições.
 
@@ -578,7 +552,7 @@ permite construir uma experiência que aparenta possuir estado entre requisiçõ
 
 ---
 
-# Cache Web
+## Cache Web
 
 Outro componente importante de HTTP é a **cache**.
 
@@ -586,72 +560,64 @@ Uma cache armazena temporariamente cópias de objetos obtidos anteriormente.
 
 Quando um cliente solicita um objeto, a cache verifica se possui uma cópia válida.
 
----
-
-## Três entidades
+### Cliente, cache e servidor de origem
 
 Podemos representar:
 
-\[
+$$
 \text{Cliente}
 \longleftrightarrow
 \text{Cache}
 \longleftrightarrow
 \text{Servidor de origem}.
-\]
+$$
 
 Nesse cenário, a cache desempenha dois papéis:
 
 - para o cliente, comporta-se como um **servidor**;
 - para o servidor de origem, comporta-se como um **cliente**.
 
----
-
-## Cache Hit
+### Cache Hit
 
 Se o objeto solicitado já está armazenado e ainda pode ser utilizado:
 
-\[
+$$
 \boxed{\text{Cache Hit}}
-\]
+$$
 
 a cache responde diretamente ao cliente.
 
 Assim:
 
-\[
+$$
 \text{Cliente}
 \longleftrightarrow
 \text{Cache}.
-\]
+$$
 
 Não é necessário buscar novamente o objeto no servidor de origem.
 
----
-
-## Cache Miss
+### Cache Miss
 
 Se o objeto não está disponível ou não é mais válido:
 
-\[
+$$
 \boxed{\text{Cache Miss}}
-\]
+$$
 
 a cache precisa consultar o servidor:
 
-\[
+$$
 \text{Cliente}
 \rightarrow
 \text{Cache}
 \rightarrow
 \text{Servidor}.
-\]
+$$
 
 A resposta pode então ser armazenada para requisições futuras.
 
----
-
-## Vantagens da cache
+### Vantagens da cache
 
 O uso de cache pode:
 
@@ -662,7 +628,7 @@ O uso de cache pode:
 
 Uma cache pode atender diversos clientes:
 
-\[
+$$
 \begin{array}{ccc}
 \text{Cliente}_1 & \searrow & \\
 \text{Cliente}_2 & \rightarrow & \text{Cache}
@@ -670,11 +636,9 @@ Uma cache pode atender diversos clientes:
 \text{Servidor}\\
 \text{Cliente}_3 & \nearrow &
 \end{array}
-\]
+$$
 
----
-
-# Controle da validade da cache
+### Controle da validade da cache
 
 Um objeto não pode necessariamente permanecer válido para sempre.
 
@@ -694,15 +658,13 @@ Cache-Control: max-age=3600
 
 indica que a resposta pode ser considerada fresca por:
 
-\[
+$$
 3600\text{ s}=1\text{ hora}.
-\]
+$$
 
 Esse mecanismo ajuda a controlar a **freshness** do objeto armazenado.
 
----
-
-# Políticas de troca da cache
+### Políticas de substituição
 
 Quando a cache possui espaço limitado, pode ser necessário remover objetos para armazenar outros.
 
@@ -711,17 +673,15 @@ Foram citadas em aula políticas como:
 - **FIFO** — *First In, First Out*;
 - **LRU** — *Least Recently Used*.
 
-## FIFO
+**FIFO.**
 
 Remove o objeto que está armazenado há mais tempo.
 
-## LRU
+**LRU.**
 
 Remove o objeto que não é utilizado há mais tempo.
 
----
-
-## TTL
+### TTL
 
 Também foi mencionado o **TTL (Time To Live)**.
 
@@ -733,7 +693,7 @@ Quando o TTL expira, aquela informação precisa ser considerada vencida ou reva
 
 ---
 
-# Resumo
+## Resumo
 
 Os principais pontos desta aula são:
 

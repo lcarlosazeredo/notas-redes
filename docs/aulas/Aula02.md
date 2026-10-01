@@ -1,18 +1,18 @@
 # Aula 02 — 14/08/2026
 
-# Continuação — Introdução às Redes
+## Continuação — Introdução às Redes
 
-## Visão global e visão local da rede
+### Visão global e visão local da rede
 
 Podemos analisar uma rede a partir de diferentes perspectivas.
 
-### Visão global
+**Visão global.**
 
 Na **visão global**, procura-se observar a rede como um todo, considerando os diferentes dispositivos e redes que estão interconectados.
 
 Essa visão é útil para compreender como os diversos componentes formam uma rede maior, como a Internet.
 
-### Visão local
+**Visão local.**
 
 Na **visão local**, analisamos aquilo que está próximo de um determinado dispositivo ou rede.
 
@@ -28,7 +28,7 @@ A **rede de acesso** (*access network*) é responsável por conectar os sistemas
 
 De maneira simplificada:
 
-\[
+$$
 \text{Host}
 \longrightarrow
 \text{Rede de acesso}
@@ -36,7 +36,7 @@ De maneira simplificada:
 \text{Roteador}
 \longrightarrow
 \text{Internet}.
-\]
+$$
 
 Diferentes tecnologias podem ser utilizadas como redes de acesso.
 
@@ -44,13 +44,13 @@ Diferentes tecnologias podem ser utilizadas como redes de acesso.
 
 No Wi-Fi, um dispositivo se conecta sem fio a um **Access Point (AP)**.
 
-\[
+$$
 \text{Host}
 \xleftrightarrow{\text{Wi-Fi}}
 \text{AP}
 \longrightarrow
 \text{Rede}.
-\]
+$$
 
 O Access Point funciona como ponto de acesso do dispositivo à rede.
 
@@ -60,19 +60,19 @@ Outro exemplo são as redes celulares, como o **5G**.
 
 Nesse caso, o dispositivo móvel utiliza a infraestrutura da operadora para obter acesso à rede.
 
-\[
+$$
 \text{Celular}
 \xleftrightarrow{\text{5G}}
 \text{Rede da operadora}
 \longrightarrow
 \text{Internet}.
-\]
+$$
 
 > **Observação:** foi mencionado em aula o curso **"5G for Everyone"**, da Coursera.
 
 ---
 
-# Protocolos
+## Protocolos
 
 Um protocolo define as regras utilizadas durante uma comunicação.
 
@@ -118,9 +118,9 @@ Por exemplo:
 
 ---
 
-# Comunicação na rede
+## Comunicação na rede
 
-## TCP e UDP
+### TCP e UDP
 
 Na camada de transporte, dois protocolos importantes são:
 
@@ -129,7 +129,7 @@ Na camada de transporte, dois protocolos importantes são:
 
 Uma diferença importante destacada em aula está relacionada ao estabelecimento de estado entre as partes.
 
-### TCP
+**TCP.**
 
 O TCP é **orientado à conexão**.
 
@@ -137,15 +137,15 @@ Antes da troca normal de dados, é estabelecido um estado de conexão entre clie
 
 De forma simplificada:
 
-\[
+$$
 \text{Cliente}
 \longleftrightarrow
 \text{Servidor}.
-\]
+$$
 
 Essa conexão permite ao TCP manter informações relacionadas à comunicação entre as duas extremidades.
 
-### UDP
+**UDP.**
 
 O UDP é **não orientado à conexão**.
 
@@ -153,27 +153,25 @@ Não há o mesmo estabelecimento prévio de uma conexão mantida entre cliente e
 
 Assim, uma representação conceitual é:
 
-\[
+$$
 \text{TCP}
 \qquad\longrightarrow\qquad
 \text{UDP}
-\]
+$$
 
 com diferentes níveis de estado associado à comunicação.
 
----
-
-## QUIC
+### QUIC
 
 Também foi mencionado o protocolo **QUIC**.
 
 O QUIC está relacionado à comunicação moderna na Internet e utiliza **UDP** como protocolo de transporte subjacente.
 
-\[
+$$
 \text{QUIC}
 \longrightarrow
 \text{UDP}.
-\]
+$$
 
 A ideia é utilizar UDP como base e implementar sobre ele mecanismos adicionais necessários à comunicação.
 
@@ -181,7 +179,7 @@ A ideia é utilizar UDP como base e implementar sobre ele mecanismos adicionais 
 
 ---
 
-# Compartilhamento de recursos
+## Compartilhamento de recursos
 
 Um aspecto importante das redes é o **compartilhamento de recursos**.
 
@@ -189,17 +187,15 @@ Quando diferentes usuários utilizam uma mesma infraestrutura, os recursos dispo
 
 Um exemplo é a capacidade de transmissão de um enlace:
 
-\[
-R = \text{capacidade do enlace}.
-\]
+$$
+R=\text{capacidade do enlace}.
+$$
 
 Se vários usuários utilizam simultaneamente esse enlace, sua capacidade precisa ser compartilhada.
 
 Existem diferentes formas de realizar esse compartilhamento.
 
----
-
-## Compartilhamento de recursos e garantia
+### Compartilhamento de recursos e garantia
 
 Uma questão importante é se o compartilhamento oferece ou não uma **garantia de recursos** para cada usuário.
 
@@ -209,7 +205,7 @@ Isso fornece previsibilidade, mas pode causar desperdício quando o recurso rese
 
 ---
 
-# Circuit Switching
+## Circuit Switching
 
 No **circuit switching** (comutação de circuitos), recursos são reservados para uma comunicação.
 
@@ -217,15 +213,11 @@ Durante a comunicação, cada usuário recebe uma parcela previamente determinad
 
 Uma consequência importante é que os recursos reservados permanecem destinados àquela comunicação mesmo quando ela não os utiliza em determinado instante.
 
-Assim:
-
 > **Vantagem:** existe garantia de recursos.
 
 > **Desvantagem:** pode haver desperdício de capacidade.
 
----
-
-## Compartilhamento por frequência — FDMA
+### Compartilhamento por frequência — FDMA
 
 Uma maneira de dividir os recursos é através da frequência.
 
@@ -233,27 +225,25 @@ No **FDMA** (*Frequency Division Multiple Access*), diferentes usuários recebem
 
 Se a banda disponível é dividida em várias faixas:
 
-\[
-B = B_1 + B_2 + \cdots + B_n,
-\]
+$$
+B=B_1+B_2+\cdots+B_n,
+$$
 
 cada comunicação pode utilizar uma faixa específica.
 
 De forma conceitual:
 
-\[
+$$
 \begin{array}{|c|c|c|c|}
 \hline
 f_1 & f_2 & f_3 & f_4 \\
 \hline
 \end{array}
-\]
+$$
 
 Cada faixa pode ser reservada para um usuário diferente.
 
----
-
-## Compartilhamento por tempo — TDMA
+### Compartilhamento por tempo — TDMA
 
 Outra possibilidade é dividir o recurso no tempo.
 
@@ -261,19 +251,17 @@ No **TDMA** (*Time Division Multiple Access*), diferentes usuários utilizam o m
 
 Por exemplo:
 
-\[
+$$
 \begin{array}{|c|c|c|c|}
 \hline
 U_1 & U_2 & U_3 & U_1 \\
 \hline
 \end{array}
-\]
+$$
 
 Cada usuário recebe determinados *slots* de tempo para transmitir.
 
----
-
-## Compartilhamento por código — CDMA
+### Compartilhamento por código — CDMA
 
 Também é possível realizar a separação através de códigos.
 
@@ -287,7 +275,7 @@ Assim, as três formas de divisão mencionadas em aula foram:
 
 ---
 
-## Circuit switching e compartilhamento
+## Circuit Switching e compartilhamento
 
 Em circuit switching, a divisão dos recursos pode ser realizada, por exemplo, através de FDMA ou TDMA.
 
@@ -295,31 +283,29 @@ A principal característica é a **reserva de recursos**.
 
 Isso traz a vantagem de oferecer uma capacidade previamente determinada para a comunicação:
 
-\[
+$$
 \text{recurso reservado}
 \Rightarrow
 \text{garantia de capacidade}.
-\]
+$$
 
 Entretanto, se um usuário não utilizar sua parcela em determinado instante, essa capacidade pode permanecer ociosa.
 
 Portanto:
 
-\[
+$$
 \boxed{\text{Garantia de recursos}}
-\]
+$$
 
 é uma vantagem importante do circuit switching, enquanto
 
-\[
+$$
 \boxed{\text{Possível desperdício de recursos}}
-\]
+$$
 
 é uma de suas principais desvantagens.
 
----
-
-## Ponto importante — compartilhamento da rede
+### Ponto importante — compartilhamento da rede
 
 Um ponto destacado em aula é diferenciar formas de redes em que há **compartilhamento de recursos**.
 

@@ -14,43 +14,43 @@ Nesta aula foram trabalhados principalmente:
 
 ---
 
-# Revisão — Teoria de Filas
+## Revisão — Teoria de Filas
 
-## Notação
+### Notação
 
 Considere um sistema de fila com:
 
 - taxa de chegada:
 
-\[
+$$
 \lambda;
-\]
+$$
 
 - taxa de serviço:
 
-\[
+$$
 \mu;
-\]
+$$
 
 - utilização:
 
-\[
+$$
 \rho=\frac{\lambda}{\mu}.
-\]
+$$
 
 No contexto de uma fila de pacotes em um enlace, podemos escrever:
 
 - taxa de chegada de pacotes:
 
-\[
+$$
 \lambda=a;
-\]
+$$
 
 - taxa de serviço:
 
-\[
+$$
 \mu=\frac{R}{L},
-\]
+$$
 
 onde:
 
@@ -59,7 +59,7 @@ onde:
 
 Assim:
 
-\[
+$$
 \rho
 =
 \frac{\lambda}{\mu}
@@ -67,51 +67,47 @@ Assim:
 \frac{a}{R/L}
 =
 \frac{aL}{R}.
-\]
+$$
 
 Nas anotações, a utilização também é indicada por $I$:
 
-\[
+$$
 \boxed{
-I=\rho=\frac{aL}{R}.
+I=\rho=\frac{aL}{R}
 }
-\]
+$$
 
----
-
-## Sistema em equilíbrio
+### Sistema em equilíbrio
 
 Em equilíbrio, a taxa média de saída deve ser igual à taxa média de chegada.
 
 Quando o servidor está ocupado, ele atende à taxa:
 
-\[
+$$
 \frac{R}{L}.
-\]
+$$
 
 Quando está ocioso, a taxa de serviço efetiva é zero.
 
 Como o servidor está ocupado uma fração $I$ do tempo:
 
-\[
+$$
 a
 =
 \frac{R}{L}I
 +
 0(1-I).
-\]
+$$
 
 Logo:
 
-\[
+$$
 \boxed{
-I=\frac{aL}{R}.
+I=\frac{aL}{R}
 }
-\]
+$$
 
----
-
-# Tempo médio de espera
+### Tempo médio de espera
 
 Considere:
 
@@ -130,177 +126,173 @@ Usando a propriedade **PASTA** para chegadas Poisson, uma chegada observa, em m�
 
 Assim:
 
-\[
+$$
 \boxed{
 \bar W
 =
 \bar N_q\bar S
 +
-\rho\bar S_R.
+\rho\bar S_R
 }
-\]
+$$
 
 Para um enlace:
 
-\[
+$$
 \bar S=\frac{L}{R}.
-\]
+$$
 
 Logo:
 
-\[
+$$
 \boxed{
 \bar W
 =
 \bar N_q\frac{L}{R}
 +
-I\bar S_R.
+I\bar S_R
 }
-\]
+$$
 
 Pela Lei de Little aplicada à fila:
 
-\[
+$$
 \bar N_q=a\bar W.
-\]
+$$
 
----
-
-## Caso M/M/1
+**Caso M/M/1.**
 
 No modelo $M/M/1$, o tempo de serviço é exponencial.
 
 Pela propriedade de falta de memória:
 
-\[
+$$
 \bar S_R=\bar S.
-\]
+$$
 
 Como:
 
-\[
+$$
 \bar S=\frac{L}{R},
-\]
+$$
 
 temos:
 
-\[
+$$
 \bar W
 =
 a\bar W\frac{L}{R}
 +
 I\frac{L}{R}.
-\]
+$$
 
 Como:
 
-\[
+$$
 a\frac{L}{R}=I,
-\]
+$$
 
 segue que:
 
-\[
+$$
 \bar W
 =
 I\bar W
 +
 I\frac{L}{R}.
-\]
+$$
 
 Portanto:
 
-\[
+$$
 (1-I)\bar W
 =
 I\frac{L}{R}.
-\]
+$$
 
 Assim:
 
-\[
+$$
 \boxed{
 \bar W_{M/M/1}
 =
-\frac{I}{1-I}\frac{L}{R}.
+\frac{I}{1-I}\frac{L}{R}
 }
-\]
+$$
 
----
-
-## Caso M/D/1
+**Caso M/D/1.**
 
 No modelo $M/D/1$, o tempo de serviço é determinístico.
 
 Nesse caso, para uma chegada que encontra o servidor ocupado, o tempo residual médio é metade do tempo de serviço:
 
-\[
+$$
 \bar S_R
 =
 \frac{\bar S}{2}.
-\]
+$$
 
 Logo:
 
-\[
+$$
 \bar W
 =
 a\bar W\frac{L}{R}
 +
 I\frac{L}{2R}.
-\]
+$$
 
 Como:
 
-\[
+$$
 a\frac{L}{R}=I,
-\]
+$$
 
 temos:
 
-\[
+$$
 \bar W
 =
 I\bar W
 +
 I\frac{L}{2R}.
-\]
+$$
 
 Portanto:
 
-\[
+$$
 (1-I)\bar W
 =
 I\frac{L}{2R}.
-\]
+$$
 
 Assim:
 
-\[
+$$
 \boxed{
 \bar W_{M/D/1}
 =
-\frac{I}{1-I}\frac{L}{2R}.
+\frac{I}{1-I}\frac{L}{2R}
 }
-\]
+$$
 
 Comparando:
 
-\[
+$$
 \boxed{
 \bar W_{M/D/1}
 =
-\frac{1}{2}\bar W_{M/M/1}.
+\frac{1}{2}\bar W_{M/M/1}
 }
-\]
+$$
 
 para a mesma taxa de chegada, mesmo tempo médio de serviço e mesma utilização.
 
 ---
 
-# Programação com Sockets
+## Programação com Sockets
 
-## TCP
+### TCP
 
 TCP é:
 
@@ -310,9 +302,7 @@ TCP é:
 
 Antes de cliente e servidor trocarem dados, uma conexão TCP precisa ser estabelecida.
 
----
-
-## Chamadas típicas — Servidor TCP
+### Chamadas típicas — Servidor TCP
 
 Uma sequência típica no servidor é:
 
@@ -332,43 +322,41 @@ send()/write()
 close()
 ```
 
-### `socket()`
+**`socket()`.**
 
 Cria o socket.
 
-### `bind()`
+**`bind()`.**
 
 Associa o socket a um endereço local, normalmente:
 
-\[
+$$
 (\text{IP},\text{porta}).
-\]
+$$
 
-### `listen()`
+**`listen()`.**
 
 Coloca o socket em modo de espera por conexões TCP.
 
-### `accept()`
+**`accept()`.**
 
 Espera uma nova conexão.
 
 Quando uma conexão chega, `accept()` cria um novo socket associado especificamente àquele cliente.
 
-### `recv()` / `read()`
+**`recv()` / `read()`.**
 
 Recebe dados da conexão.
 
-### `send()` / `write()`
+**`send()` / `write()`.**
 
 Envia dados pela conexão.
 
-### `close()`
+**`close()`.**
 
 Encerra o socket.
 
----
-
-## Chamadas típicas — Cliente TCP
+### Chamadas típicas — Cliente TCP
 
 No cliente:
 
@@ -384,15 +372,13 @@ recv()/read()
 close()
 ```
 
-### `connect()`
+**`connect()`.**
 
 O cliente solicita o estabelecimento da conexão TCP com o servidor.
 
 Isso inicia o processo de estabelecimento da conexão, incluindo o handshake TCP.
 
----
-
-## Chamadas locais × operações que envolvem a rede
+### Chamadas locais × operações que envolvem a rede
 
 Nem toda chamada de socket produz imediatamente mensagens na rede.
 
@@ -419,9 +405,7 @@ accept()
 
 aguarda até que uma conexão seja estabelecida.
 
----
-
-## Chamadas bloqueantes
+### Chamadas bloqueantes
 
 Uma chamada **bloqueante** pode suspender o processo até que o evento esperado ocorra.
 
@@ -445,9 +429,9 @@ Dependendo da configuração do socket, `connect()` e operações de envio tamb�
 
 ---
 
-# TCP × UDP
+## TCP × UDP
 
-## TCP
+### TCP
 
 TCP oferece:
 
@@ -457,7 +441,7 @@ TCP oferece:
 - controle de fluxo;
 - controle de congestionamento.
 
-## UDP
+### UDP
 
 UDP:
 
@@ -469,49 +453,47 @@ UDP:
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{TCP: orientado à conexão e confiável}
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 \text{UDP: não orientado à conexão e não confiável}
 }
-\]
+$$
 
 onde “não confiável” significa que o protocolo não garante que os dados chegarão corretamente ou sequer chegarão ao destino.
 
 ---
 
-# Capítulo 3 — Camada de Transporte
+## Capítulo 3 — Camada de Transporte
 
 A camada de transporte oferece comunicação lógica entre **processos** executando em hosts distintos.
 
 A camada de rede entrega dados entre hosts:
 
-\[
+$$
 \boxed{
 \text{host}
 \longleftrightarrow
 \text{host}
 }
-\]
+$$
 
 enquanto a camada de transporte estende esse serviço para:
 
-\[
+$$
 \boxed{
 \text{processo}
 \longleftrightarrow
-\text{processo}.
+\text{processo}
 }
-\]
+$$
 
----
-
-## Host e processo
+### Host e processo
 
 Um host é identificado na camada de rede por um endereço IP.
 
@@ -519,23 +501,21 @@ Um processo é identificado, para fins de comunicação de transporte, por um **
 
 De forma simplificada:
 
-\[
+$$
 \boxed{
 \text{IP identifica o host}
 }
-\]
+$$
 
 e:
 
-\[
+$$
 \boxed{
-\text{porta identifica o processo/socket}.
+\text{porta identifica o processo/socket}
 }
-\]
+$$
 
----
-
-# Funções importantes da camada de transporte
+### Funções importantes da camada de transporte
 
 Nesta introdução ao Capítulo 3 foram destacadas funções como:
 
@@ -548,9 +528,9 @@ A sequência do capítulo estuda primeiro os princípios gerais e depois como o 
 
 ---
 
-# Multiplexação e Demultiplexação
+## Multiplexação e Demultiplexação
 
-## Multiplexação
+### Multiplexação
 
 No host remetente, vários processos podem utilizar simultaneamente a rede.
 
@@ -566,9 +546,7 @@ Processo 2 ─┼─> Camada de Transporte ─> Camada de Rede
 Processo 3 ─┘
 ```
 
----
-
-## Demultiplexação
+### Demultiplexação
 
 No host receptor, o processo inverso precisa ocorrer.
 
@@ -581,30 +559,28 @@ Camada de Rede
       |
       v
 Camada de Transporte
-   /     |     \
-  v      v      v
-P1      P2      P3
+    /   |   \
+   v    v    v
+  P1   P2   P3
 ```
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{demultiplexação}
 =
-\text{entregar o segmento ao socket correto}.
+\text{entregar o segmento ao socket correto}
 }
-\]
+$$
 
----
-
-# Demultiplexação no UDP
+### Demultiplexação no UDP
 
 Para UDP, o socket receptor é identificado principalmente pelo endereço de destino:
 
-\[
+$$
 (\text{IP de destino},\text{porta de destino}).
-\]
+$$
 
 Datagramas UDP provenientes de diferentes remetentes podem ser entregues ao mesmo socket quando possuem o mesmo destino.
 
@@ -629,13 +605,11 @@ sendto(data, address)
 
 para enviar a resposta ao cliente correto.
 
----
-
-# Demultiplexação no TCP
+### Demultiplexação no TCP
 
 Uma conexão TCP é identificada por quatro valores:
 
-\[
+$$
 \boxed{
 (
 IP_{\text{origem}},
@@ -644,7 +618,7 @@ IP_{\text{destino}},
 porta_{\text{destino}}
 )
 }
-\]
+$$
 
 Portanto, diferentes clientes podem utilizar a mesma porta de destino do servidor e ainda assim possuir conexões TCP diferentes.
 
@@ -658,9 +632,7 @@ Cliente B: 10.0.0.2:51000 ─┘
 
 As duas conexões são diferenciadas pelos quatro campos.
 
----
-
-# Servidor UDP
+### Servidor UDP
 
 Um servidor UDP típico pode executar continuamente:
 
@@ -677,9 +649,7 @@ Isso não significa que UDP não possua demultiplexação: a demultiplexação U
 
 O endereço retornado por `recvfrom()` é utilizado pela aplicação quando ela precisa responder ao remetente correto.
 
----
-
-# UDP e o sistema operacional
+### UDP e o sistema operacional
 
 UDP também é implementado pelo sistema operacional, assim como TCP.
 
@@ -696,7 +666,7 @@ precisam ser implementados pela aplicação caso sejam necessários.
 
 ---
 
-# UDP Checksum
+## UDP Checksum
 
 UDP utiliza um **checksum** para detectar corrupção de bits.
 
@@ -709,11 +679,11 @@ A ideia básica é:
 
 O checksum fornece:
 
-\[
+$$
 \boxed{
 \text{detecção de erros}
 }
-\]
+$$
 
 mas não fornece, sozinho:
 
@@ -723,17 +693,15 @@ mas não fornece, sozinho:
 
 Portanto:
 
-\[
+$$
 \boxed{
-\text{checksum detecta; não corrige}.
+\text{checksum detecta; não corrige}
 }
-\]
+$$
 
 Outra característica é que o checksum da Internet é relativamente simples e não consegue detectar absolutamente todos os padrões possíveis de corrupção.
 
----
-
-## Por que usar checksum no UDP?
+### Por que usar checksum no UDP?
 
 Mesmo que algumas tecnologias de enlace também realizem detecção de erros, não há garantia de que todos os enlaces do caminho façam isso.
 
@@ -741,9 +709,7 @@ Além disso, erros também podem ocorrer durante processamento ou armazenamento 
 
 Por isso, o UDP realiza detecção de erros fim a fim na camada de transporte.
 
----
-
-# Ausência de Handshake no UDP
+### Ausência de Handshake no UDP
 
 TCP realiza um handshake antes da troca normal de dados.
 
@@ -751,17 +717,17 @@ UDP não.
 
 Portanto:
 
-\[
+$$
 \boxed{
-\text{UDP não possui handshake de estabelecimento de conexão}.
+\text{UDP não possui handshake de estabelecimento de conexão}
 }
-\]
+$$
 
 Isso contribui para que seja um protocolo mais simples e leve.
 
 ---
 
-# Introdução ao Reliable Data Transfer — RDT
+## Introdução ao Reliable Data Transfer — RDT
 
 A aula termina preparando o estudo de **Reliable Data Transfer (RDT)**.
 
@@ -783,9 +749,7 @@ Uma ideia inicial é o modelo **stop-and-wait**:
 
 Esse princípio será refinado nas diferentes versões do RDT.
 
----
-
-## ACK e NAK
+### ACK e NAK
 
 Uma forma de informar ao emissor o resultado da recepção é utilizar:
 
@@ -798,7 +762,7 @@ Esses mecanismos serão utilizados no desenvolvimento dos protocolos de transfer
 
 ---
 
-# Resumo
+## Resumo
 
 Os principais tópicos desta aula foram:
 
@@ -814,4 +778,3 @@ Os principais tópicos desta aula foram:
 - checksum UDP;
 - introdução à transferência confiável de dados;
 - ideia de stop-and-wait e ACK/NAK.
-

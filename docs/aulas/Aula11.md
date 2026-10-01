@@ -12,7 +12,7 @@ Do ponto de vista de quem fez a consulta, há a vantagem de realizar apenas uma 
 
 Uma representação simplificada é:
 
-\[
+$$
 \text{Cliente}
 \longrightarrow
 \text{Servidor DNS}
@@ -20,7 +20,7 @@ Uma representação simplificada é:
 \cdots
 \longrightarrow
 \text{Resposta final}.
-\]
+$$
 
 Uma consequência importante é que o servidor que iniciou a consulta pode ter menos oportunidade de observar as respostas intermediárias da hierarquia DNS e, portanto, de **popular sua cache** com essas informações.
 
@@ -30,7 +30,7 @@ Na resolução iterativa, cada servidor consultado pode responder indicando qual
 
 Por exemplo:
 
-\[
+$$
 \text{DNS local}
 \rightarrow
 \text{Root}
@@ -38,7 +38,7 @@ Por exemplo:
 \text{TLD}
 \rightarrow
 \text{Autoritativo}.
-\]
+$$
 
 O DNS local participa de cada etapa da busca.
 
@@ -48,19 +48,17 @@ Assim, uma consulta futura semelhante pode ser respondida mais rapidamente.
 
 > **Resumo:** a abordagem iterativa produz mais trocas durante a resolução, mas favorece o preenchimento da cache do resolvedor local.
 
----
-
-## Resource Records do DNS
+### Resource Records do DNS
 
 Os registros armazenados no DNS são chamados de **Resource Records (RRs)**.
 
 Um RR possui a forma:
 
-\[
+$$
 \boxed{
 (\text{Name},\text{Value},\text{Type},\text{TTL})
 }
-\]
+$$
 
 onde:
 
@@ -69,49 +67,47 @@ onde:
 - `Type`: tipo do registro;
 - `TTL`: *Time To Live*, indicando por quanto tempo o registro pode permanecer em cache.
 
-### Registro A
+**Registro A.**
 
 Um registro do tipo `A` associa um hostname a um endereço IPv4:
 
-\[
+$$
 \text{hostname}
 \longrightarrow
 \text{IPv4}.
-\]
+$$
 
 Um endereço IPv4 possui:
 
-\[
+$$
 32\text{ bits}.
-\]
+$$
 
-### Registro AAAA
+**Registro AAAA.**
 
 Um registro do tipo `AAAA` associa um hostname a um endereço IPv6:
 
-\[
+$$
 \text{hostname}
 \longrightarrow
 \text{IPv6}.
-\]
+$$
 
 Um endereço IPv6 possui:
 
-\[
+$$
 128\text{ bits}.
-\]
+$$
 
----
-
-## HTTP e DNS são stateless
+### HTTP e DNS são stateless
 
 Foi retomado um conceito da aula anterior:
 
-\[
+$$
 \boxed{
 \text{HTTP e DNS são protocolos stateless}.
 }
-\]
+$$
 
 Isso significa que uma mensagem do protocolo não depende, por definição, de um estado de sessão mantido a partir das mensagens anteriores.
 
@@ -142,19 +138,17 @@ Isso permite que a capacidade total de distribuição aumente à medida que novo
 
 Uma vantagem importante é:
 
-\[
+$$
 \boxed{
 \text{maior escalabilidade com o número de peers}.
 }
-\]
+$$
 
 Em uma arquitetura P2P totalmente distribuída, há menor dependência de um servidor central permanente.
 
 Um exemplo importante é o **BitTorrent**.
 
----
-
-## Distribuição de arquivos — Client-Server
+### Distribuição de arquivos — Client-Server
 
 Considere:
 
@@ -168,27 +162,27 @@ No modelo client-server, o servidor precisa enviar uma cópia completa do arquiv
 
 Portanto, precisa transmitir ao todo:
 
-\[
+$$
 NF
-\]
+$$
 
 bits.
 
 Como sua taxa de upload é $u_s$, temos o limite:
 
-\[
+$$
 D_{CS}\geq\frac{NF}{u_s}.
-\]
+$$
 
 Além disso, o cliente mais lento não pode receber o arquivo em menos de:
 
-\[
+$$
 \frac{F}{d_{\min}}.
-\]
+$$
 
 Assim:
 
-\[
+$$
 \boxed{
 D_{CS}
 \geq
@@ -198,25 +192,23 @@ D_{CS}
 \frac{F}{d_{\min}}
 \right\}.
 }
-\]
+$$
 
-No caso em que $N$ cresce mantendo as demais grandezas fixas, o termo
+No caso em que $N$ cresce mantendo as demais grandezas fixas, o termo:
 
-\[
+$$
 \frac{NF}{u_s}
-\]
+$$
 
 cresce linearmente com $N$.
 
 Portanto, para $N$ grande:
 
-\[
+$$
 D_{CS}=O(N).
-\]
+$$
 
----
-
-## Distribuição de arquivos — P2P
+### Distribuição de arquivos — P2P
 
 No modelo P2P, os próprios peers ajudam a distribuir o arquivo.
 
@@ -226,46 +218,46 @@ Defina:
 
 A capacidade total de upload disponível é:
 
-\[
+$$
 u_s+\sum_{i=1}^{N}u_i.
-\]
+$$
 
 Existem três limites importantes para o tempo de distribuição.
 
-### 1. O servidor precisa colocar o arquivo inicialmente na rede
+**1. O servidor precisa colocar o arquivo inicialmente na rede.**
 
 Como inicialmente apenas o servidor possui o arquivo:
 
-\[
+$$
 D_{P2P}\geq\frac{F}{u_s}.
-\]
+$$
 
-### 2. O peer mais lento precisa baixar o arquivo
+**2. O peer mais lento precisa baixar o arquivo.**
 
-\[
+$$
 D_{P2P}\geq\frac{F}{d_{\min}}.
-\]
+$$
 
-### 3. É necessário entregar $NF$ bits ao conjunto dos peers
+**3. É necessário entregar $NF$ bits ao conjunto dos peers.**
 
 Como a capacidade total de upload é:
 
-\[
+$$
 u_s+\sum_{i=1}^{N}u_i,
-\]
+$$
 
 temos:
 
-\[
+$$
 D_{P2P}
 \geq
 \frac{NF}
 {u_s+\sum_{i=1}^{N}u_i}.
-\]
+$$
 
 Portanto:
 
-\[
+$$
 \boxed{
 D_{P2P}
 \geq
@@ -276,31 +268,29 @@ D_{P2P}
 \frac{NF}{u_s+\sum_{i=1}^{N}u_i}
 \right\}.
 }
-\]
+$$
 
 A diferença fundamental é que, à medida que novos peers entram no sistema, eles também acrescentam capacidade de upload.
 
 Se a capacidade média de upload dos peers permanecer aproximadamente constante, então:
 
-\[
+$$
 \sum_{i=1}^{N}u_i
-\]
+$$
 
 também cresce aproximadamente de forma linear com $N$.
 
-Consequentemente, o termo
+Consequentemente, o termo:
 
-\[
+$$
 \frac{NF}{u_s+\sum_i u_i}
-\]
+$$
 
 não precisa crescer linearmente com $N$.
 
 Essa é a principal razão para a melhor escalabilidade do P2P em comparação com o modelo client-server.
 
----
-
-## Missing Piece Syndrome
+### Missing Piece Syndrome
 
 Um problema possível em sistemas P2P é o chamado **Missing Piece Syndrome**.
 
@@ -315,7 +305,7 @@ Peer 1: [✓][✓][✓][ ]
 Peer 2: [✓][✓][✓][ ]
 Peer 3: [✓][✓][✓][ ]
 Peer 4: [✓][✓][✓][ ]
-                    ↑
+                   ↑
                 peça rara
 ```
 
@@ -323,9 +313,7 @@ Quando um peer termina de receber o arquivo e abandona o sistema imediatamente, 
 
 Para combater esse problema, o BitTorrent utiliza estratégias de seleção de peças.
 
----
-
-## BitTorrent — Rarest First
+### BitTorrent — Rarest First
 
 Uma estratégia utilizada pelo BitTorrent é **rarest first**.
 
@@ -333,9 +321,7 @@ A ideia é pedir primeiro as partes que possuem menos cópias disponíveis entre
 
 Assim, busca-se espalhar rapidamente as peças mais raras e evitar que elas se tornem o gargalo da distribuição.
 
----
-
-## BitTorrent — Tit-for-Tat
+### BitTorrent — Tit-for-Tat
 
 Outro mecanismo importante é o **tit-for-tat**.
 
@@ -347,17 +333,17 @@ Isso cria um incentivo para que os usuários compartilhem dados em vez de apenas
 
 De maneira simplificada:
 
-\[
+$$
 \boxed{
 \text{quem contribui mais tende a receber mais}.
 }
-\]
+$$
 
 Foi feita em aula a analogia do BitTorrent como uma espécie de **troca/negociação** entre os participantes.
 
 ---
 
-## Observação — Modelos de filas
+## Revisão — Modelos de filas
 
 Durante a aula também foram retomados dois modelos de filas.
 
@@ -371,38 +357,37 @@ No modelo $M/M/1$:
 
 A cadeia de estados pode ser representada por:
 
-\[
+$$
 0
-\xrightleftharpoons[\mu]{\lambda}
+\mathrel{\underset{\mu}{\overset{\lambda}{\rightleftarrows}}}
 1
-\xrightleftharpoons[\mu]{\lambda}
+\mathrel{\underset{\mu}{\overset{\lambda}{\rightleftarrows}}}
 2
-\xrightleftharpoons[\mu]{\lambda}
+\mathrel{\underset{\mu}{\overset{\lambda}{\rightleftarrows}}}
 3
+\mathrel{\underset{\mu}{\overset{\lambda}{\rightleftarrows}}}
 \cdots
-\]
+$$
 
 A intensidade de tráfego é:
 
-\[
+$$
 I=\frac{\lambda}{\mu}.
-\]
+$$
 
 Para estabilidade:
 
-\[
+$$
 I<1.
-\]
+$$
 
 O número médio de clientes no sistema é:
 
-\[
+$$
 \boxed{
 \bar N=\frac{I}{1-I}.
 }
-\]
-
----
+$$
 
 ### M/M/$\infty$
 
@@ -412,56 +397,56 @@ Uma chegada sempre pode iniciar imediatamente seu atendimento.
 
 As transições de saída dependem de quantos clientes estão atualmente no sistema:
 
-\[
+$$
 0
-\xrightleftharpoons[\mu]{\lambda}
+\mathrel{\underset{\mu}{\overset{\lambda}{\rightleftarrows}}}
 1
-\xrightleftharpoons[2\mu]{\lambda}
+\mathrel{\underset{2\mu}{\overset{\lambda}{\rightleftarrows}}}
 2
-\xrightleftharpoons[3\mu]{\lambda}
+\mathrel{\underset{3\mu}{\overset{\lambda}{\rightleftarrows}}}
 3
-\xrightleftharpoons[4\mu]{\lambda}
+\mathrel{\underset{4\mu}{\overset{\lambda}{\rightleftarrows}}}
 \cdots
-\]
+$$
 
 Como não há espera por falta de servidor, esse sistema é estável para qualquer valor finito de $\lambda$ e $\mu>0$.
 
 O número médio de clientes é:
 
-\[
+$$
 \boxed{
 \bar N=\frac{\lambda}{\mu}.
 }
-\]
+$$
 
 O tempo médio no sistema é:
 
-\[
+$$
 \boxed{
 \bar T=\frac{1}{\mu}.
 }
-\]
+$$
 
 A distribuição estacionária do número de clientes é Poisson:
 
-\[
+$$
 \boxed{
 P(N=n)
 =
 e^{-\lambda/\mu}
 \frac{(\lambda/\mu)^n}{n!}.
 }
-\]
+$$
 
 A probabilidade de o sistema estar não vazio é:
 
-\[
+$$
 P(N>0)
 =
 1-P(N=0)
 =
 1-e^{-\lambda/\mu}.
-\]
+$$
 
 > **Observação:** essa parte aparece como uma retomada lateral de teoria de filas nas anotações.
 
@@ -485,9 +470,7 @@ A taxa pode aumentar ou diminuir conforme o conteúdo do vídeo.
 
 Isso permite dedicar mais bits a trechos mais complexos e menos bits a trechos mais simples.
 
----
-
-## Streaming
+### Streaming
 
 No **streaming**, não é necessário esperar o download completo do arquivo para começar a reproduzi-lo.
 
@@ -495,15 +478,13 @@ Enquanto partes posteriores ainda estão sendo recebidas, as partes que já cheg
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{download e reprodução ocorrem simultaneamente}.
 }
-\]
+$$
 
----
-
-## Buffer de reprodução
+### Buffer de reprodução
 
 Antes de começar a reprodução, o cliente normalmente armazena uma quantidade inicial de dados em um **buffer**.
 
@@ -511,11 +492,11 @@ A ideia é escolher um atraso inicial suficiente para reduzir o risco de faltar 
 
 Se o buffer esvaziar:
 
-\[
+$$
 \boxed{
 \text{ocorre interrupção da reprodução}.
 }
-\]
+$$
 
 Por outro lado, esperar dados demais antes de iniciar aumenta desnecessariamente o atraso inicial.
 
@@ -539,19 +520,17 @@ Um **socket** funciona como uma interface utilizada pelo processo para enviar e 
 
 A analogia utilizada é a de uma porta:
 
-\[
+$$
 \text{processo}
 \longleftrightarrow
 \boxed{\text{socket}}
 \longleftrightarrow
 \text{rede}.
-\]
+$$
 
 Trabalhar com um socket é semelhante a trabalhar com um objeto de entrada/saída, mas esse objeto representa comunicação através da rede.
 
----
-
-## Operações bloqueantes
+### Operações bloqueantes
 
 Algumas operações de entrada podem ser **bloqueantes**.
 
@@ -577,9 +556,7 @@ sendto(...)
 
 envia um datagrama pela rede.
 
----
-
-## UDP
+### UDP
 
 UDP é **connectionless**.
 
@@ -587,7 +564,7 @@ Não há estabelecimento de uma conexão antes de começar a enviar datagramas.
 
 No UDP, operações típicas são:
 
-### Servidor
+**Servidor.**
 
 ```text
 socket()
@@ -601,7 +578,7 @@ sendto()
 close()
 ```
 
-### Cliente
+**Cliente.**
 
 ```text
 socket()
@@ -615,15 +592,13 @@ close()
 
 Não são utilizados `listen()` e `accept()` para UDP.
 
----
-
-## TCP
+### TCP
 
 TCP é orientado à conexão.
 
 Antes da troca de dados, uma conexão deve ser estabelecida.
 
-### Servidor TCP
+**Servidor TCP.**
 
 Uma sequência típica é:
 
@@ -669,9 +644,7 @@ aceita uma conexão recebida e cria um socket associado àquele cliente.
 
 `listen()` e `accept()` são operações associadas ao servidor TCP, não ao UDP.
 
----
-
-### Cliente TCP
+**Cliente TCP.**
 
 Uma sequência típica é:
 
@@ -697,11 +670,9 @@ inicia o estabelecimento da conexão com o servidor.
 
 Depois disso, cliente e servidor podem trocar dados pelos sockets da conexão.
 
----
+### Diferença geral entre UDP e TCP nos sockets
 
-## Diferença geral entre UDP e TCP nos sockets
-
-### UDP
+**UDP.**
 
 - não estabelece conexão;
 - utiliza datagramas;
@@ -709,7 +680,7 @@ Depois disso, cliente e servidor podem trocar dados pelos sockets da conexão.
 - não utiliza `listen()` e `accept()`;
 - o próprio UDP não realiza retransmissão para garantir entrega.
 
-### TCP
+**TCP.**
 
 - estabelece conexão;
 - cria estado de conexão;

@@ -1,6 +1,6 @@
 # Aula 10 — 11/09/2026
 
-# Camada de Aplicação — Continuação
+## Camada de Aplicação — Continuação
 
 Nesta aula foram concluídos e iniciados os seguintes tópicos da camada de aplicação:
 
@@ -15,9 +15,9 @@ Nesta aula foram concluídos e iniciados os seguintes tópicos da camada de apli
 
 ---
 
-# HTTP — Cookies, estado e privacidade
+## HTTP — Cookies, estado e privacidade
 
-## HTTP continua stateless
+### HTTP continua stateless
 
 Uma característica importante do HTTP é que o protocolo é **stateless**.
 
@@ -42,7 +42,7 @@ Mesmo quando uma conexão TCP é reutilizada no HTTP persistente, o HTTP continu
 
 ---
 
-## HTTP stateless × TCP stateful
+### HTTP stateless × TCP stateful
 
 É importante separar o estado mantido em diferentes camadas da pilha.
 
@@ -58,19 +58,19 @@ Já o **HTTP é stateless**.
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{TCP é stateful}
 }
-\]
+$$
 
 enquanto:
 
-\[
+$$
 \boxed{
 \text{HTTP é stateless}.
 }
-\]
+$$
 
 Isso mostra que a propriedade de ser stateful ou stateless depende da camada e do protocolo analisado.
 
@@ -86,7 +86,7 @@ Uma visão simplificada é:
 
 ---
 
-# Cookies
+### Cookies
 
 Os **cookies** permitem que aplicações Web mantenham informações associadas a um usuário ou navegador entre diferentes requisições HTTP.
 
@@ -98,9 +98,7 @@ Eles são utilizados, por exemplo, para:
 - personalização;
 - rastreamento.
 
----
-
-## Componentes do mecanismo de cookies
+**Componentes do mecanismo de cookies.**
 
 O mecanismo de cookies pode ser entendido a partir de quatro componentes principais:
 
@@ -126,13 +124,11 @@ Cliente                    Servidor
 
 Dessa forma, embora o HTTP continue stateless, a aplicação consegue relacionar requisições diferentes.
 
----
-
-## Cookies e persistência HTTP
+**Cookies e persistência HTTP.**
 
 Cookies e conexões persistentes são conceitos diferentes.
 
-### HTTP persistente
+**HTTP persistente.**
 
 A mesma conexão TCP pode ser reutilizada:
 
@@ -144,7 +140,7 @@ TCP
  |-- GET img2
 ```
 
-### HTTP não persistente
+**HTTP não persistente.**
 
 Conexões TCP diferentes podem ser utilizadas:
 
@@ -158,15 +154,13 @@ O cookie pode ser enviado em ambos os casos.
 
 Portanto:
 
-\[
+$$
 \boxed{
 \text{cookie não depende de a conexão HTTP ser persistente}.
 }
-\]
+$$
 
----
-
-## Cookies e privacidade
+**Cookies e privacidade.**
 
 Cookies também podem ser utilizados para acompanhar o comportamento do usuário.
 
@@ -176,9 +170,7 @@ Eles podem permitir que uma terceira entidade, como um provedor de anúncios, ob
 
 Isso gera questões de privacidade, pois informações sobre navegação e comportamento podem ser correlacionadas.
 
----
-
-# AJAX
+### AJAX
 
 Foi citado em aula o uso de **AJAX** em páginas Web.
 
@@ -192,110 +184,104 @@ Essas requisições também podem ser utilizadas para transmitir ao servidor inf
 
 ---
 
-# Web Caching
+## Web Caching
 
 Uma **Web cache** armazena cópias de objetos Web solicitados anteriormente.
 
 Podemos representar:
 
-\[
+$$
 \text{Cliente}
 \longleftrightarrow
 \text{Cache}
 \longleftrightarrow
 \text{Servidor de origem}.
-\]
+$$
 
 A cache atua:
 
 - como **servidor** para o cliente;
 - como **cliente** para o servidor de origem.
 
----
-
-## Benefícios da cache
+### Benefícios da cache
 
 A cache pode beneficiar diferentes partes da rede.
 
-### Para o cliente
+**Para o cliente.**
 
 Reduz o tempo de resposta:
 
-\[
+$$
 \boxed{
 \text{menor response time}
 }
-\]
+$$
 
-### Para o servidor
+**Para o servidor.**
 
 Reduz a quantidade de requisições que precisam chegar ao servidor de origem:
 
-\[
+$$
 \boxed{
 \text{menor carga no servidor}
 }
-\]
+$$
 
-### Para a rede
+**Para a rede.**
 
 Reduz o tráfego em enlaces compartilhados e gargalos:
 
-\[
+$$
 \boxed{
 \text{menor utilização dos recursos da rede}
 }
-\]
+$$
 
----
-
-# Exemplo de Web Caching
+### Exemplo de Web Caching
 
 Considere o exemplo discutido em sala:
 
 - taxa média de requisições:
 
-\[
+$$
 a=15\text{ requisições/s};
-\]
+$$
 
 - tamanho médio de cada objeto:
 
-\[
+$$
 L=1\text{ Mbit};
-\]
+$$
 
 - LAN interna:
 
-\[
+$$
 R_{\text{LAN}}=100\text{ Mbps};
-\]
+$$
 
 - enlace de acesso à Internet:
 
-\[
+$$
 R_{\text{acesso}}=15\text{ Mbps};
-\]
+$$
 
 - atraso médio na Internet:
 
-\[
+$$
 d_{\text{Internet}}\approx2\text{ s}.
-\]
+$$
 
----
-
-## Intensidade de tráfego na LAN
+**Intensidade de tráfego na LAN.**
 
 A intensidade de tráfego é:
 
-\[
+$$
 I=\frac{La}{R}.
-\]
+$$
 
 Para a LAN:
 
-\[
+$$
 I_{\text{LAN}}
 =
 \frac{
@@ -303,25 +289,23 @@ I_{\text{LAN}}
 }{
 100\text{ Mbps}
 }.
-\]
+$$
 
 Logo:
 
-\[
+$$
 \boxed{
 I_{\text{LAN}}=0{,}15.
 }
-\]
+$$
 
 A LAN está, portanto, longe da saturação.
 
----
-
-## Intensidade de tráfego no enlace de acesso
+**Intensidade de tráfego no enlace de acesso.**
 
 Para o enlace de acesso:
 
-\[
+$$
 I_{\text{acesso}}
 =
 \frac{
@@ -329,35 +313,33 @@ I_{\text{acesso}}
 }{
 15\text{ Mbps}
 }.
-\]
+$$
 
 Portanto:
 
-\[
+$$
 \boxed{
 I_{\text{acesso}}=1.
 }
-\]
+$$
 
 Esse enlace é o **gargalo**.
 
 Quando:
 
-\[
+$$
 I\rightarrow1,
-\]
+$$
 
 o atraso de fila cresce rapidamente.
 
 Assim, mesmo que a LAN tenha grande capacidade, o enlace de acesso pode dominar o tempo de resposta.
 
----
-
-## Tempo total de resposta
+**Tempo total de resposta.**
 
 O tempo total percebido pelo cliente pode ser pensado aproximadamente como:
 
-\[
+$$
 \boxed{
 d_{\text{total}}
 =
@@ -367,41 +349,37 @@ d_{\text{acesso}}
 +
 d_{\text{Internet}}.
 }
-\]
+$$
 
 No exemplo:
 
-\[
+$$
 d_{\text{Internet}}\approx2\text{ s}.
-\]
+$$
 
 Se o enlace de acesso opera próximo da saturação, o atraso nesse enlace também pode se tornar muito grande.
 
----
+### Alternativas para reduzir o gargalo
 
-# Alternativas para reduzir o gargalo
-
-## Aumentar a capacidade do enlace
+**Aumentar a capacidade do enlace.**
 
 Uma possibilidade é aumentar:
 
-\[
+$$
 R_{\text{acesso}}.
-\]
+$$
 
 Isso diminui a intensidade de tráfego:
 
-\[
+$$
 I=\frac{La}{R}.
-\]
+$$
 
 Entretanto, aumentar a capacidade do enlace pode ter custo elevado.
 
 Além disso, mesmo aumentando a capacidade local, o atraso associado ao restante da Internet continua existindo.
 
----
-
-## Utilizar cache
+**Utilizar cache.**
 
 Outra solução é diminuir a quantidade de requisições que precisam atravessar o enlace de acesso.
 
@@ -409,17 +387,17 @@ Se parte das requisições for atendida localmente pela cache, a taxa efetiva de
 
 Assim:
 
-\[
+$$
 a_{\text{Internet}}<a.
-\]
+$$
 
 Consequentemente:
 
-\[
+$$
 I_{\text{acesso}}
 =
 \frac{La_{\text{Internet}}}{R}
-\]
+$$
 
 também diminui.
 
@@ -431,37 +409,35 @@ Isso reduz:
 
 Além disso, em um **cache hit**, o objeto pode ser obtido localmente, evitando também o atraso associado ao caminho até o servidor de origem.
 
----
-
-## Relação com o Capítulo 1
+**Relação com o Capítulo 1.**
 
 A discussão de cache retoma a análise de filas feita anteriormente.
 
-A relação
+A relação:
 
-\[
+$$
 I=\frac{La}{R}
-\]
+$$
 
 mostra que existem duas formas principais de reduzir a intensidade de tráfego:
 
 1. aumentar a capacidade:
 
-\[
+$$
 R\uparrow;
-\]
+$$
 
 2. diminuir a carga:
 
-\[
+$$
 a\downarrow.
-\]
+$$
 
 A cache atua principalmente na segunda alternativa.
 
 ---
 
-# E-mail
+## E-mail
 
 O sistema de e-mail na Internet envolve diferentes componentes.
 
@@ -487,27 +463,23 @@ Mail Server B
 Usuário B
 ```
 
----
-
-# SMTP
+### SMTP
 
 O **SMTP (Simple Mail Transfer Protocol)** é utilizado principalmente para transferir mensagens de e-mail entre servidores de e-mail.
 
 De maneira simplificada:
 
-\[
+$$
 \boxed{
 \text{Mail Server A}
 \xrightarrow{\text{SMTP}}
 \text{Mail Server B}.
 }
-\]
+$$
 
 O SMTP utiliza TCP para obter transferência confiável dos dados.
 
----
-
-## SMTP como protocolo de push
+**SMTP como protocolo de push.**
 
 O SMTP é essencialmente um protocolo de **push**.
 
@@ -515,15 +487,13 @@ Isso significa que o lado emissor inicia a transferência e envia a mensagem ao 
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{SMTP} \rightarrow \text{push}
 }
-\]
+$$
 
----
-
-## SMTP e segurança
+**SMTP e segurança.**
 
 O SMTP original não foi projetado com mecanismos modernos de segurança integrados.
 
@@ -531,9 +501,7 @@ Mecanismos adicionais podem ser utilizados atualmente para proteger a comunicaç
 
 > **Observação:** em aula foi comentada a existência de vulnerabilidades históricas associadas a servidores de e-mail e ao processamento inadequado de conteúdo recebido. O exemplo específico nas anotações não está legível o suficiente para ser reproduzido com segurança.
 
----
-
-## SMTP e texto
+**SMTP e texto.**
 
 Historicamente, o SMTP foi projetado em torno de mensagens de texto ASCII.
 
@@ -544,9 +512,7 @@ Isso gerou a necessidade de mecanismos adicionais para transportar conteúdos qu
 - vídeos;
 - outros arquivos binários.
 
----
-
-## Comunicação direta com SMTP
+**Comunicação direta com SMTP.**
 
 Como SMTP é um protocolo textual, é possível observar seus comandos diretamente através de uma conexão com um servidor SMTP.
 
@@ -560,39 +526,37 @@ para estabelecer uma conexão TCP com a porta tradicional do SMTP e interagir ma
 
 > **Observação:** essa prática é útil para fins didáticos em ambientes apropriados. Muitos servidores modernos restringem esse tipo de acesso ou utilizam mecanismos adicionais de segurança.
 
----
-
-# SMTP × IMAP
+### SMTP × IMAP
 
 SMTP e IMAP possuem funções diferentes.
 
-## SMTP
+**SMTP.**
 
 É usado principalmente para:
 
-\[
+$$
 \boxed{
 \text{enviar/transferir mensagens}.
 }
-\]
+$$
 
-## IMAP
+**IMAP.**
 
 O **IMAP (Internet Message Access Protocol)** é utilizado para acessar e gerenciar mensagens armazenadas em um servidor de e-mail.
 
 Assim:
 
-\[
+$$
 \boxed{
 \text{SMTP} \rightarrow \text{envio}
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 \text{IMAP} \rightarrow \text{acesso e gerenciamento}
 }
-\]
+$$
 
 Uma arquitetura simplificada é:
 
@@ -614,41 +578,37 @@ Usuário B
 
 ---
 
-# DNS — Domain Name System
+## DNS — Domain Name System
 
 O **DNS (Domain Name System)** fornece um mecanismo para relacionar nomes utilizados por pessoas e aplicações com endereços IP.
 
 Por exemplo:
 
-\[
+$$
 \boxed{
 \text{www.exemplo.com}
 \longrightarrow
 \text{endereço IP}.
 }
-\]
+$$
 
 Uma das principais funções do DNS é, portanto:
 
-\[
+$$
 \boxed{
 \text{hostname}
 \longleftrightarrow
 \text{endereço IP}.
 }
-\]
+$$
 
----
-
-## DNS é um protocolo da camada de aplicação
+### DNS é um protocolo da camada de aplicação
 
 Embora sua função seja essencial para praticamente toda a Internet, o DNS é implementado como um protocolo da **camada de aplicação**.
 
 Ele utiliza a infraestrutura de transporte e rede para trocar suas mensagens.
 
----
-
-# Por que o DNS não é centralizado?
+### Por que o DNS não é centralizado?
 
 Uma possível arquitetura seria manter todas as associações entre nomes e endereços IP em um único servidor.
 
@@ -662,15 +622,13 @@ Isso seria problemático devido a fatores como:
 
 Por isso, o DNS utiliza uma base de dados:
 
-\[
+$$
 \boxed{
 \text{distribuída e hierárquica}.
 }
-\]
+$$
 
----
-
-# Hierarquia DNS
+### Hierarquia DNS
 
 A hierarquia envolve diferentes tipos de servidores.
 
@@ -686,20 +644,18 @@ Uma representação simplificada é:
 ```text
                    Root
                     |
-            -----------------
-            |       |       |
-          .com     .org    .br
+             -----------------
+             |       |       |
+           .com     .org    .br
             |
            TLD
             |
-      Authoritative
+       Authoritative
             |
          amazon.com
 ```
 
----
-
-## Root DNS Server
+**Root DNS Server.**
 
 Os servidores raiz ficam no topo da hierarquia.
 
@@ -707,9 +663,7 @@ Eles não precisam conhecer diretamente o endereço IP de todos os hosts.
 
 Em vez disso, podem indicar servidores responsáveis pelos domínios de nível superior.
 
----
-
-## TLD DNS Server
+**TLD DNS Server.**
 
 TLD significa:
 
@@ -724,9 +678,7 @@ Exemplos:
 
 Os servidores TLD conhecem informações que permitem chegar aos servidores autoritativos dos domínios correspondentes.
 
----
-
-## Authoritative DNS Server
+**Authoritative DNS Server.**
 
 O servidor DNS autoritativo possui informações sobre determinado domínio.
 
@@ -738,9 +690,7 @@ amazon.com
 
 pode fornecer informações necessárias para resolver nomes pertencentes a esse domínio.
 
----
-
-## Local DNS Server
+**Local DNS Server.**
 
 O cliente normalmente envia inicialmente sua consulta a um **servidor DNS local**.
 
@@ -749,18 +699,14 @@ Esse servidor pode:
 - responder utilizando informações presentes em cache;
 - realizar consultas aos demais servidores DNS para descobrir a resposta.
 
----
-
-# Resolução DNS
+### Resolução DNS
 
 Existem duas formas principais de organizar as consultas DNS:
 
 - **iterativa**;
 - **recursiva**.
 
----
-
-# Resolução Iterativa
+**Resolução Iterativa.**
 
 Na resolução iterativa, o servidor consultado não precisa obter sozinho a resposta final.
 
@@ -804,9 +750,7 @@ Cliente
 
 Nesse caso, o DNS local conduz a busca passo a passo.
 
----
-
-# Resolução Recursiva
+**Resolução Recursiva.**
 
 Na resolução recursiva, o servidor que recebe a consulta assume a responsabilidade de buscar a resposta junto aos demais servidores.
 
@@ -852,11 +796,9 @@ Cliente
 
 Assim, a responsabilidade por continuar a consulta é repassada de servidor para servidor.
 
----
+**Comparação entre resolução iterativa e recursiva.**
 
-# Comparação entre resolução iterativa e recursiva
-
-## Iterativa
+**Iterativa.**
 
 O servidor consultado pode responder:
 
@@ -864,13 +806,11 @@ O servidor consultado pode responder:
 
 O solicitante continua a busca.
 
-## Recursiva
+**Recursiva.**
 
 O servidor consultado recebe a responsabilidade de buscar a resposta final e devolvê-la ao solicitante.
 
----
-
-# Cache DNS
+### Cache DNS
 
 O uso de cache é muito importante no DNS.
 
@@ -878,13 +818,13 @@ Quando um servidor DNS obtém uma associação entre nome e endereço, ele pode 
 
 Consultas futuras podem então ser respondidas diretamente:
 
-\[
+$$
 \boxed{
 \text{DNS Cache Hit}
 \Rightarrow
 \text{menos consultas pela hierarquia}.
 }
-\]
+$$
 
 Entre os benefícios estão:
 
@@ -896,7 +836,7 @@ As entradas normalmente permanecem na cache durante um período definido por um 
 
 ---
 
-# CDN — Content Distribution Network
+## CDN — Content Distribution Network
 
 O tópico **CDN (Content Distribution Network)** foi indicado ao final da aula para a sequência do conteúdo.
 
@@ -912,7 +852,7 @@ Isso pode:
 
 ---
 
-# Resumo
+## Resumo
 
 Os principais tópicos desta aula foram:
 
