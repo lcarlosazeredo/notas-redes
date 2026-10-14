@@ -1,0 +1,1579 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula15/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 16 | 14/10/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-16-14102026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 16 | 14/10/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 14 | 30/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 15 | 02/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 | 14/10/2026
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 | 14/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-3-camada-de-transporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 3 — Camada de Transporte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capítulo 3 — Camada de Transporte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hoje
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-e-confiabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP e confiabilidade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP e confiabilidade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cumulative-acks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cumulative ACKs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acknowledgment-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgment Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controle-de-fluxo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle de fluxo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retransmissao-especifica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retransmissão específica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observacao-sobre-dns-e-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observação sobre DNS e UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimativa-de-rtt-no-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimativa de RTT no TCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escolha-do-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escolha do timeout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desigualdade-de-markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desigualdade de Markov
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desigualdade de Markov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aplicacao-ao-rtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicação ao RTT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desigualdade-de-chebyshev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desigualdade de Chebyshev
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desigualdade de Chebyshev">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-visual-com-uma-gaussiana" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparação visual com uma Gaussiana
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeout-e-tamanho-da-janela" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timeout e tamanho da janela
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-3-camada-de-transporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 3 — Camada de Transporte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capítulo 3 — Camada de Transporte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hoje
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-e-confiabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP e confiabilidade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP e confiabilidade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cumulative-acks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cumulative ACKs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acknowledgment-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgment Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controle-de-fluxo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle de fluxo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retransmissao-especifica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retransmissão específica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observacao-sobre-dns-e-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observação sobre DNS e UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimativa-de-rtt-no-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimativa de RTT no TCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escolha-do-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escolha do timeout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desigualdade-de-markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desigualdade de Markov
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desigualdade de Markov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aplicacao-ao-rtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicação ao RTT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desigualdade-de-chebyshev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desigualdade de Chebyshev
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desigualdade de Chebyshev">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-visual-com-uma-gaussiana" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparação visual com uma Gaussiana
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeout-e-tamanho-da-janela" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timeout e tamanho da janela
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-16-14102026">Aula 16 — 14/10/2026</h1>
+<h2 id="capitulo-3-camada-de-transporte">Capítulo 3 — Camada de Transporte</h2>
+<h3 id="continuacao">Continuação</h3>
+<p>Foram retomados os tópicos:</p>
+<ul>
+<li>RDT;</li>
+<li>GBN e SR;</li>
+<li>TCP.</li>
+</ul>
+<h3 id="hoje">Hoje</h3>
+<p>Os objetivos anotados para a aula foram:</p>
+<ul>
+<li>completar TCP para confiabilidade;</li>
+<li>começar controle de congestionamento;</li>
+<li>discutir como o TCP implementa aspectos de GBN e SR.</li>
+</ul>
+<hr />
+<h2 id="tcp-e-confiabilidade">TCP e confiabilidade</h2>
+<h3 id="cumulative-acks">Cumulative ACKs</h3>
+<p>O TCP trabalha com <strong>ACKs cumulativos</strong>.</p>
+<p>Uma vantagem anotada é:</p>
+<ul>
+<li>transmitir menos ACKs.</li>
+</ul>
+<p>Há também a observação de que o mecanismo permite acompanhar/confirmações de forma cumulativa.</p>
+<h3 id="acknowledgment-number">Acknowledgment Number</h3>
+<p>Nas anotações, o <strong>Acknowledgment Number</strong> é relacionado ao número que se espera receber em seguida.</p>
+<p>Foi anotado, no exemplo apresentado em sala, que:</p>
+<ul>
+<li>no envio do primeiro pacote, o valor inicialmente considerado é <span class="arithmatex">\(0\)</span>, pois ainda não há nada a confirmar;</li>
+<li>a partir da confirmação, o valor passa para <span class="arithmatex">\(1\)</span>.</li>
+</ul>
+<blockquote>
+<p><strong>Observação:</strong> o exemplo numérico aparece de forma abreviada nas anotações e foi mantido apenas no nível em que está legível.</p>
+</blockquote>
+<hr />
+<h2 id="controle-de-fluxo">Controle de fluxo</h2>
+<p>O <strong>controle de fluxo</strong> aparece associado à:</p>
+<p><strong>receiver window</strong>.</p>
+<p>Nas anotações:</p>
+<blockquote>
+<p>aparece no cabeçalho no TCP.</p>
+</blockquote>
+<p>Também foi registrado que o <strong>controle de congestionamento</strong> não aparece da mesma forma como um campo explícito fornecido pela rede.</p>
+<hr />
+<h2 id="retransmissao-especifica">Retransmissão específica</h2>
+<p>Foi destacada como vantagem:</p>
+<blockquote>
+<p>retransmitir menos.</p>
+</blockquote>
+<p>A ideia aparece relacionada ao modo como o TCP aproveita características de GBN e SR.</p>
+<hr />
+<h2 id="observacao-sobre-dns-e-udp">Observação sobre DNS e UDP</h2>
+<p>Foi anotado que o DNS utiliza UDP devido ao fato de suas mensagens serem curtas.</p>
+<p>A observação feita em sala foi que, usando TCP em mensagens muito pequenas, o cabeçalho poderia representar uma parcela muito grande da própria mensagem.</p>
+<blockquote>
+<p><strong>Observação:</strong> este trecho está transcrito conforme a anotação da aula.</p>
+</blockquote>
+<hr />
+<h2 id="estimativa-de-rtt-no-tcp">Estimativa de RTT no TCP</h2>
+<p>Para definir o timeout, o TCP precisa estimar o RTT.</p>
+<p>Nas anotações, isso aparece como uma forma simples de um <strong>estimador de média</strong>.</p>
+<p>A relação anotada é:</p>
+<div class="arithmatex">\[
+\text{EstimatedRTT}
+=
+(1-\alpha)\,\text{EstimatedRTT}
++
+\alpha\,\text{SampleRTT}.
+\]</div>
+<p>Usando a notação da aula:</p>
+<div class="arithmatex">\[
+\bar R_t
+\leftarrow
+(1-\alpha)\bar R
++
+\alpha\theta_t,
+\]</div>
+<p>onde <span class="arithmatex">\(\theta_t\)</span> representa uma nova amostra de RTT.</p>
+<p>Foi anotado também:</p>
+<div class="arithmatex">\[
+\bar R_0=\theta_0,
+\]</div>
+<p>e, para a atualização seguinte,</p>
+<div class="arithmatex">\[
+\bar R_1
+\leftarrow
+(1-\alpha)\bar R_0
++
+\alpha\theta_1.
+\]</div>
+<p>Ao expandir sucessivamente o estimador, o peso das amostras anteriores decai exponencialmente.</p>
+<blockquote>
+<p><strong>Anotação da aula:</strong> “decai exponencialmente”.</p>
+</blockquote>
+<hr />
+<h2 id="escolha-do-timeout">Escolha do timeout</h2>
+<p>A ideia registrada é:</p>
+<blockquote>
+<p>precisamos aprender o RTT para setar o timeout.</p>
+</blockquote>
+<p>O timeout não deve ser escolhido muito próximo da estimativa de RTT.</p>
+<p>A expressão anotada é:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{TimeoutInterval}
+=
+\text{EstimatedRTT}
++
+4\,\text{DevRTT}
+}
+\]</div>
+<p>O termo com <code>DevRTT</code> aparece indicado como uma <strong>margem de segurança</strong>.</p>
+<p>A justificativa anotada é que um timeout muito pequeno leva a um <strong>timeout prematuro</strong>, enquanto um valor muito grande pode fazer o sistema esperar por tempo excessivo.</p>
+<hr />
+<h2 id="desigualdade-de-markov">Desigualdade de Markov</h2>
+<p>Foi utilizada a desigualdade de Markov para raciocinar sobre a probabilidade de cauda de uma variável aleatória.</p>
+<p>A relação anotada é:</p>
+<div class="arithmatex">\[
+\boxed{
+P(X&gt;a)
+\leq
+\frac{E[X]}{a}
+}
+\]</div>
+<p>A derivação apresentada em sala parte de:</p>
+<div class="arithmatex">\[
+E[X]
+=
+E[X\mid X&gt;a]P(X&gt;a)
++
+E[X\mid X&lt;a]P(X&lt;a).
+\]</div>
+<p>Como o segundo termo é não negativo:</p>
+<div class="arithmatex">\[
+E[X]
+\geq
+E[X\mid X&gt;a]P(X&gt;a).
+\]</div>
+<p>E, para <span class="arithmatex">\(X&gt;a\)</span>:</p>
+<div class="arithmatex">\[
+E[X\mid X&gt;a]\geq a.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+E[X]
+\geq
+aP(X&gt;a),
+\]</div>
+<p>o que fornece:</p>
+<div class="arithmatex">\[
+P(X&gt;a)
+\leq
+\frac{E[X]}{a}.
+\]</div>
+<p>Foi anotado que essa desigualdade permite falar sobre a probabilidade de cauda utilizando apenas a média da variável aleatória, sem precisar conhecer toda a distribuição.</p>
+<h3 id="aplicacao-ao-rtt">Aplicação ao RTT</h3>
+<p>Nas anotações:</p>
+<div class="arithmatex">\[
+X=RTT.
+\]</div>
+<p>A proposta é calcular uma probabilidade do tipo:</p>
+<div class="arithmatex">\[
+P(X&gt;a),
+\]</div>
+<p>interpretada como a probabilidade de ocorrer um <strong>timeout prematuro</strong> para determinado limiar <span class="arithmatex">\(a\)</span>.</p>
+<hr />
+<h2 id="desigualdade-de-chebyshev">Desigualdade de Chebyshev</h2>
+<p>Também foi utilizada a desigualdade de Chebyshev:</p>
+<div class="arithmatex">\[
+\boxed{
+P\left(|X-E[X]|&gt;a\right)
+\leq
+\frac{\sigma^2}{a^2}
+}
+\]</div>
+<p>Foi considerado o caso de um limite a quatro desvios-padrão da média:</p>
+<div class="arithmatex">\[
+P(X&gt;\bar R+4\sigma)
+\leq
+\frac{\sigma^2}{(4\sigma)^2}
+=
+\frac{1}{16}.
+\]</div>
+<p>Assim, foi anotado que, usando <span class="arithmatex">\(4\sigma\)</span>, a probabilidade fica limitada por:</p>
+<div class="arithmatex">\[
+\frac{1}{16}.
+\]</div>
+<h3 id="comparacao-visual-com-uma-gaussiana">Comparação visual com uma Gaussiana</h3>
+<p>No desenho feito em sala aparece uma distribuição aproximadamente Gaussiana, com um ponto a:</p>
+<div class="arithmatex">\[
+4\sigma
+\]</div>
+<p>da média e uma pequena região de cauda.</p>
+<p>A anotação junto ao gráfico indica aproximadamente:</p>
+<div class="arithmatex">\[
+0{,}003\%.
+\]</div>
+<blockquote>
+<p><strong>Observação:</strong> o valor acima foi apenas transcrito do gráfico da aula.</p>
+</blockquote>
+<hr />
+<h2 id="timeout-e-tamanho-da-janela">Timeout e tamanho da janela</h2>
+<p>Na parte final da aula foi discutida a relação entre timeout e <strong>window size</strong>.</p>
+<p>A anotação começa destacando que, no TCP clássico, não há inicialmente uma relação direta simples entre:</p>
+<ul>
+<li>timeout;</li>
+<li>tamanho da janela.</li>
+</ul>
+<p>Também aparecem como comparação mecanismos/versões mais modernos, com menção a:</p>
+<ul>
+<li>QUIC;</li>
+<li>BBR;</li>
+</ul>
+<p>associados, nas anotações, à ideia de estimar vazão a partir de informações como o RTT.</p>
+<p>Na abordagem mais simples, foi registrado que a ocorrência de um timeout pode ser utilizada como indicação de perda.</p>
+<p>A partir dessa informação, pode-se reduzir o tamanho da janela.</p>
+<blockquote>
+<p><strong>Trecho final pouco legível:</strong> há uma anotação terminando em “... otimiza <span class="arithmatex">\(W\)</span>”, mas o início dessa frase não está suficientemente claro para uma transcrição confiável.</p>
+</blockquote>
+<hr />
+<h2 id="resumo">Resumo</h2>
+<p>Os principais pontos desta aula foram:</p>
+<ul>
+<li>continuação do estudo de TCP;</li>
+<li>TCP como mecanismo confiável baseado em ideias de GBN e SR;</li>
+<li>ACKs cumulativos;</li>
+<li><code>Acknowledgment Number</code>;</li>
+<li>controle de fluxo e <code>receiver window</code>;</li>
+<li>retransmissão específica;</li>
+<li>estimativa de RTT;</li>
+<li>atualização de <code>EstimatedRTT</code> a partir de <code>SampleRTT</code>;</li>
+<li>escolha do timeout com margem de segurança;</li>
+<li><code>TimeoutInterval = EstimatedRTT + 4 DevRTT</code>;</li>
+<li>desigualdade de Markov;</li>
+<li>desigualdade de Chebyshev;</li>
+<li>uso dessas desigualdades para pensar em timeout prematuro;</li>
+<li>relação entre timeout, perda e tamanho da janela;</li>
+<li>introdução ao controle de congestionamento.</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula15/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 15 | 02/10/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 15 | 02/10/2026
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>
