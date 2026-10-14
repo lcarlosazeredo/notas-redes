@@ -24,3 +24,4 @@ Acesse diretamente as notas de cada encontro:
 | **Aula 12** | Filas M/M/1 e M/D/1, sockets TCP/UDP, multiplexação, checksum e introdução ao RDT | [:material-file-document: Ver Notas](aulas/Aula12.md) |
 | **Aula 14** | Transferência confiável: RDT 1.0–3.0, timeout, pipelining, Go-Back-N e Selective Repeat | [:material-file-document: Ver Notas](aulas/Aula14.md) |
 | **Aula 15** | Janelas, utilização, Go-Back-N, Selective Repeat e implementação no TCP | [:material-file-document: Ver Notas](aulas/Aula15.md) |
+| **Aula 16** | TCP confiável, ACKs cumulativos, controle de fluxo, estimação de RTT e timeout | [:material-file-document: Ver Notas](aulas/Aula16.md) |
