@@ -25,3 +25,4 @@ Acesse diretamente as notas de cada encontro:
 | **Aula 14** | Transferência confiável: RDT 1.0–3.0, timeout, pipelining, Go-Back-N e Selective Repeat | [:material-file-document: Ver Notas](aulas/Aula14.md) |
 | **Aula 15** | Janelas, utilização, Go-Back-N, Selective Repeat e implementação no TCP | [:material-file-document: Ver Notas](aulas/Aula15.md) |
 | **Aula 16** | TCP confiável, ACKs cumulativos, controle de fluxo, estimação de RTT e timeout | [:material-file-document: Ver Notas](aulas/Aula16.md) |
+| **Aula 17** | TCP, ACKs, controle de fluxo, 3-way handshake e fundamentos de controle de congestionamento | [:material-file-document: Ver Notas](aulas/Aula17.md) |
