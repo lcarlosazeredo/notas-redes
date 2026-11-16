@@ -26,3 +26,10 @@ Acesse diretamente as notas de cada encontro:
 | **Aula 15** | Janelas, utilização, Go-Back-N, Selective Repeat e implementação no TCP | [:material-file-document: Ver Notas](aulas/Aula15.md) |
 | **Aula 16** | TCP confiável, ACKs cumulativos, controle de fluxo, estimação de RTT e timeout | [:material-file-document: Ver Notas](aulas/Aula16.md) |
 | **Aula 17** | TCP, ACKs, controle de fluxo, 3-way handshake e fundamentos de controle de congestionamento | [:material-file-document: Ver Notas](aulas/Aula17.md) |
+| **Aula 18** | TCP Congestion Control: AIMD, Slow Start, lei da raiz quadrada, CUBIC e BBR | [:material-file-document: Ver Notas](aulas/Aula18.md) |
+| **Aula 19** | Fairness e mecanismos de congestionamento, QUIC, forwarding, roteadores, Data/Control Plane e SDN | [:material-file-document: Ver Notas](aulas/Aula19.md) |
+| **Aula 20** | Roteadores, generalized forwarding, switching fabric, filas, buffers, TTL e fragmentação IP | [:material-file-document: Ver Notas](aulas/Aula20.md) |
+| **Aula 21** | IPv4: cabeçalho, endereçamento, DHCP, NAT e introdução ao IPv6 | [:material-file-document: Ver Notas](aulas/Aula21.md) |
+| **Aula 22** | IPv6 e tunneling, IPsec/VPN, middleboxes/SDN e introdução a Dijkstra, Bellman-Ford, OSPF e BGP | [:material-file-document: Ver Notas](aulas/Aula22.md) |
+| **Aula 23** | Dijkstra e Bellman-Ford: Link State, Distance Vector e exemplo completo de menor caminho | [:material-file-document: Ver Notas](aulas/Aula23.md) |
+| **Aula 24** | Distance Vector: mudanças de custo, Count-to-Infinity, Poisoned Reverse e Path Vector | [:material-file-document: Ver Notas](aulas/Aula24.md) |
