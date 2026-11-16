@@ -1,0 +1,2683 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula22/">
+      
+      
+        <link rel="next" href="../Aula24/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 23 | 11/11/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-23-11112026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 23 | 11/11/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 14 | 30/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 15 | 02/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 | 14/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 17 | 16/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 18 | 21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 19 | 23/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 20 | 28/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 21 | 04/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 22 | 06/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 23 | 11/11/2026
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 23 | 11/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#retomada-da-aula-anterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retomada da aula anterior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstra-bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra × Bellman-Ford
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra × Bellman-Ford">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparação inicial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstra-link-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra — Link State
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra — Link State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-divulgacao-dos-custos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 — divulgação dos custos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-calculo-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 — cálculo local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-ford-distance-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford — Distance Vector
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman-Ford — Distance Vector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-envio-do-distance-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 — envio do Distance Vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-atualizacao-pelos-vizinhos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 — atualização pelos vizinhos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paradigma-dos-algoritmos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paradigma dos algoritmos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paradigma dos algoritmos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra-estrategia-gulosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra — estratégia gulosa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford-programacao-dinamica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford — programação dinâmica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intra-as-e-inter-as" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intra-AS e Inter-AS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intra-AS e Inter-AS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ospf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSPF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visao-classica-sdn-no-plano-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visão clássica × SDN no plano de controle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visão clássica × SDN no plano de controle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visao-classica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visão clássica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-os-capitulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relação com os capítulos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classificacao-dos-algoritmos-de-roteamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classificação dos algoritmos de roteamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classificação dos algoritmos de roteamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-descentralizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global × descentralizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estatico-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estático × dinâmico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemas-quando-os-custos-mudam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemas quando os custos mudam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problemas quando os custos mudam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacao-global-no-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação global no Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 24 | 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#retomada-da-aula-anterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retomada da aula anterior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstra-bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra × Bellman-Ford
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra × Bellman-Ford">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparação inicial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstra-link-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra — Link State
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra — Link State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-divulgacao-dos-custos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 — divulgação dos custos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-calculo-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 — cálculo local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-ford-distance-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford — Distance Vector
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman-Ford — Distance Vector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-envio-do-distance-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 — envio do Distance Vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-atualizacao-pelos-vizinhos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 — atualização pelos vizinhos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paradigma-dos-algoritmos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paradigma dos algoritmos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paradigma dos algoritmos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra-estrategia-gulosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra — estratégia gulosa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford-programacao-dinamica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford — programação dinâmica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intra-as-e-inter-as" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intra-AS e Inter-AS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intra-AS e Inter-AS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ospf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSPF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visao-classica-sdn-no-plano-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visão clássica × SDN no plano de controle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visão clássica × SDN no plano de controle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visao-classica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visão clássica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-os-capitulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relação com os capítulos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classificacao-dos-algoritmos-de-roteamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classificação dos algoritmos de roteamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classificação dos algoritmos de roteamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-descentralizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global × descentralizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estatico-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estático × dinâmico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemas-quando-os-custos-mudam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemas quando os custos mudam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problemas quando os custos mudam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacao-global-no-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação global no Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-23-11112026">Aula 23 — 11/11/2026</h1>
+<blockquote>
+<p><strong>Base principal:</strong> anotações manuscritas da aula.<br />
+<strong>Complementos:</strong> <em>Computer Networking: A Top-Down Approach</em>, 8ª ed., Kurose &amp; Ross, principalmente Capítulo 5, Seções 5.1, 5.2.1 e 5.2.2.<br />
+Os complementos abaixo servem apenas para organizar e esclarecer os tópicos efetivamente trabalhados em sala.</p>
+</blockquote>
+<h2 id="retomada-da-aula-anterior">Retomada da aula anterior</h2>
+<p>Na aula anterior foi iniciado o <strong>Capítulo 5 — Camada de Rede: Control Plane</strong>, com foco em:</p>
+<ul>
+<li>algoritmos de roteamento;</li>
+<li>Dijkstra;</li>
+<li>Bellman-Ford;</li>
+<li>Link State;</li>
+<li>Distance Vector.</li>
+</ul>
+<p>Nesta aula, esses tópicos foram aprofundados.</p>
+<hr />
+<h2 id="dijkstra-bellman-ford">Dijkstra × Bellman-Ford</h2>
+<p>Os dois algoritmos têm o mesmo objetivo geral:</p>
+<blockquote>
+<p>encontrar caminhos de menor custo na rede.</p>
+</blockquote>
+<p>A diferença principal está em:</p>
+<ul>
+<li>quais informações cada nó possui;</li>
+<li>como essas informações são obtidas;</li>
+<li>como o cálculo é realizado.</li>
+</ul>
+<h3 id="comparacao-inicial">Comparação inicial</h3>
+<table>
+<thead>
+<tr>
+<th>Algoritmo</th>
+<th>Classe</th>
+<th>Como é utilizado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dijkstra</td>
+<td>Link State</td>
+<td>Cada nó divulga o custo de seus enlaces; após a divulgação, todos possuem uma visão global da rede e executam Dijkstra localmente</td>
+</tr>
+<tr>
+<td>Bellman-Ford</td>
+<td>Distance Vector</td>
+<td>Cada nó mantém estimativas de custo até os destinos e troca essas estimativas apenas com seus vizinhos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="dijkstra-link-state">Dijkstra — Link State</h2>
+<p>No algoritmo Link State, cada roteador precisa conhecer a topologia completa da rede considerada.</p>
+<h3 id="passo-1-divulgacao-dos-custos">Passo 1 — divulgação dos custos</h3>
+<p>Cada nó <span class="arithmatex">\(i\)</span> divulga aos demais nós informações sobre seus enlaces diretamente conectados:</p>
+<div class="arithmatex">\[
+c(i,j).
+\]</div>
+<p>Depois que essas informações são disseminadas, cada nó passa a possuir uma visão global da topologia.</p>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Link State}
+\Rightarrow
+\text{informação global}
+}
+\]</div>
+<h3 id="passo-2-calculo-local">Passo 2 — cálculo local</h3>
+<p>Depois de possuir o mapa completo da rede, cada nó executa o algoritmo de Dijkstra tomando a si próprio como origem.</p>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{cada roteador executa seu próprio Dijkstra}
+}
+\]</div>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 5.2.1.</p>
+</blockquote>
+<hr />
+<h2 id="bellman-ford-distance-vector">Bellman-Ford — Distance Vector</h2>
+<p>No Distance Vector, um roteador não precisa conhecer toda a topologia.</p>
+<p>Ele conhece:</p>
+<ul>
+<li>o custo dos enlaces diretamente conectados;</li>
+<li>estimativas de distância recebidas dos vizinhos.</li>
+</ul>
+<h3 id="passo-1-envio-do-distance-vector">Passo 1 — envio do Distance Vector</h3>
+<p>Quando um nó percebe alguma mudança relevante em seus custos/estimativas, ele envia aos vizinhos seu vetor de distâncias.</p>
+<p>Esse vetor contém estimativas do custo até os destinos:</p>
+<div class="arithmatex">\[
+D_x(y).
+\]</div>
+<h3 id="passo-2-atualizacao-pelos-vizinhos">Passo 2 — atualização pelos vizinhos</h3>
+<p>Cada vizinho recebe as estimativas e recalcula seus próprios valores.</p>
+<p>Depois, se houver mudança, também envia seu vetor atualizado aos seus vizinhos.</p>
+<p>Assim, o processo se repete.</p>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Distance Vector}
+\Rightarrow
+\text{informação distribuída entre vizinhos}
+}
+\]</div>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 5.2.2.</p>
+</blockquote>
+<hr />
+<h2 id="paradigma-dos-algoritmos">Paradigma dos algoritmos</h2>
+<p>Nas anotações, os algoritmos são associados aos seguintes paradigmas:</p>
+<table>
+<thead>
+<tr>
+<th>Algoritmo</th>
+<th>Paradigma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dijkstra</td>
+<td>Guloso (<em>Greedy</em>)</td>
+</tr>
+<tr>
+<td>Bellman-Ford</td>
+<td>Programação Dinâmica</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dijkstra-estrategia-gulosa">Dijkstra — estratégia gulosa</h3>
+<p>Dijkstra escolhe, em cada passo, o nó ainda não finalizado com menor custo conhecido.</p>
+<p>Essa escolha é considerada definitiva.</p>
+<h3 id="bellman-ford-programacao-dinamica">Bellman-Ford — programação dinâmica</h3>
+<p>Bellman-Ford utiliza resultados parciais dos vizinhos para construir uma estimativa melhor.</p>
+<p>A relação fundamental é:</p>
+<div class="arithmatex">\[
+\boxed{
+D_x(y)
+=
+\min_{v\in N(x)}
+\left\{
+c(x,v)+D_v(y)
+\right\}
+}
+\]</div>
+<p>onde:</p>
+<ul>
+<li><span class="arithmatex">\(x\)</span>: nó atual;</li>
+<li><span class="arithmatex">\(y\)</span>: destino;</li>
+<li><span class="arithmatex">\(v\)</span>: vizinho de <span class="arithmatex">\(x\)</span>;</li>
+<li><span class="arithmatex">\(c(x,v)\)</span>: custo de <span class="arithmatex">\(x\)</span> até <span class="arithmatex">\(v\)</span>;</li>
+<li><span class="arithmatex">\(D_v(y)\)</span>: estimativa do vizinho <span class="arithmatex">\(v\)</span> até <span class="arithmatex">\(y\)</span>.</li>
+</ul>
+<hr />
+<h2 id="intra-as-e-inter-as">Intra-AS e Inter-AS</h2>
+<p>Nas anotações aparece uma associação entre:</p>
+<ul>
+<li>Dijkstra / Link State e <strong>intra-AS</strong>;</li>
+<li>Bellman-Ford / Distance Vector e <strong>inter-AS</strong>.</li>
+</ul>
+<p>Essa associação deve ser entendida com cuidado.</p>
+<h3 id="ospf">OSPF</h3>
+<p>O principal exemplo estudado de Link State é o:</p>
+<p><strong>OSPF — Open Shortest Path First</strong></p>
+<p>que é utilizado para roteamento:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{intra-AS}
+}
+\]</div>
+<p>e utiliza Dijkstra.</p>
+<h3 id="bgp">BGP</h3>
+<p>Para roteamento:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{inter-AS}
+}
+\]</div>
+<p>o protocolo utilizado na Internet é o:</p>
+<p><strong>BGP — Border Gateway Protocol</strong></p>
+<p>O BGP possui características de algoritmos distribuídos semelhantes ao Distance Vector, mas é mais precisamente classificado como <strong>Path Vector</strong>.</p>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{OSPF}
+\rightarrow
+\text{Link State}
+\rightarrow
+\text{Dijkstra}
+}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{BGP}
+\rightarrow
+\text{Path Vector}
+\rightarrow
+\text{inter-AS}
+}
+\]</div>
+<blockquote>
+<p><strong>Observação:</strong> Bellman-Ford é a base matemática do Distance Vector, mas BGP não deve ser tratado simplesmente como “Bellman-Ford puro”.</p>
+</blockquote>
+<hr />
+<h2 id="visao-classica-sdn-no-plano-de-controle">Visão clássica × SDN no plano de controle</h2>
+<p>A aula também retoma a diferença entre as duas arquiteturas de plano de controle.</p>
+<h3 id="visao-classica">Visão clássica</h3>
+<p>Na arquitetura tradicional, cada roteador possui:</p>
+<ul>
+<li>plano de dados;</li>
+<li>plano de controle.</li>
+</ul>
+<p>Assim:</p>
+<div class="highlight"><pre><span></span><code>Roteador
+├── Plano de Controle
+└── Plano de Dados
+</code></pre></div>
+<p>Cada roteador executa sua lógica de roteamento localmente.</p>
+<h3 id="sdn">SDN</h3>
+<p>No SDN, o plano de controle é separado dos dispositivos do plano de dados.</p>
+<p>De forma simplificada:</p>
+<div class="highlight"><pre><span></span><code>          Controlador
+              |
+     ---------------------
+     |         |         |
+     v         v         v
+  Switch    Switch    Switch
+</code></pre></div>
+<p>O controlador possui uma visão global da rede e instala regras nos dispositivos.</p>
+<h3 id="relacao-com-os-capitulos">Relação com os capítulos</h3>
+<p>Nas anotações:</p>
+<ul>
+<li><strong>Capítulo 4</strong> → Plano de Dados;</li>
+<li><strong>Capítulo 5</strong> → Plano de Controle.</li>
+</ul>
+<hr />
+<h2 id="classificacao-dos-algoritmos-de-roteamento">Classificação dos algoritmos de roteamento</h2>
+<p>Além da classificação Link State × Distance Vector, os algoritmos também podem ser classificados em outras dimensões.</p>
+<h3 id="global-descentralizado">Global × descentralizado</h3>
+<p><strong>Global.</strong></p>
+<p>O algoritmo possui informação completa da rede.</p>
+<p>Exemplo:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Dijkstra / Link State}
+}
+\]</div>
+<p><strong>Descentralizado.</strong></p>
+<p>Cada nó conhece apenas informações locais e aprende gradualmente por meio de seus vizinhos.</p>
+<p>Exemplo:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Bellman-Ford / Distance Vector}
+}
+\]</div>
+<h3 id="estatico-dinamico">Estático × dinâmico</h3>
+<p>Um algoritmo pode ser:</p>
+<ul>
+<li><strong>estático</strong>: rotas mudam lentamente;</li>
+<li><strong>dinâmico</strong>: rotas podem mudar em resposta a alterações na topologia ou nos custos.</li>
+</ul>
+<blockquote>
+<p><strong>Observação:</strong> Dijkstra e Bellman-Ford são algoritmos de cálculo de caminhos. O fato de uma implementação ser mais estática ou dinâmica depende de como os custos e atualizações são utilizados pelo protocolo.</p>
+</blockquote>
+<hr />
+<h2 id="problemas-quando-os-custos-mudam">Problemas quando os custos mudam</h2>
+<p>Nas anotações aparece uma observação importante sobre alterações dos pesos dos enlaces.</p>
+<h3 id="dijkstra">Dijkstra</h3>
+<p>Como todos os nós mantêm uma visão global da rede, uma mudança de custo precisa ser divulgada.</p>
+<p>Depois disso, os roteadores podem recalcular seus menores caminhos.</p>
+<h3 id="bellman-ford">Bellman-Ford</h3>
+<p>No Distance Vector, a mudança é propagada gradualmente entre vizinhos.</p>
+<p>Isso pode causar:</p>
+<ul>
+<li>convergência mais lenta;</li>
+<li>estados temporariamente inconsistentes;</li>
+<li>loops;</li>
+<li>problema de <strong>count-to-infinity</strong>.</li>
+</ul>
+<p>O Kurose destaca que, em Distance Vector:</p>
+<blockquote>
+<p>boas notícias tendem a se propagar rapidamente, enquanto más notícias podem se propagar lentamente.</p>
+</blockquote>
+<hr />
+<h2 id="informacao-global-no-dijkstra">Informação global no Dijkstra</h2>
+<p>Uma diferença fundamental destacada na aula é que o Dijkstra utiliza conhecimento global.</p>
+<p>Para isso, os custos dos enlaces são divulgados pela rede.</p>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{cada nó divulga informações locais}
+\Rightarrow
+\text{todos obtêm uma visão global}
+}
+\]</div>
+<p>Esse modelo funciona dentro de um domínio de roteamento controlado, mas não seria adequado imaginar todos os roteadores da Internet compartilhando globalmente toda a topologia entre si.</p>
+<p>Essa é uma das razões para organizar a Internet em:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Autonomous Systems — AS}
+}
+\]</div>
+<hr />
+<h1 id="algoritmo-de-dijkstra">Algoritmo de Dijkstra</h1>
+<h2 id="notacao">Notação</h2>
+<p>Considere uma origem:</p>
+<div class="arithmatex">\[
+u.
+\]</div>
+<h3 id="cuv"><span class="arithmatex">\(c(u,v)\)</span></h3>
+<p>Representa o custo direto do enlace entre <span class="arithmatex">\(u\)</span> e <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+\boxed{
+c(u,v)
+}
+\]</div>
+<h3 id="dv"><span class="arithmatex">\(D(v)\)</span></h3>
+<p>Representa o menor custo atualmente conhecido da origem <span class="arithmatex">\(u\)</span> até o nó <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+\boxed{
+D(v)
+}
+\]</div>
+<h3 id="pv"><span class="arithmatex">\(p(v)\)</span></h3>
+<p>Representa o predecessor de <span class="arithmatex">\(v\)</span> no caminho atualmente conhecido:</p>
+<div class="arithmatex">\[
+\boxed{
+p(v)
+}
+\]</div>
+<p>Podemos pensar nele como o “pai” de <span class="arithmatex">\(v\)</span> na árvore de menor custo.</p>
+<h3 id="n"><span class="arithmatex">\(N'\)</span></h3>
+<p>É o conjunto de nós para os quais o menor caminho a partir da origem já foi determinado definitivamente.</p>
+<div class="arithmatex">\[
+\boxed{
+N'
+=
+\{\text{nós cujo menor custo já é definitivo}\}
+}
+\]</div>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 5.2.1, pp. 383–385.</p>
+</blockquote>
+<hr />
+<h2 id="atualizacao-no-dijkstra">Atualização no Dijkstra</h2>
+<p>Se <span class="arithmatex">\(w\)</span> foi o nó escolhido no passo atual, para cada vizinho <span class="arithmatex">\(v\)</span> ainda não finalizado fazemos:</p>
+<div class="arithmatex">\[
+\boxed{
+D(v)
+=
+\min
+\left\{
+D(v),
+D(w)+c(w,v)
+\right\}
+}
+\]</div>
+<p>A interpretação é:</p>
+<ul>
+<li>manter o custo já conhecido para <span class="arithmatex">\(v\)</span>;</li>
+<li>ou passar por <span class="arithmatex">\(w\)</span>;</li>
+<li>escolher o menor.</li>
+</ul>
+<hr />
+<h2 id="visao-do-dijkstra">Visão do Dijkstra</h2>
+<p>Na visão de Dijkstra, podemos pensar:</p>
+<div class="highlight"><pre><span></span><code>u ---- caminho conhecido ----&gt; w ----&gt; v
+                                c(w,v)
+</code></pre></div>
+<p>Se o caminho passando por <span class="arithmatex">\(w\)</span> for melhor:</p>
+<div class="arithmatex">\[
+\boxed{
+D(v)
+=
+D(w)+c(w,v)
+}
+\]</div>
+<hr />
+<h2 id="visao-do-bellman-ford">Visão do Bellman-Ford</h2>
+<p>Bellman-Ford observa o problema pela perspectiva dos vizinhos.</p>
+<p>Para sair de <span class="arithmatex">\(u\)</span> e chegar a <span class="arithmatex">\(v\)</span>:</p>
+<ol>
+<li>escolhe-se um vizinho <span class="arithmatex">\(w\)</span>;</li>
+<li>paga-se o custo:</li>
+</ol>
+<div class="arithmatex">\[
+c(u,w);
+\]</div>
+<ol>
+<li>utiliza-se a estimativa do vizinho até o destino:</li>
+</ol>
+<div class="arithmatex">\[
+D_w(v).
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+D_u(v)
+=
+\min_w
+\left\{
+c(u,w)+D_w(v)
+\right\}
+}
+\]</div>
+<p>Essa é a equação de Bellman-Ford.</p>
+<hr />
+<h1 id="exemplo-de-dijkstra">Exemplo de Dijkstra</h1>
+<p>A segunda página apresenta o mesmo grafo utilizado no exemplo do Kurose.</p>
+<p>Os enlaces são:</p>
+<div class="arithmatex">\[
+c(u,v)=2
+\]</div>
+<div class="arithmatex">\[
+c(u,x)=1
+\]</div>
+<div class="arithmatex">\[
+c(u,w)=5
+\]</div>
+<div class="arithmatex">\[
+c(v,x)=2
+\]</div>
+<div class="arithmatex">\[
+c(v,w)=3
+\]</div>
+<div class="arithmatex">\[
+c(x,w)=3
+\]</div>
+<div class="arithmatex">\[
+c(x,y)=1
+\]</div>
+<div class="arithmatex">\[
+c(w,y)=1
+\]</div>
+<div class="arithmatex">\[
+c(w,z)=5
+\]</div>
+<div class="arithmatex">\[
+c(y,z)=2
+\]</div>
+<p>Uma representação aproximada é:</p>
+<div class="highlight"><pre><span></span><code>          2
+      u ------- v
+      |\       /|
+    5 | \1   2/ |3
+      |  \   /  |
+      |    x----w
+      |     \3 /|
+      |      \ /1
+      |       y
+      |       |
+      |       |2
+      |       |
+      +------ z
+          5
+</code></pre></div>
+<blockquote>
+<p><strong>Observação:</strong> o desenho acima é apenas esquemático; os custos listados são a referência principal.</p>
+</blockquote>
+<hr />
+<h2 id="execucao-passo-a-passo">Execução passo a passo</h2>
+<p>Tomando:</p>
+<div class="arithmatex">\[
+u
+\]</div>
+<p>como origem.</p>
+<h3 id="passo-0-inicializacao">Passo 0 — inicialização</h3>
+<p>Inicialmente:</p>
+<div class="arithmatex">\[
+N'=\{u\}.
+\]</div>
+<p>Para os vizinhos diretos:</p>
+<div class="arithmatex">\[
+D(v)=2,\qquad p(v)=u
+\]</div>
+<div class="arithmatex">\[
+D(x)=1,\qquad p(x)=u
+\]</div>
+<div class="arithmatex">\[
+D(w)=5,\qquad p(w)=u
+\]</div>
+<p>Como <span class="arithmatex">\(y\)</span> e <span class="arithmatex">\(z\)</span> não são vizinhos diretos:</p>
+<div class="arithmatex">\[
+D(y)=\infty
+\]</div>
+<div class="arithmatex">\[
+D(z)=\infty.
+\]</div>
+<p>Tabela:</p>
+<table>
+<thead>
+<tr>
+<th>Passo</th>
+<th><span class="arithmatex">\(N'\)</span></th>
+<th><span class="arithmatex">\(D(v),p(v)\)</span></th>
+<th><span class="arithmatex">\(D(w),p(w)\)</span></th>
+<th><span class="arithmatex">\(D(x),p(x)\)</span></th>
+<th><span class="arithmatex">\(D(y),p(y)\)</span></th>
+<th><span class="arithmatex">\(D(z),p(z)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><span class="arithmatex">\(u\)</span></td>
+<td><span class="arithmatex">\(2,u\)</span></td>
+<td><span class="arithmatex">\(5,u\)</span></td>
+<td><span class="arithmatex">\(1,u\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="passo-1-escolhe-x">Passo 1 — escolhe <span class="arithmatex">\(x\)</span></h3>
+<p>O menor custo ainda não definitivo é:</p>
+<div class="arithmatex">\[
+D(x)=1.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+N'=\{u,x\}.
+\]</div>
+<p>Atualizando os vizinhos de <span class="arithmatex">\(x\)</span>:</p>
+<p>Para <span class="arithmatex">\(w\)</span>:</p>
+<div class="arithmatex">\[
+D(w)
+=
+\min\{5,1+3\}
+=
+4.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+D(w)=4,\qquad p(w)=x.
+\]</div>
+<p>Para <span class="arithmatex">\(y\)</span>:</p>
+<div class="arithmatex">\[
+D(y)
+=
+\min\{\infty,1+1\}
+=
+2.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+D(y)=2,\qquad p(y)=x.
+\]</div>
+<p>A tabela fica:</p>
+<table>
+<thead>
+<tr>
+<th>Passo</th>
+<th><span class="arithmatex">\(N'\)</span></th>
+<th><span class="arithmatex">\(D(v),p(v)\)</span></th>
+<th><span class="arithmatex">\(D(w),p(w)\)</span></th>
+<th><span class="arithmatex">\(D(x),p(x)\)</span></th>
+<th><span class="arithmatex">\(D(y),p(y)\)</span></th>
+<th><span class="arithmatex">\(D(z),p(z)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><span class="arithmatex">\(u\)</span></td>
+<td><span class="arithmatex">\(2,u\)</span></td>
+<td><span class="arithmatex">\(5,u\)</span></td>
+<td><span class="arithmatex">\(1,u\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td><span class="arithmatex">\(ux\)</span></td>
+<td><span class="arithmatex">\(2,u\)</span></td>
+<td><span class="arithmatex">\(4,x\)</span></td>
+<td>—</td>
+<td><span class="arithmatex">\(2,x\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="passo-2-escolhe-y">Passo 2 — escolhe <span class="arithmatex">\(y\)</span></h3>
+<p>Temos empate:</p>
+<div class="arithmatex">\[
+D(v)=2
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+D(y)=2.
+\]</div>
+<p>O exemplo escolhe <span class="arithmatex">\(y\)</span>.</p>
+<p>Assim:</p>
+<div class="arithmatex">\[
+N'=\{u,x,y\}.
+\]</div>
+<p>Atualizando:</p>
+<p>Para <span class="arithmatex">\(w\)</span>:</p>
+<div class="arithmatex">\[
+D(w)
+=
+\min\{4,2+1\}
+=
+3.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+D(w)=3,\qquad p(w)=y.
+\]</div>
+<p>Para <span class="arithmatex">\(z\)</span>:</p>
+<div class="arithmatex">\[
+D(z)
+=
+\min\{\infty,2+2\}
+=
+4.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+D(z)=4,\qquad p(z)=y.
+\]</div>
+<h3 id="passo-3-escolhe-v">Passo 3 — escolhe <span class="arithmatex">\(v\)</span></h3>
+<p>O menor custo restante é:</p>
+<div class="arithmatex">\[
+D(v)=2.
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+N'=\{u,x,y,v\}.
+\]</div>
+<p>Nenhuma atualização produz custo menor.</p>
+<h3 id="passo-4-escolhe-w">Passo 4 — escolhe <span class="arithmatex">\(w\)</span></h3>
+<p>Agora:</p>
+<div class="arithmatex">\[
+D(w)=3.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+N'=\{u,x,y,v,w\}.
+\]</div>
+<p>Para <span class="arithmatex">\(z\)</span>:</p>
+<div class="arithmatex">\[
+D(z)
+=
+\min\{4,3+5\}
+=
+4.
+\]</div>
+<p>Não há alteração.</p>
+<h3 id="passo-5-escolhe-z">Passo 5 — escolhe <span class="arithmatex">\(z\)</span></h3>
+<p>Por fim:</p>
+<div class="arithmatex">\[
+D(z)=4.
+\]</div>
+<p>Então:</p>
+<div class="arithmatex">\[
+N'=\{u,x,y,v,w,z\}.
+\]</div>
+<p>O algoritmo termina.</p>
+<hr />
+<h2 id="tabela-completa">Tabela completa</h2>
+<table>
+<thead>
+<tr>
+<th>Passo</th>
+<th><span class="arithmatex">\(N'\)</span></th>
+<th><span class="arithmatex">\(D(v),p(v)\)</span></th>
+<th><span class="arithmatex">\(D(w),p(w)\)</span></th>
+<th><span class="arithmatex">\(D(x),p(x)\)</span></th>
+<th><span class="arithmatex">\(D(y),p(y)\)</span></th>
+<th><span class="arithmatex">\(D(z),p(z)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><span class="arithmatex">\(u\)</span></td>
+<td><span class="arithmatex">\(2,u\)</span></td>
+<td><span class="arithmatex">\(5,u\)</span></td>
+<td><span class="arithmatex">\(1,u\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td><span class="arithmatex">\(ux\)</span></td>
+<td><span class="arithmatex">\(2,u\)</span></td>
+<td><span class="arithmatex">\(4,x\)</span></td>
+<td>—</td>
+<td><span class="arithmatex">\(2,x\)</span></td>
+<td><span class="arithmatex">\(\infty\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="arithmatex">\(uxy\)</span></td>
+<td><span class="arithmatex">\(2,u\)</span></td>
+<td><span class="arithmatex">\(3,y\)</span></td>
+<td>—</td>
+<td>—</td>
+<td><span class="arithmatex">\(4,y\)</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="arithmatex">\(uxyv\)</span></td>
+<td>—</td>
+<td><span class="arithmatex">\(3,y\)</span></td>
+<td>—</td>
+<td>—</td>
+<td><span class="arithmatex">\(4,y\)</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="arithmatex">\(uxyvw\)</span></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><span class="arithmatex">\(4,y\)</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="arithmatex">\(uxyvwz\)</span></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Os menores custos a partir de <span class="arithmatex">\(u\)</span> são:</p>
+<div class="arithmatex">\[
+\boxed{
+D(x)=1
+}
+\]</div>
+<div class="arithmatex">\[
+\boxed{
+D(v)=2
+}
+\]</div>
+<div class="arithmatex">\[
+\boxed{
+D(y)=2
+}
+\]</div>
+<div class="arithmatex">\[
+\boxed{
+D(w)=3
+}
+\]</div>
+<div class="arithmatex">\[
+\boxed{
+D(z)=4
+}
+\]</div>
+<hr />
+<h2 id="por-que-dijkstra-funciona">Por que Dijkstra funciona?</h2>
+<p>Nas anotações aparece a ideia de uma prova por contradição.</p>
+<p>A propriedade central é:</p>
+<blockquote>
+<p>quando o algoritmo escolhe o nó <span class="arithmatex">\(w\)</span> com menor <span class="arithmatex">\(D(w)\)</span> entre os nós ainda não finalizados, esse valor já corresponde ao menor custo verdadeiro até <span class="arithmatex">\(w\)</span>.</p>
+</blockquote>
+<p>A intuição depende da hipótese de custos de enlace não negativos.</p>
+<p>Se existisse um caminho mais barato para <span class="arithmatex">\(w\)</span> passando por algum nó ainda não escolhido, esse caminho teria de chegar primeiro a algum nó não finalizado com custo ainda menor que <span class="arithmatex">\(D(w)\)</span>.</p>
+<p>Mas isso contradiz a escolha de <span class="arithmatex">\(w\)</span> como o nó de menor custo entre os não finalizados.</p>
+<p>Assim, quando <span class="arithmatex">\(w\)</span> entra em:</p>
+<div class="arithmatex">\[
+N',
+\]</div>
+<p>seu menor custo pode ser considerado definitivo.</p>
+<hr />
+<h2 id="complexidade-do-dijkstra">Complexidade do Dijkstra</h2>
+<p>Nas anotações aparece a observação:</p>
+<blockquote>
+<p>a escolha de <span class="arithmatex">\(w\)</span>, se feita de forma ingênua, exige procurar entre os nós ainda não escolhidos.</p>
+</blockquote>
+<p>Na implementação básica apresentada pelo Kurose:</p>
+<div class="arithmatex">\[
+\boxed{
+O(V^2)
+}
+\]</div>
+<p>pois, a cada passo, é feita uma busca entre os nós restantes.</p>
+<p>Com estruturas de dados mais adequadas, como uma fila de prioridade/heap, a implementação pode ser melhorada.</p>
+<p>Uma forma usual de expressar essa complexidade é:</p>
+<div class="arithmatex">\[
+\boxed{
+O((V+E)\log V)
+}
+\]</div>
+<p>e, para grafos conectados, frequentemente:</p>
+<div class="arithmatex">\[
+O(E\log V).
+\]</div>
+<blockquote>
+<p><strong>Observação:</strong> na anotação aparece uma simplificação levando a algo como <span class="arithmatex">\(O(n\log n)\)</span>. A complexidade exata depende da estrutura de dados e da representação do grafo. O Kurose afirma explicitamente <span class="arithmatex">\(O(V^2)\)</span> para a implementação básica.</p>
+</blockquote>
+<hr />
+<h1 id="distance-vector-proximo-topico">Distance Vector — próximo tópico</h1>
+<p>A aula termina indicando a continuação com:</p>
+<blockquote>
+<p><strong>Distance Vector — Equação de Bellman-Ford</strong></p>
+</blockquote>
+<p>A relação central será:</p>
+<div class="arithmatex">\[
+\boxed{
+D_x(y)
+=
+\min_{v\in N(x)}
+\left\{
+c(x,v)+D_v(y)
+\right\}
+}
+\]</div>
+<p>A diferença fundamental em relação ao Link State será que cada nó:</p>
+<ul>
+<li>não terá a visão completa da rede;</li>
+<li>trocará informações apenas com seus vizinhos;</li>
+<li>atualizará iterativamente suas estimativas.</li>
+</ul>
+<hr />
+<h2 id="resumo">Resumo</h2>
+<p>Os principais tópicos desta aula foram:</p>
+<ul>
+<li>continuação do Capítulo 5;</li>
+<li>comparação Dijkstra × Bellman-Ford;</li>
+<li>Link State × Distance Vector;</li>
+<li>paradigma guloso × programação dinâmica;</li>
+<li>visão global × distribuída;</li>
+<li>arquitetura clássica × SDN no plano de controle;</li>
+<li>custos de enlace;</li>
+<li><span class="arithmatex">\(D(v)\)</span>;</li>
+<li><span class="arithmatex">\(p(v)\)</span>;</li>
+<li><span class="arithmatex">\(N'\)</span>;</li>
+<li>atualização de Dijkstra:</li>
+</ul>
+<div class="arithmatex">\[
+D(v)
+=
+\min\{D(v),D(w)+c(w,v)\};
+\]</div>
+<ul>
+<li>equação de Bellman-Ford:</li>
+</ul>
+<div class="arithmatex">\[
+D_x(y)
+=
+\min_v\{c(x,v)+D_v(y)\};
+\]</div>
+<ul>
+<li>exemplo completo do algoritmo de Dijkstra;</li>
+<li>justificativa intuitiva do algoritmo;</li>
+<li>complexidade:</li>
+<li>implementação básica: <span class="arithmatex">\(O(V^2)\)</span>;</li>
+<li>implementação com heap: melhor desempenho;</li>
+<li>introdução à continuação com Distance Vector.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula22/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 22 | 06/11/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 22 | 06/11/2026
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Aula24/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 24 | 13/11/2026">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 24 | 13/11/2026
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>

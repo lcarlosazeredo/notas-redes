@@ -1,0 +1,2578 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula17/">
+      
+      
+        <link rel="next" href="../Aula19/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 18 | 21/10/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-18-21102026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 18 | 21/10/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 14 | 30/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 15 | 02/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 | 14/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 17 | 16/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 18 | 21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 18 | 21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-3-camada-de-transporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 3 — Camada de Transporte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capítulo 3 — Camada de Transporte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retomada-da-aula-anterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retomada da aula anterior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aula-de-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aula de hoje
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#throughput-e-goodput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput e Goodput
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Throughput e Goodput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goodput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goodput
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-o-tcp-implementa-controle-de-congestionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como o TCP implementa controle de congestionamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controle-reativo-e-preditivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle reativo e preditivo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Controle reativo e preditivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controle-reativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle reativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controle-preditivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle preditivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additive-increase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additive Increase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplicative-decrease" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiplicative Decrease
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relacao-entre-cwnd-rtt-e-taxa-do-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relação entre cwnd, RTT e taxa do TCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slow-start-threshold-ssthresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow Start Threshold — ssthresh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slow-start-congestion-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow Start × Congestion Avoidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eventos-de-perda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eventos de perda
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eventos de perda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tres-acks-duplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Três ACKs duplicados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maquina-de-estados-simplificada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Máquina de estados simplificada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aimd-e-comportamento-em-dente-de-serra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AIMD e comportamento em dente de serra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lei-da-raiz-quadrada-do-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lei da raiz quadrada do TCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lei da raiz quadrada do TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numero-de-pacotes-enviados-em-um-ciclo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Número de pacotes enviados em um ciclo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilidade-de-perda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probabilidade de perda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throughput-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput médio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP CUBIC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP CUBIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ideia-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ideia principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-bbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP BBR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparacao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparação geral
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 19 | 23/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 20 | 28/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 21 | 04/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 22 | 06/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 23 | 11/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 24 | 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-3-camada-de-transporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 3 — Camada de Transporte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capítulo 3 — Camada de Transporte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retomada-da-aula-anterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retomada da aula anterior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aula-de-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aula de hoje
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#throughput-e-goodput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput e Goodput
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Throughput e Goodput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goodput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goodput
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-o-tcp-implementa-controle-de-congestionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como o TCP implementa controle de congestionamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controle-reativo-e-preditivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle reativo e preditivo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Controle reativo e preditivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controle-reativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle reativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controle-preditivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controle preditivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additive-increase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additive Increase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplicative-decrease" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiplicative Decrease
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relacao-entre-cwnd-rtt-e-taxa-do-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relação entre cwnd, RTT e taxa do TCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slow-start-threshold-ssthresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow Start Threshold — ssthresh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slow-start-congestion-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow Start × Congestion Avoidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eventos-de-perda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eventos de perda
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eventos de perda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tres-acks-duplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Três ACKs duplicados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maquina-de-estados-simplificada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Máquina de estados simplificada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aimd-e-comportamento-em-dente-de-serra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AIMD e comportamento em dente de serra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lei-da-raiz-quadrada-do-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lei da raiz quadrada do TCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lei da raiz quadrada do TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numero-de-pacotes-enviados-em-um-ciclo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Número de pacotes enviados em um ciclo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilidade-de-perda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probabilidade de perda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throughput-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Throughput médio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP CUBIC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP CUBIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ideia-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ideia principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-bbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP BBR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparacao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparação geral
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-18-21102026">Aula 18 — 21/10/2026</h1>
+<blockquote>
+<p><strong>Base principal:</strong> anotações manuscritas da aula.<br />
+<strong>Complementos:</strong> <em>Computer Networking: A Top-Down Approach</em>, 8ª ed., Kurose &amp; Ross, principalmente Seção 3.7 — <strong>TCP Congestion Control</strong>.<br />
+Quando o livro completa ou esclarece uma anotação feita de forma abreviada em sala, a referência é indicada.</p>
+</blockquote>
+<h2 id="capitulo-3-camada-de-transporte">Capítulo 3 — Camada de Transporte</h2>
+<h3 id="retomada-da-aula-anterior">Retomada da aula anterior</h3>
+<p>Na aula anterior foram discutidos os <strong>princípios do controle de congestionamento</strong>.</p>
+<p>Foram analisados três cenários:</p>
+<ul>
+<li><strong>Cenário 1:</strong> uma fila com buffer infinito;</li>
+<li><strong>Cenário 2:</strong> uma fila com buffer finito;</li>
+<li>caso ideal, com conhecimento instantâneo do estado do sistema;</li>
+<li>caso com retransmissões e conhecimento atrasado do estado do sistema;</li>
+<li><strong>Cenário 3:</strong> múltiplas filas/caminhos, podendo ocorrer <strong>congestion collapse</strong>.</li>
+</ul>
+<h3 id="aula-de-hoje">Aula de hoje</h3>
+<p>O foco desta aula é:</p>
+<blockquote>
+<p><strong>Como o TCP implementa, na prática, o controle de congestionamento.</strong></p>
+</blockquote>
+<p>Os principais mecanismos trabalhados são:</p>
+<ul>
+<li>AIMD;</li>
+<li>Slow Start;</li>
+<li>Congestion Avoidance;</li>
+<li>Fast Recovery;</li>
+<li>TCP CUBIC;</li>
+<li>relação entre perda e throughput;</li>
+<li>menção ao TCP BBR.</li>
+</ul>
+<hr />
+<h2 id="throughput-e-goodput">Throughput e Goodput</h2>
+<p>Nas anotações aparecem duas medidas relacionadas ao desempenho.</p>
+<h3 id="throughput">Throughput</h3>
+<p>O <strong>throughput</strong> considera a taxa total de dados/pacotes efetivamente transportados.</p>
+<h3 id="goodput">Goodput</h3>
+<p>O <strong>goodput</strong> busca considerar apenas os dados úteis entregues, desconsiderando retransmissões.</p>
+<p>Assim, retransmitir um pacote pode consumir capacidade da rede sem aumentar o goodput.</p>
+<p>De forma conceitual:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Goodput}
+\leq
+\text{Throughput}
+}
+\]</div>
+<p>Quando há muitas retransmissões, a diferença entre essas duas medidas aumenta.</p>
+<hr />
+<h2 id="como-o-tcp-implementa-controle-de-congestionamento">Como o TCP implementa controle de congestionamento</h2>
+<p>A estratégia clássica estudada é:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{AIMD}
+=
+\text{Additive Increase}
++
+\text{Multiplicative Decrease}
+}
+\]</div>
+<p>O TCP tenta descobrir a capacidade disponível da rede aumentando gradualmente sua taxa.</p>
+<p>Quando detecta congestionamento, reduz sua janela.</p>
+<p>Isso produz o comportamento em <strong>dente de serra</strong> (<em>sawtooth</em>) desenhado em aula.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, p. 271, Figura 3.53.</p>
+<hr />
+<h2 id="controle-reativo-e-preditivo">Controle reativo e preditivo</h2>
+<p>As anotações distinguem duas ideias.</p>
+<h3 id="controle-reativo">Controle reativo</h3>
+<p>No controle reativo:</p>
+<ol>
+<li>ocorre algum sinal de problema;</li>
+<li>o protocolo reage;</li>
+<li>a taxa/janela é corrigida.</li>
+</ol>
+<p>O AIMD clássico do TCP é essencialmente reativo:</p>
+<ul>
+<li>ACKs indicam que a rede está conseguindo entregar dados;</li>
+<li>perdas indicam possível congestionamento.</li>
+</ul>
+<h3 id="controle-preditivo">Controle preditivo</h3>
+<p>Também foi discutida a ideia de antecipar o problema antes que a perda ocorra.</p>
+<p>Nas anotações, o <strong>BBR</strong> aparece associado a essa visão mais preditiva/modelada.</p>
+<blockquote>
+<p><strong>Observação:</strong> “preditivo” é a forma como essa comparação aparece nas anotações de aula. O Kurose apresenta BBR junto aos mecanismos de congestionamento baseados em atraso e modelagem da rede.</p>
+</blockquote>
+<hr />
+<h2 id="additive-increase">Additive Increase</h2>
+<p>Na fase de <strong>Congestion Avoidance</strong>, o TCP aumenta a janela de congestionamento de forma aproximadamente linear.</p>
+<p>Se:</p>
+<div class="arithmatex">\[
+cwnd
+\]</div>
+<p>é a janela de congestionamento, então o objetivo é aumentar aproximadamente:</p>
+<div class="arithmatex">\[
+\boxed{
+1\ MSS
+}
+\]</div>
+<p>a cada RTT.</p>
+<p>Uma implementação possível é aumentar, a cada ACK:</p>
+<div class="arithmatex">\[
+cwnd
+\leftarrow
+cwnd
++
+MSS\left(\frac{MSS}{cwnd}\right).
+\]</div>
+<p>Após aproximadamente uma janela inteira de ACKs, o aumento acumulado é próximo de:</p>
+<div class="arithmatex">\[
+1\ MSS.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Additive Increase}
+\Rightarrow
+cwnd \text{ cresce linearmente}
+}
+\]</div>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, pp. 267–268.</p>
+<hr />
+<h2 id="multiplicative-decrease">Multiplicative Decrease</h2>
+<p>Quando ocorre um evento de perda associado a <strong>três ACKs duplicados</strong>, o TCP reduz significativamente sua janela.</p>
+<p>Na interpretação simplificada do AIMD:</p>
+<div class="arithmatex">\[
+\boxed{
+cwnd
+\leftarrow
+\frac{cwnd}{2}
+}
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Multiplicative Decrease}
+\Rightarrow
+\text{janela reduzida aproximadamente pela metade}
+}
+\]</div>
+<p>Depois disso, o crescimento linear recomeça.</p>
+<p>Esse processo gera a curva em dente de serra:</p>
+<div class="highlight"><pre><span></span><code>cwnd
+ ^
+ |        /|        /|        /|
+ |       / |       / |       / |
+ |      /  |      /  |      /  |
+ |_____/   |_____/   |_____/   |____&gt; tempo
+</code></pre></div>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, p. 271.</p>
+<hr />
+<h2 id="relacao-entre-cwnd-rtt-e-taxa-do-tcp">Relação entre <code>cwnd</code>, RTT e taxa do TCP</h2>
+<p>A taxa de envio do TCP pode ser aproximada por:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{TCP rate}
+\approx
+\frac{cwnd}{RTT}
+}
+\]</div>
+<p>Portanto:</p>
+<ul>
+<li>aumentar <code>cwnd</code> aumenta a taxa;</li>
+<li>diminuir <code>cwnd</code> reduz a taxa;</li>
+<li>para uma mesma janela, um RTT maior reduz a taxa.</li>
+</ul>
+<p>Essa relação é fundamental para entender o controle de congestionamento.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, pp. 264–265.</p>
+<hr />
+<h2 id="slow-start">Slow Start</h2>
+<p>Apesar do nome, <strong>Slow Start</strong> faz a janela crescer rapidamente.</p>
+<p>No início:</p>
+<div class="arithmatex">\[
+cwnd
+\]</div>
+<p>possui um valor pequeno.</p>
+<p>A cada novo ACK:</p>
+<div class="arithmatex">\[
+\boxed{
+cwnd
+\leftarrow
+cwnd + MSS
+}
+\]</div>
+<p>Como cada segmento confirmado permite o envio de mais dados, o efeito agregado é aproximadamente:</p>
+<div class="arithmatex">\[
+\boxed{
+cwnd \text{ dobra a cada RTT}
+}
+\]</div>
+<p>Portanto, o crescimento é aproximadamente <strong>exponencial</strong>.</p>
+<p>Exemplo conceitual:</p>
+<div class="arithmatex">\[
+1
+\rightarrow
+2
+\rightarrow
+4
+\rightarrow
+8
+\rightarrow
+16
+\rightarrow
+\cdots
+\]</div>
+<p>em unidades de MSS.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, pp. 266–267.</p>
+<hr />
+<h2 id="slow-start-threshold-ssthresh">Slow Start Threshold — <code>ssthresh</code></h2>
+<p>O TCP utiliza a variável:</p>
+<div class="arithmatex">\[
+ssthresh
+\]</div>
+<p>(<em>slow start threshold</em>).</p>
+<p>Ela determina quando o crescimento exponencial do Slow Start deve dar lugar ao crescimento linear do Congestion Avoidance.</p>
+<p>De forma simplificada:</p>
+<ul>
+<li>se:</li>
+</ul>
+<div class="arithmatex">\[
+cwnd&lt;ssthresh,
+\]</div>
+<p>o TCP permanece em <strong>Slow Start</strong>;</p>
+<ul>
+<li>quando:</li>
+</ul>
+<div class="arithmatex">\[
+cwnd\geq ssthresh,
+\]</div>
+<p>o TCP passa para <strong>Congestion Avoidance</strong>.</p>
+<p>Quando ocorre perda, o valor de <code>ssthresh</code> é ajustado em função da janela existente no momento do congestionamento.</p>
+<p>Tipicamente:</p>
+<div class="arithmatex">\[
+\boxed{
+ssthresh
+\leftarrow
+\frac{cwnd}{2}
+}
+\]</div>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, p. 267.</p>
+<hr />
+<h2 id="slow-start-congestion-avoidance">Slow Start × Congestion Avoidance</h2>
+<p>A comparação feita em aula pode ser organizada da seguinte forma:</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Slow Start</th>
+<th>Congestion Avoidance / AIMD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crescimento</td>
+<td>Exponencial</td>
+<td>Linear</td>
+</tr>
+<tr>
+<td>Atualização</td>
+<td><code>cwnd += MSS</code> por ACK</td>
+<td>aumento total de aproximadamente <code>1 MSS</code> por RTT</td>
+</tr>
+<tr>
+<td>Comportamento por RTT</td>
+<td>aproximadamente dobra</td>
+<td>aumenta aproximadamente <code>1 MSS</code></td>
+</tr>
+<tr>
+<td>Uso</td>
+<td>início da conexão ou após timeout</td>
+<td>após atingir <code>ssthresh</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="eventos-de-perda">Eventos de perda</h2>
+<p>O comportamento do TCP depende do modo como a perda é detectada.</p>
+<h3 id="timeout">Timeout</h3>
+<p>Quando ocorre um timeout, o TCP interpreta o evento como um sinal mais severo de congestionamento.</p>
+<p>No TCP descrito pelo Kurose:</p>
+<div class="arithmatex">\[
+ssthresh
+\leftarrow
+\frac{cwnd}{2}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+cwnd
+\leftarrow
+1\ MSS
+}
+\]</div>
+<p>O TCP volta então ao <strong>Slow Start</strong>.</p>
+<h3 id="tres-acks-duplicados">Três ACKs duplicados</h3>
+<p>Quando são recebidos três ACKs duplicados, ainda há evidência de que dados estão atravessando a rede.</p>
+<p>Por isso, a reação pode ser menos agressiva.</p>
+<p>No TCP Reno, ocorre:</p>
+<ul>
+<li><strong>Fast Retransmit</strong>;</li>
+<li>redução da janela;</li>
+<li>entrada em <strong>Fast Recovery</strong>.</li>
+</ul>
+<p>A ideia geral usada no AIMD continua sendo:</p>
+<div class="arithmatex">\[
+cwnd
+\approx
+\frac{cwnd}{2}.
+\]</div>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, pp. 267–270, Figura 3.51.</p>
+<hr />
+<h2 id="maquina-de-estados-simplificada">Máquina de estados simplificada</h2>
+<p>A dinâmica trabalhada em aula pode ser representada assim:</p>
+<div class="highlight"><pre><span></span><code>                         cwnd &gt;= ssthresh
+      +------------+ --------------------------&gt; +----------------------+
+      | Slow Start |                             | Congestion Avoidance |
+      +------------+ &lt;-------------------------- +----------------------+
+            |                 timeout                      |
+            |                                              |
+            |  3 ACKs duplicados                           | 3 ACKs duplicados
+            v                                              v
+                    +------------------+
+                    |  Fast Recovery   |
+                    +------------------+
+</code></pre></div>
+<p>No TCP Reno:</p>
+<ul>
+<li><strong>timeout</strong>:</li>
+<li><code>ssthresh = cwnd/2</code>;</li>
+<li><code>cwnd = 1 MSS</code>;</li>
+<li>
+<p>volta ao Slow Start;</p>
+</li>
+<li>
+<p><strong>três ACKs duplicados</strong>:</p>
+</li>
+<li>ocorre Fast Retransmit;</li>
+<li><code>ssthresh</code> é reduzido;</li>
+<li>entra em Fast Recovery.</li>
+</ul>
+<hr />
+<h2 id="aimd-e-comportamento-em-dente-de-serra">AIMD e comportamento em dente de serra</h2>
+<p>Desconsiderando temporariamente o Slow Start, o comportamento em regime do TCP Reno pode ser aproximado por:</p>
+<ol>
+<li>crescimento linear da janela;</li>
+<li>ocorrência de perda;</li>
+<li>redução da janela pela metade;</li>
+<li>novo crescimento linear.</li>
+</ol>
+<p>Se <span class="arithmatex">\(W\)</span> é o tamanho máximo da janela imediatamente antes de uma perda, então ela varia aproximadamente entre:</p>
+<div class="arithmatex">\[
+\frac{W}{2}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+W.
+\]</div>
+<p>O valor médio é:</p>
+<div class="arithmatex">\[
+\boxed{
+\bar W
+=
+\frac{
+W/2+W
+}{2}
+=
+\frac{3W}{4}
+}
+\]</div>
+<p>Assim, a taxa média aproximada é:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Throughput médio}
+\approx
+\frac{3W}{4RTT}
+}
+\]</div>
+<p>se <span class="arithmatex">\(W\)</span> estiver medido em bytes.</p>
+<p>Se <span class="arithmatex">\(W\)</span> estiver medido em segmentos:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Throughput médio}
+\approx
+\frac{3W}{4}
+\frac{MSS}{RTT}
+}
+\]</div>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, p. 273.</p>
+<hr />
+<h2 id="lei-da-raiz-quadrada-do-tcp">Lei da raiz quadrada do TCP</h2>
+<p>A aula deriva a relação entre:</p>
+<ul>
+<li>probabilidade de perda;</li>
+<li>tamanho máximo da janela;</li>
+<li>throughput médio do TCP.</li>
+</ul>
+<p>Considere um ciclo AIMD em que a janela cresce de:</p>
+<div class="arithmatex">\[
+\frac{W}{2}
+\]</div>
+<p>até:</p>
+<div class="arithmatex">\[
+W.
+\]</div>
+<p>Assuma aproximadamente <strong>uma perda por ciclo</strong>.</p>
+<h3 id="numero-de-pacotes-enviados-em-um-ciclo">Número de pacotes enviados em um ciclo</h3>
+<p>O número de pacotes enviados pode ser aproximado pela soma:</p>
+<div class="arithmatex">\[
+N_{\text{ciclo}}
+=
+\frac{W}{2}
++
+\left(\frac{W}{2}+1\right)
++
+\cdots
++
+W.
+\]</div>
+<p>Essa é uma progressão aritmética.</p>
+<p>O número de termos é:</p>
+<div class="arithmatex">\[
+\frac{W}{2}+1.
+\]</div>
+<p>A média entre o primeiro e o último termo é:</p>
+<div class="arithmatex">\[
+\frac{
+W/2+W
+}{2}
+=
+\frac{3W}{4}.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+N_{\text{ciclo}}
+=
+\frac{3W}{4}
+\left(
+\frac{W}{2}+1
+\right).
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+N_{\text{ciclo}}
+=
+\frac{3W^2}{8}
++
+\frac{3W}{4}
+}
+\]</div>
+<h3 id="probabilidade-de-perda">Probabilidade de perda</h3>
+<p>Se ocorre aproximadamente uma perda por ciclo:</p>
+<div class="arithmatex">\[
+p
+=
+\frac{1}{N_{\text{ciclo}}}.
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+p
+=
+\frac{1}{
+\dfrac{3W^2}{8}
++
+\dfrac{3W}{4}
+}
+}
+\]</div>
+<p>Para <span class="arithmatex">\(W\)</span> grande, o termo quadrático domina:</p>
+<div class="arithmatex">\[
+p
+\approx
+\frac{8}{3W^2}.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+W^2
+\approx
+\frac{8}{3p}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+W
+\approx
+\sqrt{
+\frac{8}{3p}
+}
+}
+\]</div>
+<h3 id="throughput-medio">Throughput médio</h3>
+<p>Como:</p>
+<div class="arithmatex">\[
+\bar W
+\approx
+\frac{3W}{4},
+\]</div>
+<p>temos:</p>
+<div class="arithmatex">\[
+\text{Throughput}
+\approx
+\frac{3}{4}
+\sqrt{
+\frac{8}{3p}
+}
+\frac{MSS}{RTT}.
+\]</div>
+<p>Simplificando a constante:</p>
+<div class="arithmatex">\[
+\frac{3}{4}
+\sqrt{
+\frac{8}{3}
+}
+\approx
+1{,}22.
+\]</div>
+<p>Logo:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Throughput TCP}
+\approx
+\frac{
+1{,}22\cdot MSS
+}{
+RTT\sqrt{p}
+}
+}
+\]</div>
+<p>Essa é a chamada <strong>lei da raiz quadrada</strong>.</p>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Throughput}
+\propto
+\frac{1}{\sqrt{p}}
+}
+\]</div>
+<p>e também:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Throughput}
+\propto
+\frac{1}{RTT}
+}
+\]</div>
+<p>Ou seja:</p>
+<ul>
+<li>aumentar a probabilidade de perda reduz o throughput;</li>
+<li>aumentar o RTT reduz o throughput.</li>
+</ul>
+<p><strong>Referência:</strong> a descrição macroscópica está em Kurose &amp; Ross, 8ª ed., Seção 3.7.1, p. 273. A derivação da constante <span class="arithmatex">\(1{,}22\)</span> aparece no Problema P47, pp. 296–297.</p>
+<hr />
+<h2 id="tcp-cubic">TCP CUBIC</h2>
+<p>O TCP Reno utiliza crescimento linear durante Congestion Avoidance.</p>
+<p>A anotação da aula introduz o <strong>TCP CUBIC</strong> como uma alternativa.</p>
+<p>O CUBIC tenta retornar rapidamente para uma taxa próxima daquela existente antes da última perda.</p>
+<p>Defina:</p>
+<div class="arithmatex">\[
+W_{\max}
+\]</div>
+<p>como o tamanho da janela quando ocorreu a última perda.</p>
+<p>O CUBIC define também um instante futuro:</p>
+<div class="arithmatex">\[
+K
+\]</div>
+<p>no qual a janela deve voltar aproximadamente a <span class="arithmatex">\(W_{\max}\)</span>, caso não aconteça outra perda.</p>
+<h3 id="ideia-principal">Ideia principal</h3>
+<p>A janela cresce de acordo com uma função cúbica da distância entre o instante atual e <span class="arithmatex">\(K\)</span>.</p>
+<p>Com isso:</p>
+<ul>
+<li>longe de <span class="arithmatex">\(K\)</span>, o crescimento é mais rápido;</li>
+<li>próximo de <span class="arithmatex">\(K\)</span>, o crescimento desacelera;</li>
+<li>depois de ultrapassar <span class="arithmatex">\(K\)</span>, o protocolo volta a explorar de forma mais agressiva a possibilidade de existir banda adicional.</li>
+</ul>
+<p>De forma qualitativa:</p>
+<div class="highlight"><pre><span></span><code>cwnd
+ ^
+ |                         /
+ |                    ____/
+ |               ____/
+ |          ____/
+ |_________/______________________&gt; tempo
+            K
+            |
+          Wmax
+</code></pre></div>
+<p>O objetivo é passar mais tempo próximo da capacidade disponível, em vez de reduzir pela metade e retornar lentamente de forma linear.</p>
+<p>O Kurose também observa que o TCP CUBIC é amplamente utilizado e é o TCP padrão em sistemas Linux discutidos na edição do livro.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.1, pp. 271–273, Figura 3.54.</p>
+<hr />
+<h2 id="tcp-bbr">TCP BBR</h2>
+<p>Nas anotações aparece também:</p>
+<p><strong>TCP BBR</strong>.</p>
+<p>A ideia registrada em aula é ajustar a taxa/janela de acordo com estimativas sobre o caminho, procurando evitar que seja necessário esperar uma perda para reagir.</p>
+<p>Também foi anotada a relação com o <strong>produto delay-banda</strong>.</p>
+<p>O produto delay-banda é:</p>
+<div class="arithmatex">\[
+\boxed{
+BDP
+=
+\text{bandwidth}
+\times
+RTT
+}
+\]</div>
+<p>Ele representa aproximadamente a quantidade de dados necessária para manter o caminho cheio sem acumular uma fila desnecessariamente grande.</p>
+<p>Assim, idealmente, busca-se uma quantidade de dados em trânsito compatível com a capacidade do caminho.</p>
+<p>O Kurose apresenta o BBR junto aos protocolos inspirados em controle baseado em atraso e destaca a ideia de:</p>
+<blockquote>
+<p>manter o “pipe” cheio, mas não mais cheio do que o necessário.</p>
+</blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.2, pp. 275–276.</p>
+<hr />
+<h2 id="comparacao-geral">Comparação geral</h2>
+<table>
+<thead>
+<tr>
+<th>Mecanismo</th>
+<th>Ideia principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Slow Start</strong></td>
+<td>crescimento exponencial inicial</td>
+</tr>
+<tr>
+<td><strong>AIMD / Reno</strong></td>
+<td>crescimento linear e redução multiplicativa</td>
+</tr>
+<tr>
+<td><strong>CUBIC</strong></td>
+<td>crescimento cúbico em torno da janela anterior à perda</td>
+</tr>
+<tr>
+<td><strong>BBR</strong></td>
+<td>utilização de estimativas do caminho para controlar a taxa</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="resumo">Resumo</h2>
+<p>Os principais tópicos desta aula foram:</p>
+<ul>
+<li>continuação do controle de congestionamento;</li>
+<li>implementação prática no TCP;</li>
+<li>throughput e goodput;</li>
+<li>AIMD;</li>
+<li><strong>Additive Increase</strong>;</li>
+<li><strong>Multiplicative Decrease</strong>;</li>
+<li>comportamento em dente de serra;</li>
+<li>relação:</li>
+</ul>
+<div class="arithmatex">\[
+\text{TCP rate}
+\approx
+\frac{cwnd}{RTT};
+\]</div>
+<ul>
+<li>Slow Start;</li>
+<li><code>ssthresh</code>;</li>
+<li>Congestion Avoidance;</li>
+<li>timeout e três ACKs duplicados;</li>
+<li>Fast Recovery;</li>
+<li>janela média aproximada:</li>
+</ul>
+<div class="arithmatex">\[
+\bar W\approx\frac{3W}{4};
+\]</div>
+<ul>
+<li>lei da raiz quadrada:</li>
+</ul>
+<div class="arithmatex">\[
+\text{Throughput}
+\approx
+\frac{
+1{,}22\cdot MSS
+}{
+RTT\sqrt{p}
+};
+\]</div>
+<ul>
+<li>TCP CUBIC;</li>
+<li><span class="arithmatex">\(W_{\max}\)</span> e crescimento cúbico;</li>
+<li>TCP BBR;</li>
+<li>produto delay-banda.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula17/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 17 | 16/10/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 17 | 16/10/2026
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Aula19/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 19 | 23/10/2026">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 19 | 23/10/2026
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>

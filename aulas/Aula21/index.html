@@ -1,0 +1,2483 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula20/">
+      
+      
+        <link rel="next" href="../Aula22/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 21 | 04/11/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-21-04112026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 21 | 04/11/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 14 | 30/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 15 | 02/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 | 14/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 17 | 16/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 18 | 21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 19 | 23/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 20 | 28/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 21 | 04/11/2026
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 21 | 04/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#anotacao-inicial-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anotação inicial — revisão
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-datagram-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP Datagram Format
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IP Datagram Format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ECN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP + TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fragmentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fragmentação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-checksum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header Checksum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#campo-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campo Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enderecamento-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endereçamento IPv4
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endereçamento IPv4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-possuem-enderecos-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces possuem endereços IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-rede" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-rede
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enderecamento-por-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endereçamento por classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarquia-de-enderecamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarquia de endereçamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perguntas-anotadas-para-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perguntas anotadas para revisão
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perguntas anotadas para revisão">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-qual-e-o-header-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q1 — Qual é o header IP?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-o-que-e-uma-sub-rede" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q2 — O que é uma sub-rede?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-como-obter-um-endereco-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3 — Como obter um endereço IP?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-utiliza-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP utiliza UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-dhcp-precisa-de-broadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o DHCP precisa de broadcast?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflito-de-enderecos-e-negacao-de-servico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conflito de endereços e negação de serviço
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escassez-de-enderecos-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escassez de endereços IPv4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nat-network-address-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAT — Network Address Translation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NAT — Network Address Translation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapeamento-por-portas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento por portas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-portas-sao-necessarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que portas são necessárias?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-de-servidores-atras-de-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema de servidores atrás de NAT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problema de servidores atrás de NAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solucao-1-servidor-no-proprio-roteadornat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução 1 — servidor no próprio roteador/NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucao-2-configurar-a-tabela-do-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução 2 — configurar a tabela do NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucao-3-nat-traversal-hole-punching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução 3 — NAT traversal / hole punching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-topico-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo tópico — IPv6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 22 | 06/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 23 | 11/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 24 | 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#anotacao-inicial-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anotação inicial — revisão
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-datagram-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP Datagram Format
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IP Datagram Format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ECN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP + TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fragmentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fragmentação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-checksum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header Checksum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#campo-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campo Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enderecamento-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endereçamento IPv4
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endereçamento IPv4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-possuem-enderecos-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces possuem endereços IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-rede" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-rede
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enderecamento-por-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endereçamento por classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarquia-de-enderecamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarquia de endereçamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perguntas-anotadas-para-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perguntas anotadas para revisão
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perguntas anotadas para revisão">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-qual-e-o-header-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q1 — Qual é o header IP?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-o-que-e-uma-sub-rede" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q2 — O que é uma sub-rede?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-como-obter-um-endereco-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3 — Como obter um endereço IP?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-utiliza-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP utiliza UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-dhcp-precisa-de-broadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o DHCP precisa de broadcast?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflito-de-enderecos-e-negacao-de-servico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conflito de endereços e negação de serviço
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escassez-de-enderecos-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escassez de endereços IPv4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nat-network-address-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAT — Network Address Translation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NAT — Network Address Translation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapeamento-por-portas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento por portas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-portas-sao-necessarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que portas são necessárias?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-de-servidores-atras-de-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema de servidores atrás de NAT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problema de servidores atrás de NAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solucao-1-servidor-no-proprio-roteadornat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução 1 — servidor no próprio roteador/NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucao-2-configurar-a-tabela-do-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução 2 — configurar a tabela do NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucao-3-nat-traversal-hole-punching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução 3 — NAT traversal / hole punching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-topico-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo tópico — IPv6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-21-04112026">Aula 21 — 04/11/2026</h1>
+<blockquote>
+<p><strong>Base principal:</strong> anotações manuscritas da aula.<br />
+<strong>Complementos:</strong> <em>Computer Networking: A Top-Down Approach</em>, 8ª ed., Kurose &amp; Ross, principalmente Capítulo 4, Seções 4.3.1–4.3.4.<br />
+Os complementos abaixo servem apenas para esclarecer os tópicos efetivamente trabalhados em sala.</p>
+</blockquote>
+<h2 id="anotacao-inicial-revisao">Anotação inicial — revisão</h2>
+<p>No início da página há um esquema temporal relacionado a uma questão/revisão.</p>
+<p>O desenho apresenta duas situações em instantes diferentes e uma expressão de tempo, mas essa fórmula não está legível o suficiente para ser transcrita com segurança.</p>
+<p>Também aparecem anotações de organização/revisão:</p>
+<ol>
+<li>revisão de questões/prova;</li>
+<li>trabalho envolvendo <strong>AIMD</strong>;</li>
+<li>lista de exercícios dos Capítulos 3 e 4.</li>
+</ol>
+<hr />
+<h2 id="ip-datagram-format">IP Datagram Format</h2>
+<p>A aula retoma o formato do datagrama IP e alguns campos importantes do cabeçalho IPv4.</p>
+<h3 id="ecn">ECN</h3>
+<p>O <strong>ECN — Explicit Congestion Notification</strong> utiliza bits do cabeçalho IP para permitir sinalização explícita de congestionamento.</p>
+<p>A ideia é permitir que um roteador indique congestionamento sem necessariamente descartar o pacote.</p>
+<p>O mecanismo envolve:</p>
+<ul>
+<li>IP;</li>
+<li>TCP;</li>
+<li>remetente;</li>
+<li>receptor;</li>
+<li>roteadores intermediários.</li>
+</ul>
+<p>De maneira simplificada:</p>
+<div class="highlight"><pre><span></span><code>Sender
+  |
+  | IP
+  v
+Router
+  |
+  | marca ECN
+  v
+Receiver
+  |
+  | TCP ACK
+  v
+Sender
+</code></pre></div>
+<p>Assim, informações presentes no cabeçalho IP podem ser utilizadas em conjunto com o TCP para sinalizar congestionamento.</p>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 3.7.2 e Seção 4.3.1.</p>
+</blockquote>
+<hr />
+<h3 id="ip-tcp">IP + TCP</h3>
+<p>Nas anotações aparece novamente a relação entre IP e TCP.</p>
+<p>O IP fornece comunicação entre hosts:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{host}
+\longleftrightarrow
+\text{host}
+}
+\]</div>
+<p>O TCP utiliza o serviço do IP para oferecer comunicação confiável entre processos.</p>
+<p>Uma representação simplificada é:</p>
+<div class="highlight"><pre><span></span><code>Aplicação
+   |
+  TCP
+   |
+   IP
+   |
+Rede
+</code></pre></div>
+<p><strong>Campos que precisam ser verificados.</strong></p>
+<p>A anotação destaca que alguns campos do cabeçalho precisam ser modificados ou verificados ao longo do caminho.</p>
+<p>Um exemplo importante é o:</p>
+<p><strong>TTL — Time To Live</strong></p>
+<p>A cada roteador:</p>
+<div class="arithmatex">\[
+TTL \leftarrow TTL-1.
+\]</div>
+<p>Como o TTL muda, o <strong>header checksum do IPv4</strong> precisa ser recalculado.</p>
+<hr />
+<p><strong>MSS.</strong> e tamanho do datagrama</p>
+<p>Nas anotações aparece:</p>
+<blockquote>
+<p>MSS em geral é próximo de 1500 bytes.</p>
+</blockquote>
+<p>Aqui é importante fazer uma distinção.</p>
+<p><strong>MTU.</strong></p>
+<p>Um valor comum de <strong>MTU Ethernet</strong> é:</p>
+<div class="arithmatex">\[
+1500\text{ bytes}.
+\]</div>
+<p><strong>MSS.</strong></p>
+<p>O <strong>MSS — Maximum Segment Size</strong> é o tamanho máximo da parte de dados de um segmento TCP.</p>
+<p>Em uma Ethernet com MTU de 1500 bytes e cabeçalhos IPv4/TCP sem opções:</p>
+<div class="arithmatex">\[
+MSS
+=
+1500-20-20
+=
+1460\text{ bytes}.
+\]</div>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+MTU\approx1500\text{ bytes}
+}
+\]</div>
+<p>e, tipicamente:</p>
+<div class="arithmatex">\[
+\boxed{
+MSS\approx1460\text{ bytes}
+}
+\]</div>
+<blockquote>
+<p><strong>Correção:</strong> a anotação manuscrita associa 1500 bytes diretamente ao MSS. O valor de 1500 bytes corresponde mais naturalmente à MTU Ethernet; o MSS TCP típico nesse caso é 1460 bytes.</p>
+</blockquote>
+<hr />
+<h3 id="fragmentacao">Fragmentação</h3>
+<p>Nas anotações:</p>
+<blockquote>
+<p>em geral, não é fragmentado.</p>
+</blockquote>
+<p>A fragmentação ocorre quando um datagrama é maior que a MTU do enlace pelo qual precisa passar.</p>
+<p>No IPv4 existem campos associados à fragmentação:</p>
+<ul>
+<li>Identification;</li>
+<li>Flags;</li>
+<li>Fragment Offset.</li>
+</ul>
+<p>No destino, os fragmentos são reunidos novamente.</p>
+<p><strong>IPv6.</strong></p>
+<p>Nas anotações aparece:</p>
+<blockquote>
+<p>IPv6 removeu o suporte à fragmentação.</p>
+</blockquote>
+<p>A formulação mais precisa é:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{roteadores IPv6 não realizam fragmentação}
+}
+\]</div>
+<p>No IPv6, se um pacote for grande demais para o próximo enlace, o roteador o descarta e envia uma mensagem ICMPv6 <strong>Packet Too Big</strong>.</p>
+<p>A fragmentação, quando necessária, deve ser tratada pelos sistemas finais.</p>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.3.4.</p>
+</blockquote>
+<hr />
+<h3 id="header-checksum">Header Checksum</h3>
+<p>O IPv4 possui um <strong>header checksum</strong>.</p>
+<p>Sua função é detectar erros no cabeçalho IP.</p>
+<p>O checksum é calculado usando aritmética de complemento de 1.</p>
+<p>De maneira conceitual:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Header Checksum}
+\Rightarrow
+\text{detecção de erros no cabeçalho IPv4}
+}
+\]</div>
+<p>Como o TTL é alterado em cada roteador, o checksum precisa ser recalculado.</p>
+<p><strong>IPv6.</strong></p>
+<p>No IPv6, o header checksum foi removido.</p>
+<p>Isso reduz o trabalho realizado pelos roteadores intermediários.</p>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seções 4.3.1 e 4.3.4.</p>
+</blockquote>
+<hr />
+<h3 id="campo-protocol">Campo Protocol</h3>
+<p>O campo <strong>Protocol</strong> do IPv4 indica qual protocolo da camada superior deve receber o conteúdo do datagrama quando ele chega ao destino.</p>
+<p>Exemplos:</p>
+<ul>
+<li>TCP:</li>
+</ul>
+<div class="arithmatex">\[
+6
+\]</div>
+<ul>
+<li>UDP:</li>
+</ul>
+<div class="arithmatex">\[
+17
+\]</div>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Protocol}
+\Rightarrow
+\text{demultiplexação IP para o protocolo superior}
+}
+\]</div>
+<hr />
+<h3 id="options">Options</h3>
+<p>O IPv4 permite um campo de <strong>Options</strong>.</p>
+<p>Esse campo torna o cabeçalho variável e pode exigir processamento adicional pelos roteadores.</p>
+<p>Nas anotações aparece a ideia de que campos opcionais:</p>
+<ul>
+<li>tornam o processamento mais complexo;</li>
+<li>podem aumentar o tempo necessário em cada roteador.</li>
+</ul>
+<p>Por esse motivo, o cabeçalho básico do IPv6 foi simplificado.</p>
+<hr />
+<h2 id="enderecamento-ipv4">Endereçamento IPv4</h2>
+<h3 id="interfaces-possuem-enderecos-ip">Interfaces possuem endereços IP</h3>
+<p>Uma ideia importante é:</p>
+<blockquote>
+<p>um endereço IP é tecnicamente associado a uma <strong>interface</strong>, e não simplesmente ao dispositivo inteiro.</p>
+</blockquote>
+<p>Um host normalmente possui uma interface de rede principal.</p>
+<p>Um roteador possui várias interfaces e, consequentemente, pode possuir vários endereços IP.</p>
+<p>Assim:</p>
+<div class="highlight"><pre><span></span><code>Roteador
+
+Interface 1 -&gt; IP 1
+Interface 2 -&gt; IP 2
+Interface 3 -&gt; IP 3
+</code></pre></div>
+<hr />
+<h3 id="sub-rede">Sub-rede</h3>
+<p>Uma pergunta anotada foi:</p>
+<blockquote>
+<p><strong>O que é uma sub-rede?</strong></p>
+</blockquote>
+<p>De forma prática, podemos pensar em uma sub-rede como um conjunto de interfaces que podem alcançar umas às outras sem atravessar um roteador intermediário.</p>
+<p>Essas interfaces compartilham um mesmo prefixo de rede.</p>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{sub-rede}
+=
+\text{grupo de interfaces com prefixo comum}
+}
+\]</div>
+<hr />
+<h3 id="enderecamento-por-classes">Endereçamento por classes</h3>
+<p>Nas anotações aparecem as antigas classes:</p>
+<ul>
+<li>Classe A;</li>
+<li>Classe B;</li>
+<li>Classe C.</li>
+</ul>
+<p>Historicamente, os tamanhos básicos eram:</p>
+<ul>
+<li>Classe A:</li>
+</ul>
+<div class="arithmatex">\[
+/8
+\]</div>
+<ul>
+<li>Classe B:</li>
+</ul>
+<div class="arithmatex">\[
+/16
+\]</div>
+<ul>
+<li>Classe C:</li>
+</ul>
+<div class="arithmatex">\[
+/24
+\]</div>
+<p><strong>Observação importante.</strong></p>
+<p>Esse modelo é histórico.</p>
+<p>Hoje o endereçamento utiliza <strong>CIDR — Classless Inter-Domain Routing</strong>, com prefixos de tamanho variável.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>192.168.1.0/24
+10.10.0.0/16
+172.20.64.0/20
+</code></pre></div>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.3.2.</p>
+</blockquote>
+<hr />
+<h3 id="hierarquia-de-enderecamento">Hierarquia de endereçamento</h3>
+<p>As anotações destacam que os endereços precisam seguir uma estrutura hierárquica para permitir o funcionamento eficiente do roteamento.</p>
+<p>Isso permite agregar vários endereços em um único prefixo.</p>
+<p>Em vez de manter uma rota separada para cada host, um roteador pode manter:</p>
+<div class="highlight"><pre><span></span><code>prefixo -&gt; próximo salto
+</code></pre></div>
+<p>A agregação reduz o tamanho das tabelas de roteamento/forwarding.</p>
+<hr />
+<h2 id="perguntas-anotadas-para-revisao">Perguntas anotadas para revisão</h2>
+<p>Nas anotações aparecem perguntas como:</p>
+<h3 id="q1-qual-e-o-header-ip">Q1 — Qual é o header IP?</h3>
+<p>Revisar os campos do cabeçalho IPv4:</p>
+<ul>
+<li>Version;</li>
+<li>Header Length;</li>
+<li>Type of Service;</li>
+<li>Datagram Length;</li>
+<li>Identifier;</li>
+<li>Flags;</li>
+<li>Fragment Offset;</li>
+<li>TTL;</li>
+<li>Protocol;</li>
+<li>Header Checksum;</li>
+<li>Source IP;</li>
+<li>Destination IP;</li>
+<li>Options.</li>
+</ul>
+<h3 id="q2-o-que-e-uma-sub-rede">Q2 — O que é uma sub-rede?</h3>
+<p>Um conjunto de interfaces que compartilham um prefixo e podem se comunicar sem atravessar um roteador intermediário.</p>
+<h3 id="q3-como-obter-um-endereco-ip">Q3 — Como obter um endereço IP?</h3>
+<p>Uma das principais formas é por meio do:</p>
+<p><strong>DHCP — Dynamic Host Configuration Protocol</strong>.</p>
+<hr />
+<h2 id="dhcp">DHCP</h2>
+<p>O DHCP permite que um host obtenha automaticamente parâmetros de configuração da rede.</p>
+<p>Entre eles:</p>
+<ul>
+<li>endereço IP;</li>
+<li>máscara/prefixo da rede;</li>
+<li>gateway padrão;</li>
+<li>servidor DNS;</li>
+<li>tempo de concessão (<em>lease</em>).</li>
+</ul>
+<hr />
+<h4 id="dhcp-utiliza-udp">DHCP utiliza UDP</h4>
+<p>A pergunta anotada em aula foi:</p>
+<blockquote>
+<p>Qual protocolo é usado pelo DHCP?</p>
+</blockquote>
+<p>O DHCP utiliza:</p>
+<div class="arithmatex">\[
+\boxed{
+UDP
+}
+\]</div>
+<p>Tradicionalmente:</p>
+<ul>
+<li>servidor DHCP: porta UDP 67;</li>
+<li>cliente DHCP: porta UDP 68.</li>
+</ul>
+<hr />
+<h3 id="por-que-o-dhcp-precisa-de-broadcast">Por que o DHCP precisa de broadcast?</h3>
+<p>Quando um host entra na rede pela primeira vez:</p>
+<ul>
+<li>ainda não possui endereço IP configurado;</li>
+<li>pode não saber o endereço do servidor DHCP.</li>
+</ul>
+<p>Assim, o cliente inicialmente usa broadcast.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>Source IP:      0.0.0.0
+Destination IP: 255.255.255.255
+</code></pre></div>
+<p><strong>Sequência DHCP.</strong></p>
+<p>A sequência clássica pode ser lembrada como:</p>
+<div class="highlight"><pre><span></span><code>DHCPDISCOVER
+     ↓
+DHCPOFFER
+     ↓
+DHCPREQUEST
+     ↓
+DHCPACK
+</code></pre></div>
+<p>ou:</p>
+<div class="arithmatex">\[
+\boxed{
+DORA
+=
+Discover
+\rightarrow
+Offer
+\rightarrow
+Request
+\rightarrow
+ACK
+}
+\]</div>
+<blockquote>
+<p><strong>Complemento:</strong> no exemplo didático do Kurose, as mensagens iniciais são mostradas usando broadcast. Em implementações reais, o comportamento exato pode depender da etapa e da configuração.</p>
+</blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.3.2, Figuras 4.23 e 4.24.</p>
+<hr />
+<p><strong>Correção conceitual.</strong> — camada do DHCP</p>
+<p>Na anotação manuscrita aparece uma ideia semelhante a:</p>
+<blockquote>
+<p>DHCP é ao mesmo tempo um protocolo da camada de aplicação e da camada de rede.</p>
+</blockquote>
+<p>A formulação mais precisa é:</p>
+<div class="arithmatex">\[
+\boxed{
+DHCP
+\text{ é um protocolo da camada de aplicação}
+}
+\]</div>
+<p>Ele utiliza UDP e serve para <strong>configurar parâmetros relacionados à camada de rede</strong>, como o endereço IP.</p>
+<p>Portanto:</p>
+<ul>
+<li>protocolo: camada de aplicação;</li>
+<li>função: configuração da rede/IP.</li>
+</ul>
+<hr />
+<h3 id="conflito-de-enderecos-e-negacao-de-servico">Conflito de endereços e negação de serviço</h3>
+<p>A anotação cita a possibilidade de causar problemas usando um endereço IP que já tenha sido atribuído a outro dispositivo.</p>
+<p>Isso pode gerar:</p>
+<ul>
+<li>conflito de IP;</li>
+<li>interrupção da comunicação;</li>
+<li>indisponibilidade para um dos hosts.</li>
+</ul>
+<p>Essa situação pode ser explorada maliciosamente como forma de causar negação de serviço.</p>
+<hr />
+<h2 id="escassez-de-enderecos-ipv4">Escassez de endereços IPv4</h2>
+<p>As anotações destacam duas soluções importantes relacionadas à escassez de endereços IPv4:</p>
+<ol>
+<li><strong>NAT — Network Address Translation</strong>;</li>
+<li><strong>IPv6</strong>.</li>
+</ol>
+<p>Também é citado o uso de:</p>
+<p><strong>Carrier-Grade NAT — CGNAT</strong></p>
+<p>por provedores.</p>
+<hr />
+<h2 id="nat-network-address-translation">NAT — Network Address Translation</h2>
+<p>O NAT permite que vários dispositivos com endereços IP privados compartilhem um endereço IPv4 público.</p>
+<p>Exemplo de rede interna:</p>
+<div class="highlight"><pre><span></span><code>10.0.0.1
+10.0.0.2
+10.0.0.3
+      \
+       \
+      NAT Router
+          |
+      Internet
+</code></pre></div>
+<p>Os endereços privados não precisam ser globalmente únicos.</p>
+<hr />
+<h3 id="mapeamento-por-portas">Mapeamento por portas</h3>
+<p>Um NAT utiliza uma tabela para relacionar:</p>
+<div class="highlight"><pre><span></span><code>endereço/porta internos
+        ↕
+endereço/porta externos
+</code></pre></div>
+<p>Exemplo conceitual:</p>
+<table>
+<thead>
+<tr>
+<th>Lado interno</th>
+<th>Lado externo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10.0.0.1:5001</code></td>
+<td><code>200.1.1.5:40001</code></td>
+</tr>
+<tr>
+<td><code>10.0.0.2:5001</code></td>
+<td><code>200.1.1.5:40002</code></td>
+</tr>
+<tr>
+<td><code>10.0.0.3:6000</code></td>
+<td><code>200.1.1.5:40003</code></td>
+</tr>
+</tbody>
+</table>
+<p>Assim, um único IP público pode representar várias conexões internas.</p>
+<p><strong>Correção conceitual.</strong></p>
+<p>A anotação diz, de forma resumida, que:</p>
+<blockquote>
+<p>“um IP global cria múltiplos IPs locais”.</p>
+</blockquote>
+<p>Mais precisamente:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{o NAT não cria os IPs privados}
+}
+\]</div>
+<p>Ele <strong>mapeia</strong> os pares de endereço/porta privados para endereço/porta do lado público.</p>
+<hr />
+<h3 id="por-que-portas-sao-necessarias">Por que portas são necessárias?</h3>
+<p>As portas permitem distinguir diferentes processos e conexões.</p>
+<p>No contexto do NAT, elas também ajudam a distinguir os diferentes fluxos que compartilham o mesmo endereço público.</p>
+<p>Assim, para uma resposta que retorna da Internet, o NAT consulta sua tabela para descobrir:</p>
+<blockquote>
+<p>para qual host interno esse pacote deve ser encaminhado?</p>
+</blockquote>
+<hr />
+<h2 id="problema-de-servidores-atras-de-nat">Problema de servidores atrás de NAT</h2>
+<p>A aula discute um problema importante:</p>
+<blockquote>
+<p>Como um host externo inicia uma conexão com um servidor que está atrás de NAT?</p>
+</blockquote>
+<p>Considere:</p>
+<div class="highlight"><pre><span></span><code>Internet
+   |
+NAT Router
+   |
+   +-- 10.0.0.1
+   +-- 10.0.0.2  &lt;- servidor HTTP
+   +-- 10.0.0.3
+</code></pre></div>
+<p>Um cliente externo conhece o endereço público do NAT, mas normalmente não consegue escolher diretamente:</p>
+<div class="highlight"><pre><span></span><code>10.0.0.2
+</code></pre></div>
+<p>porque esse é um endereço privado.</p>
+<hr />
+<h3 id="solucao-1-servidor-no-proprio-roteadornat">Solução 1 — servidor no próprio roteador/NAT</h3>
+<p>Uma possibilidade conceitual é executar o serviço diretamente no equipamento que possui o endereço público.</p>
+<p>Isso evita o problema de descobrir qual host privado deve receber a conexão.</p>
+<p>Entretanto, não é uma solução geral para todos os dispositivos internos.</p>
+<hr />
+<h3 id="solucao-2-configurar-a-tabela-do-nat">Solução 2 — configurar a tabela do NAT</h3>
+<p>Podemos configurar explicitamente um encaminhamento.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>IP público:80
+        ↓
+10.0.0.2:80
+</code></pre></div>
+<p>Esse mecanismo é conhecido como:</p>
+<p><strong>port forwarding</strong></p>
+<p>ou encaminhamento de portas.</p>
+<p>Assim, conexões que chegam a uma determinada porta pública são encaminhadas ao servidor interno correspondente.</p>
+<hr />
+<h3 id="solucao-3-nat-traversal-hole-punching">Solução 3 — NAT traversal / hole punching</h3>
+<p>Outra abordagem citada é:</p>
+<p><strong>NAT Hole Punching</strong></p>
+<p>A ideia geral é permitir que hosts atrás de NAT criem previamente estados/mapeamentos no NAT e utilizem esses estados para permitir comunicação com hosts externos.</p>
+<p>Nas anotações aparece essa ideia como uma técnica de <strong>travessia do NAT</strong>.</p>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.3.3. O livro também menciona ferramentas específicas de NAT traversal para permitir comunicação com hosts localizados atrás de NAT.</p>
+</blockquote>
+<hr />
+<h2 id="proximo-topico-ipv6">Próximo tópico — IPv6</h2>
+<p>A última anotação da aula indica:</p>
+<blockquote>
+<p><strong>Próxima aula: IPv6</strong></p>
+</blockquote>
+<p>O IPv6 é uma solução estrutural para a limitação do espaço de endereços IPv4.</p>
+<p>Enquanto IPv4 utiliza:</p>
+<div class="arithmatex">\[
+32\text{ bits}
+\]</div>
+<p>IPv6 utiliza:</p>
+<div class="arithmatex">\[
+128\text{ bits}.
+\]</div>
+<p>Esse tema fica para a sequência da disciplina.</p>
+<hr />
+<h2 id="resumo">Resumo</h2>
+<p>Os principais tópicos desta aula foram:</p>
+<ul>
+<li>formato do datagrama IPv4;</li>
+<li>ECN;</li>
+<li>relação IP + TCP;</li>
+<li>TTL;</li>
+<li>header checksum;</li>
+<li>campo Protocol;</li>
+<li>Options;</li>
+<li>MTU e MSS;</li>
+<li>fragmentação IPv4;</li>
+<li>ausência de fragmentação em roteadores IPv6;</li>
+<li>endereçamento IPv4;</li>
+<li>interfaces e endereços IP;</li>
+<li>sub-redes;</li>
+<li>endereçamento histórico por classes:</li>
+<li><code>/8</code>;</li>
+<li><code>/16</code>;</li>
+<li><code>/24</code>;</li>
+<li>hierarquia e agregação;</li>
+<li>DHCP;</li>
+<li>DHCP sobre UDP;</li>
+<li>broadcast no DHCP;</li>
+<li>sequência DORA;</li>
+<li>conflito de endereços;</li>
+<li>escassez de IPv4;</li>
+<li>NAT;</li>
+<li>CGNAT;</li>
+<li>mapeamento endereço/porta;</li>
+<li>port forwarding;</li>
+<li>NAT traversal;</li>
+<li>NAT hole punching;</li>
+<li>introdução ao IPv6.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula20/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 20 | 28/10/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 20 | 28/10/2026
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Aula22/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 22 | 06/11/2026">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 22 | 06/11/2026
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>

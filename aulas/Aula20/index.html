@@ -1,0 +1,2071 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula19/">
+      
+      
+        <link rel="next" href="../Aula21/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 20 | 28/10/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-20-28102026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 20 | 28/10/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 14 | 30/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 15 | 02/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 | 14/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 17 | 16/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 18 | 21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 19 | 23/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 20 | 28/10/2026
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 20 | 28/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#retomada-da-aula-anterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retomada da aula anterior
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retomada da aula anterior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aula-de-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aula de hoje
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitetura-classica-sdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitetura clássica × SDN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquitetura clássica × SDN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitetura-classica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitetura clássica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plano-de-dados-plano-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de Dados × Plano de Controle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plano de Dados × Plano de Controle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plano-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de Dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plano-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de Controle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forwarding-classico-generalized-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forwarding clássico × Generalized Forwarding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Forwarding clássico × Generalized Forwarding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destination-based-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Destination-Based Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalized Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#granularidade-das-regras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Granularidade das regras
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefixos-e-agregacao-de-enderecos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prefixos e agregação de endereços
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefixos e agregação de endereços">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longest-prefix-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longest Prefix Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolos-de-roteamento-e-sua-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocolos de roteamento e sua implementação
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 21 | 04/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 22 | 06/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 23 | 11/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 24 | 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#retomada-da-aula-anterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retomada da aula anterior
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retomada da aula anterior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aula-de-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aula de hoje
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitetura-classica-sdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitetura clássica × SDN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquitetura clássica × SDN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitetura-classica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitetura clássica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plano-de-dados-plano-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de Dados × Plano de Controle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plano de Dados × Plano de Controle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plano-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de Dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plano-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de Controle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forwarding-classico-generalized-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forwarding clássico × Generalized Forwarding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Forwarding clássico × Generalized Forwarding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destination-based-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Destination-Based Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalized Forwarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#granularidade-das-regras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Granularidade das regras
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefixos-e-agregacao-de-enderecos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prefixos e agregação de endereços
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefixos e agregação de endereços">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longest-prefix-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longest Prefix Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolos-de-roteamento-e-sua-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocolos de roteamento e sua implementação
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-20-28102026">Aula 20 — 28/10/2026</h1>
+<blockquote>
+<p><strong>Base principal:</strong> anotações manuscritas da aula.<br />
+<strong>Complementos:</strong> <em>Computer Networking: A Top-Down Approach</em>, 8ª ed., Kurose &amp; Ross, principalmente Capítulo 4, Seções 4.2–4.4.<br />
+Os complementos abaixo servem apenas para esclarecer os tópicos efetivamente trabalhados em sala.</p>
+</blockquote>
+<h2 id="retomada-da-aula-anterior">Retomada da aula anterior</h2>
+<p>Na aula anterior:</p>
+<ul>
+<li>começamos o <strong>Capítulo 4 — Camada de Rede</strong>;</li>
+<li>discutimos a separação entre:</li>
+<li><strong>plano de controle</strong>;</li>
+<li><strong>plano de dados</strong>;</li>
+<li>comparamos:</li>
+<li>arquitetura <strong>clássica</strong>;</li>
+<li>arquitetura <strong>SDN</strong>.</li>
+</ul>
+<h3 id="aula-de-hoje">Aula de hoje</h3>
+<p>O objetivo é continuar o Capítulo 4 e responder:</p>
+<blockquote>
+<p><strong>Como funciona um roteador?</strong></p>
+</blockquote>
+<hr />
+<h2 id="arquitetura-classica-sdn">Arquitetura clássica × SDN</h2>
+<h3 id="arquitetura-classica">Arquitetura clássica</h3>
+<p>Na abordagem tradicional, cada roteador possui tanto funções do plano de controle quanto do plano de dados.</p>
+<p>Podemos representar:</p>
+<div class="highlight"><pre><span></span><code>Roteador 1      Roteador 2      Roteador 3
+   |               |               |
+   | routing       | routing       | routing
+   |---------------|---------------|
+   | forwarding    | forwarding    | forwarding
+</code></pre></div>
+<p>Nas anotações:</p>
+<ul>
+<li><strong>Plano de Controle</strong>:</li>
+<li>routing;</li>
+<li>associado ao Capítulo 5;</li>
+<li><strong>Plano de Dados</strong>:</li>
+<li>forwarding;</li>
+<li>associado ao Capítulo 4.</li>
+</ul>
+<p>No modelo clássico, os próprios roteadores:</p>
+<ul>
+<li>executam protocolos de roteamento;</li>
+<li>trocam informações entre si;</li>
+<li>calculam suas tabelas;</li>
+<li>encaminham os pacotes.</li>
+</ul>
+<h3 id="sdn">SDN</h3>
+<p>No <strong>Software-Defined Networking (SDN)</strong>, a lógica de controle é separada dos dispositivos responsáveis pelo encaminhamento.</p>
+<p>De forma simplificada:</p>
+<div class="highlight"><pre><span></span><code>            Controlador SDN
+            /     |      \
+           /      |       \
+          v       v        v
+      Switch 1  Switch 2  Switch 3
+</code></pre></div>
+<p>O controlador é <strong>logicamente centralizado</strong>.</p>
+<p>Ele pode:</p>
+<ul>
+<li>calcular regras;</li>
+<li>instalar regras;</li>
+<li>atualizar tabelas nos dispositivos do plano de dados.</li>
+</ul>
+<p>Os switches/roteadores do plano de dados continuam executando o encaminhamento rapidamente.</p>
+<blockquote>
+<p><strong>Complemento do Kurose:</strong> “logicamente centralizado” não significa necessariamente um único servidor físico. O controlador pode ser implementado de forma distribuída, mas oferece uma visão lógica centralizada da rede.</p>
+</blockquote>
+<hr />
+<h2 id="plano-de-dados-plano-de-controle">Plano de Dados × Plano de Controle</h2>
+<h3 id="plano-de-dados">Plano de Dados</h3>
+<p>O plano de dados executa o <strong>forwarding</strong>.</p>
+<p>Sua função é local e precisa ser extremamente rápida:</p>
+<blockquote>
+<p>dado um pacote que chegou, para qual porta de saída ele deve ir?</p>
+</blockquote>
+<p>Em roteadores de alta velocidade, essa operação acontece em escalas muito pequenas de tempo e normalmente é implementada em hardware.</p>
+<h3 id="plano-de-controle">Plano de Controle</h3>
+<p>O plano de controle determina:</p>
+<ul>
+<li>caminhos;</li>
+<li>regras;</li>
+<li>tabelas de encaminhamento.</li>
+</ul>
+<p>Ele opera em uma escala de tempo muito maior do que o plano de dados.</p>
+<p>O Kurose destaca aproximadamente:</p>
+<ul>
+<li>plano de dados: escala de nanossegundos;</li>
+<li>plano de controle: escala de milissegundos ou segundos.</li>
+</ul>
+<p>Portanto:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Plano de dados}
+\rightarrow
+\text{rápido e local}
+}
+\]</div>
+<div class="arithmatex">\[
+\boxed{
+\text{Plano de controle}
+\rightarrow
+\text{lógica de rede}
+}
+\]</div>
+<hr />
+<h2 id="forwarding-classico-generalized-forwarding">Forwarding clássico × Generalized Forwarding</h2>
+<p>Nas anotações aparece a comparação:</p>
+<ul>
+<li><strong>SDN:</strong> <em>Generalized Forwarding</em>;</li>
+<li><strong>clássico:</strong> encaminhamento principalmente pelo <strong>IP de destino</strong>.</li>
+</ul>
+<h3 id="destination-based-forwarding">Destination-Based Forwarding</h3>
+<p>No encaminhamento tradicional, o roteador analisa principalmente:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Destination IP Address}
+}
+\]</div>
+<p>e usa a tabela de forwarding para escolher a porta de saída.</p>
+<p>De forma simplificada:</p>
+<div class="highlight"><pre><span></span><code>IP de destino
+     |
+     v
+Tabela de forwarding
+     |
+     v
+Porta de saída
+</code></pre></div>
+<h3 id="generalized-forwarding">Generalized Forwarding</h3>
+<p>No <strong>Generalized Forwarding</strong>, a decisão pode utilizar vários campos dos cabeçalhos.</p>
+<p>Isso segue a ideia:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{match}+\text{action}
+}
+\]</div>
+<p>O <em>match</em> pode considerar campos de:</p>
+<ul>
+<li>camada de enlace;</li>
+<li>camada de rede;</li>
+<li>camada de transporte.</li>
+</ul>
+<p>E a ação pode ser, por exemplo:</p>
+<ul>
+<li>encaminhar;</li>
+<li>descartar;</li>
+<li>modificar campos;</li>
+<li>enviar para múltiplas portas;</li>
+<li>aplicar balanceamento de carga.</li>
+</ul>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.4.</p>
+<hr />
+<h2 id="granularidade-das-regras">Granularidade das regras</h2>
+<p>Uma vantagem do generalized forwarding é poder usar informações mais específicas do pacote.</p>
+<p>No encaminhamento clássico, uma regra pode ser algo como:</p>
+<div class="highlight"><pre><span></span><code>Destino IP -&gt; porta de saída
+</code></pre></div>
+<p>Já em uma regra generalizada podemos combinar diferentes campos.</p>
+<p>Exemplo conceitual:</p>
+<div class="highlight"><pre><span></span><code>IP origem
+IP destino
+porta TCP/UDP
+protocolo
+        |
+        v
+      ação
+</code></pre></div>
+<p>Assim, o SDN/generalized forwarding permite uma granularidade maior na definição das regras.</p>
+<hr />
+<h2 id="prefixos-e-agregacao-de-enderecos">Prefixos e agregação de endereços</h2>
+<p>Nas anotações aparecem exemplos de grupos de endereços representados por prefixos binários, associados a regiões como:</p>
+<ul>
+<li>EUA;</li>
+<li>França;</li>
+<li>Europa.</li>
+</ul>
+<p>A ideia é não precisar manter uma entrada separada para cada endereço IP existente.</p>
+<p>Podemos agrupar destinos que compartilham um prefixo.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>00010...       -&gt; região A
+00011000...    -&gt; região B
+00011...       -&gt; região maior
+</code></pre></div>
+<p>Esse tipo de agregação permite reduzir a quantidade de entradas necessárias nas tabelas.</p>
+<h3 id="longest-prefix-matching">Longest Prefix Matching</h3>
+<p>Quando mais de uma entrada pode corresponder ao endereço de destino, utiliza-se a regra do:</p>
+<p><strong>longest prefix matching</strong>.</p>
+<p>Isto é:</p>
+<blockquote>
+<p>escolhe-se a entrada cujo prefixo correspondente ao endereço de destino é o mais longo e, portanto, mais específico.</p>
+</blockquote>
+<p>Essa operação é fundamental no encaminhamento IP.</p>
+<hr />
+<h2 id="protocolos-de-roteamento-e-sua-implementacao">Protocolos de roteamento e sua implementação</h2>
+<p>Nas anotações aparece a discussão:</p>
+<blockquote>
+<p><strong>BGP usa TCP.</strong></p>
+</blockquote>
+<p>Isso ajuda a distinguir a função lógica de um protocolo da forma como suas mensagens são transportadas.</p>
+<p>O BGP:</p>
+<ul>
+<li>é um <strong>protocolo de roteamento</strong>;</li>
+<li>atua no <strong>plano de controle da camada de rede</strong>;</li>
+<li>utiliza <strong>TCP</strong> para transportar suas mensagens entre roteadores BGP.</li>
+</ul>
+<p>Assim, do ponto de vista funcional, BGP pertence ao problema de roteamento da camada de rede, embora sua comunicação utilize serviços de transporte.</p>
+<p>Também foi anotado que diferentes protocolos de roteamento podem utilizar mecanismos diferentes para transportar suas mensagens.</p>
+<hr />
+<h1 id="como-funciona-um-roteador">Como funciona um roteador?</h1>
+<p>Um roteador possui quatro componentes principais:</p>
+<ol>
+<li><strong>portas de entrada</strong>;</li>
+<li><strong>switching fabric</strong>;</li>
+<li><strong>portas de saída</strong>;</li>
+<li><strong>routing processor</strong>.</li>
+</ol>
+<p>De forma simplificada:</p>
+<div class="highlight"><pre><span></span><code>        +----------------------+
+Entrada |                      | Saída
+------&gt; |   Switching Fabric   | ------&gt;
+        |                      |
+        +----------------------+
+                 ^
+                 |
+          Routing Processor
+</code></pre></div>
+<p>O routing processor executa funções do plano de controle.</p>
+<p>As portas e o switching fabric fazem parte principalmente do plano de dados.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.2, Figura 4.4.</p>
+<hr />
+<h2 id="porta-de-entrada">Porta de entrada</h2>
+<p>Quando um pacote chega a uma porta de entrada, podem ocorrer:</p>
+<ul>
+<li>processamento da camada física;</li>
+<li>processamento da camada de enlace;</li>
+<li>consulta à tabela de forwarding;</li>
+<li>enfileiramento, se necessário.</li>
+</ul>
+<p>O objetivo principal é determinar:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{qual porta de saída deve receber o pacote}
+}
+\]</div>
+<p>Depois disso, o pacote é enviado ao switching fabric.</p>
+<hr />
+<h2 id="switching-fabric">Switching Fabric</h2>
+<p>O <strong>switching fabric</strong> conecta internamente as portas de entrada às portas de saída.</p>
+<p>Sua função é:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{entrada}
+\rightarrow
+\text{saída correta}
+}
+\]</div>
+<h3 id="velocidade-do-switching-fabric">Velocidade do switching fabric</h3>
+<p>Considere:</p>
+<ul>
+<li><span class="arithmatex">\(N\)</span>: número de portas de entrada;</li>
+<li><span class="arithmatex">\(R\)</span>: taxa de cada linha.</li>
+</ul>
+<p>No pior caso, podem chegar simultaneamente:</p>
+<div class="arithmatex">\[
+N
+\]</div>
+<p>pacotes, um por entrada.</p>
+<p>Para que praticamente não se forme fila nas portas de entrada, o switching fabric deve ser capaz de transferir pacotes a uma taxa da ordem de:</p>
+<div class="arithmatex">\[
+\boxed{
+R_{\text{switch}}
+=
+N R
+}
+\]</div>
+<p>Se o switching fabric for lento em relação às portas de entrada, pode ocorrer <strong>input queueing</strong>.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.2.4.</p>
+<hr />
+<h2 id="tipos-de-implementacao-do-switching-fabric">Tipos de implementação do switching fabric</h2>
+<p>O Kurose apresenta três formas principais.</p>
+<h3 id="1-switching-via-memoria">1. Switching via memória</h3>
+<p>O pacote:</p>
+<ol>
+<li>entra;</li>
+<li>é copiado para uma memória;</li>
+<li>o processador determina a saída;</li>
+<li>o pacote é copiado da memória para a porta de saída.</li>
+</ol>
+<p>A memória compartilhada pode se tornar um gargalo.</p>
+<h3 id="2-switching-via-barramento">2. Switching via barramento</h3>
+<p>As portas compartilham um barramento interno.</p>
+<p>Somente uma transferência por vez pode utilizar o barramento.</p>
+<p>Assim, sua capacidade limita o throughput interno do roteador.</p>
+<h3 id="3-switching-via-rede-de-interconexao">3. Switching via rede de interconexão</h3>
+<p>São utilizadas estruturas como <strong>crossbar</strong>.</p>
+<p>Isso permite que diferentes pares de entrada/saída sejam atendidos simultaneamente quando não competem pela mesma saída.</p>
+<p>Assim:</p>
+<div class="highlight"><pre><span></span><code>Entrada A -&gt; Saída X
+Entrada B -&gt; Saída Y
+</code></pre></div>
+<p>podem ocorrer em paralelo.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.2.2.</p>
+<hr />
+<h2 id="atraso-dentro-do-roteador">Atraso dentro do roteador</h2>
+<p>Podemos retomar os componentes do atraso nodal:</p>
+<div class="arithmatex">\[
+\boxed{
+d_{\text{nodal}}
+=
+d_{\text{proc}}
++
+d_{\text{fila}}
++
+d_{\text{trans}}
++
+d_{\text{prop}}
+}
+\]</div>
+<p>Dentro de um roteador, interessam especialmente:</p>
+<ul>
+<li>processamento;</li>
+<li>enfileiramento;</li>
+<li>transferência interna;</li>
+<li>transmissão no enlace de saída.</li>
+</ul>
+<hr />
+<h2 id="filas-na-entrada">Filas na entrada</h2>
+<p>Se o switching fabric não consegue retirar pacotes das entradas com velocidade suficiente, surgem filas nas portas de entrada.</p>
+<p>Isso pode provocar o problema de:</p>
+<p><strong>Head-of-Line Blocking — HOL</strong></p>
+<p>Um pacote no início da fila pode impedir o avanço de outro pacote que está atrás dele, mesmo quando a saída desejada pelo segundo pacote está livre.</p>
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code>Fila de entrada:
+
+[A][B][C]
+ ^
+ |
+ quer uma saída ocupada
+</code></pre></div>
+<p>Se <code>B</code> quer outra saída que está livre, ainda assim ele não consegue passar enquanto <code>A</code> continuar bloqueando o início da fila.</p>
+<hr />
+<h2 id="filas-na-saida">Filas na saída</h2>
+<p>Mesmo com um switching fabric muito rápido, podem chegar vários pacotes simultaneamente para a mesma porta de saída.</p>
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code>Entrada 1 ----\
+Entrada 2 -----+--&gt; Saída R
+Entrada 3 ----/
+</code></pre></div>
+<p>Se a taxa agregada de chegada à saída for maior que a taxa:</p>
+<div class="arithmatex">\[
+R,
+\]</div>
+<p>os pacotes precisam esperar em um buffer.</p>
+<p>Assim, forma-se uma <strong>output queue</strong>.</p>
+<hr />
+<h2 id="buffer-de-saida">Buffer de saída</h2>
+<p>Nas anotações aparece a relação entre:</p>
+<ul>
+<li>RTT;</li>
+<li>capacidade do enlace <span class="arithmatex">\(C\)</span>;</li>
+<li>quantidade necessária de buffer.</li>
+</ul>
+<h3 id="regra-classica">Regra clássica</h3>
+<p>Uma regra tradicional para o tamanho do buffer é:</p>
+<div class="arithmatex">\[
+\boxed{
+B=RTT\cdot C
+}
+\]</div>
+<p>Esse termo é o <strong>produto delay-banda</strong>.</p>
+<h3 id="muitas-conexoes-tcp">Muitas conexões TCP</h3>
+<p>Se houver:</p>
+<div class="arithmatex">\[
+N
+\]</div>
+<p>fluxos TCP independentes atravessando a interface, uma regra mais moderna discutida pelo Kurose é:</p>
+<div class="arithmatex">\[
+\boxed{
+B
+\approx
+\frac{RTT\cdot C}{\sqrt{N}}
+}
+\]</div>
+<p>Portanto, quando muitos fluxos independentes compartilham o enlace, pode ser possível utilizar um buffer menor.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.2.4, pp. 323–324.</p>
+<hr />
+<h2 id="output-queueing-e-escalonamento">Output Queueing e escalonamento</h2>
+<p>Quando vários pacotes estão esperando na porta de saída, é necessário decidir:</p>
+<blockquote>
+<p>qual pacote será transmitido primeiro?</p>
+</blockquote>
+<p>A política mais simples é:</p>
+<p><strong>FIFO — First In, First Out</strong></p>
+<p>Mas podem existir outras políticas.</p>
+<h3 id="prioridade">Prioridade</h3>
+<p>As anotações citam que podemos implementar <strong>prioridades</strong>.</p>
+<p>Por exemplo:</p>
+<ul>
+<li>tráfego prioritário;</li>
+<li>tráfego normal.</li>
+</ul>
+<p>Uma política de escalonamento pode permitir que uma classe seja atendida antes de outra.</p>
+<p>Além de FIFO e prioridade, o Kurose também apresenta outras disciplinas, como:</p>
+<ul>
+<li>Round Robin;</li>
+<li>Weighted Fair Queueing.</li>
+</ul>
+<hr />
+<h2 id="campos-usados-para-tomar-decisoes">Campos usados para tomar decisões</h2>
+<p>Nas anotações aparecem alguns campos que podem ser úteis para forwarding e generalized forwarding.</p>
+<h3 id="destination-ip-address">Destination IP Address</h3>
+<p>É o campo principal no encaminhamento IP tradicional:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Destination IP Address}
+}
+\]</div>
+<h3 id="source-ip-address">Source IP Address</h3>
+<p>O endereço de origem pode ser usado em regras mais sofisticadas.</p>
+<p>No generalized forwarding, por exemplo, podemos distinguir fluxos também pelo IP de origem.</p>
+<p>Outros campos podem ser utilizados dependendo da política desejada.</p>
+<hr />
+<h1 id="campos-importantes-do-cabecalho-ip">Campos importantes do cabeçalho IP</h1>
+<h2 id="ttl-time-to-live">TTL — Time To Live</h2>
+<p>O IPv4 possui o campo:</p>
+<p><strong>TTL — Time To Live</strong></p>
+<p>Apesar do nome, na prática ele funciona como um contador de saltos.</p>
+<p>A cada roteador:</p>
+<div class="arithmatex">\[
+TTL
+\leftarrow
+TTL-1.
+\]</div>
+<p>Quando:</p>
+<div class="arithmatex">\[
+TTL=0,
+\]</div>
+<p>o datagrama é descartado.</p>
+<p>Isso impede que um pacote fique circulando indefinidamente em caso de loop de roteamento.</p>
+<p>No IPv6, o campo equivalente é chamado:</p>
+<p><strong>Hop Limit</strong>.</p>
+<hr />
+<h2 id="mtu-e-fragmentacao">MTU e fragmentação</h2>
+<p>Cada enlace possui um limite para o tamanho máximo do quadro que pode transportar.</p>
+<p>Esse limite é a:</p>
+<p><strong>MTU — Maximum Transmission Unit</strong>.</p>
+<p>Um valor muito comum em Ethernet é:</p>
+<div class="arithmatex">\[
+1500\text{ bytes}.
+\]</div>
+<h3 id="fragmentacao-no-ipv4">Fragmentação no IPv4</h3>
+<p>Se um datagrama IPv4 for maior que a MTU de um enlace, ele pode precisar ser fragmentado.</p>
+<p>O IPv4 possui campos relacionados a esse processo, como:</p>
+<ul>
+<li>Identification;</li>
+<li>Flags;</li>
+<li>Fragment Offset.</li>
+</ul>
+<p>Os fragmentos são posteriormente remontados no destino.</p>
+<h3 id="ipv6">IPv6</h3>
+<p>No IPv6:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{roteadores intermediários não fragmentam datagramas}
+}
+\]</div>
+<p>Se um datagrama IPv6 for grande demais para o próximo enlace:</p>
+<ol>
+<li>o roteador descarta o datagrama;</li>
+<li>envia uma mensagem ICMPv6 <strong>Packet Too Big</strong> ao remetente;</li>
+<li>o remetente envia novamente usando um tamanho adequado.</li>
+</ol>
+<p>Essa mudança reduz o processamento necessário nos roteadores.</p>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.3.4, pp. 348–350.</p>
+<hr />
+<h2 id="resumo">Resumo</h2>
+<p>Os principais tópicos desta aula foram:</p>
+<ul>
+<li>arquitetura clássica × SDN;</li>
+<li>plano de dados × plano de controle;</li>
+<li>forwarding tradicional;</li>
+<li>generalized forwarding;</li>
+<li>match + action;</li>
+<li>prefixos de endereços;</li>
+<li>longest prefix matching;</li>
+<li>BGP utilizando TCP;</li>
+<li>arquitetura interna de um roteador;</li>
+<li>portas de entrada e saída;</li>
+<li>switching fabric;</li>
+<li>velocidade do switching fabric:</li>
+</ul>
+<div class="arithmatex">\[
+R_{\text{switch}}\approx NR;
+\]</div>
+<ul>
+<li>switching:</li>
+<li>por memória;</li>
+<li>por barramento;</li>
+<li>por rede de interconexão;</li>
+<li>filas de entrada;</li>
+<li>HOL blocking;</li>
+<li>filas de saída;</li>
+<li>output queueing;</li>
+<li>dimensionamento de buffers:</li>
+</ul>
+<div class="arithmatex">\[
+B=RTT\cdot C;
+\]</div>
+<p>e, com muitos fluxos:</p>
+<div class="arithmatex">\[
+B\approx\frac{RTT\cdot C}{\sqrt N};
+\]</div>
+<ul>
+<li>FIFO e escalonamento por prioridade;</li>
+<li>Destination IP Address;</li>
+<li>Source IP Address;</li>
+<li>TTL;</li>
+<li>MTU;</li>
+<li>fragmentação IPv4;</li>
+<li>ausência de fragmentação em roteadores IPv6.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula19/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 19 | 23/10/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 19 | 23/10/2026
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Aula21/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 21 | 04/11/2026">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 21 | 04/11/2026
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2598 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Aula21/">
+      
+      
+        <link rel="next" href="../Aula23/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Aula 22 | 06/11/2026 - Redes de Computadores - 26.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-22-06112026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-header__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes de Computadores - 26.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 22 | 06/11/2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes de Computadores - 26.2" class="md-nav__button md-logo" aria-label="Redes de Computadores - 26.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Redes de Computadores - 26.2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 01 | 12/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 02 | 14/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 03 | 19/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 04 | 21/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 05 | 26/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 06 | 28/08/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 07 | 02/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 08 | 04/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 09 | 09/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoria01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoria 01 | 11/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 | 16/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 | 18/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 14 | 30/09/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 15 | 02/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 | 14/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 17 | 16/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 18 | 21/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 19 | 23/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 20 | 28/10/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 21 | 04/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 22 | 06/11/2026
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 22 | 06/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#organizacao-da-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organização da aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv4-ipv6-e-transicao-entre-versoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPv4, IPv6 e transição entre versões
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv4, IPv6 e transição entre versões">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nucleo-da-rede-e-simplicidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Núcleo da rede e simplicidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escassez-de-enderecos-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escassez de endereços IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibilidade-entre-ipv4-e-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilidade entre IPv4 e IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunneling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tunneling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adocao-do-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adoção do IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipsec-e-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPsec e VPN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipsec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPsec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpn-virtual-private-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VPN — Virtual Private Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generalized-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalized Forwarding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generalized Forwarding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow-table-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow Table Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#campos-utilizados-no-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campos utilizados no match
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleboxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Middleboxes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdn-software-defined-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDN — Software-Defined Networking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fim-do-capitulo-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fim do Capítulo 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-5-camada-de-rede-control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 5 — Camada de Rede: Control Plane
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-de-caminho-de-menor-custo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema de caminho de menor custo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problema de caminho de menor custo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caso-sem-pesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caso sem pesos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ideia-gulosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ideia gulosa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estruturas-conceituais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estruturas conceituais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacao-utilizada-pelo-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação utilizada pelo Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman-Ford">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equacao-de-bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equação de Bellman-Ford
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-to-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost-to-go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacao-disponivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação disponível
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 23 | 11/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aula24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 24 | 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#organizacao-da-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organização da aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv4-ipv6-e-transicao-entre-versoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPv4, IPv6 e transição entre versões
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv4, IPv6 e transição entre versões">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nucleo-da-rede-e-simplicidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Núcleo da rede e simplicidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escassez-de-enderecos-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escassez de endereços IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibilidade-entre-ipv4-e-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilidade entre IPv4 e IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunneling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tunneling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adocao-do-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adoção do IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipsec-e-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPsec e VPN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipsec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPsec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpn-virtual-private-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VPN — Virtual Private Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generalized-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalized Forwarding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generalized Forwarding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow-table-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow Table Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#campos-utilizados-no-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campos utilizados no match
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleboxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Middleboxes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdn-software-defined-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDN — Software-Defined Networking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fim-do-capitulo-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fim do Capítulo 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-5-camada-de-rede-control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 5 — Camada de Rede: Control Plane
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-de-caminho-de-menor-custo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema de caminho de menor custo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problema de caminho de menor custo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caso-sem-pesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caso sem pesos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ideia-gulosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ideia gulosa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estruturas-conceituais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estruturas conceituais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacao-utilizada-pelo-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação utilizada pelo Dijkstra
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman-Ford">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equacao-de-bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equação de Bellman-Ford
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-to-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost-to-go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacao-disponivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação disponível
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aula-22-06112026">Aula 22 — 06/11/2026</h1>
+<blockquote>
+<p><strong>Base principal:</strong> anotações manuscritas da aula.<br />
+<strong>Complementos:</strong> <em>Computer Networking: A Top-Down Approach</em>, 8ª ed., Kurose &amp; Ross, principalmente Capítulo 4 (IPv6, generalized forwarding, middleboxes) e Capítulo 5 (algoritmos de roteamento, OSPF e BGP).<br />
+Quando a anotação manuscrita está abreviada ou conceitualmente imprecisa, o complemento/correção é indicado.</p>
+</blockquote>
+<h2 id="organizacao-da-aula">Organização da aula</h2>
+<p>A aula faz a transição entre:</p>
+<ul>
+<li>fim do <strong>Capítulo 4 — Camada de Rede: Data Plane</strong>;</li>
+<li>início do <strong>Capítulo 5 — Camada de Rede: Control Plane</strong>.</li>
+</ul>
+<p>Os principais tópicos foram:</p>
+<ul>
+<li>transição IPv4 → IPv6;</li>
+<li>tunneling;</li>
+<li>IPsec e VPN;</li>
+<li>generalized forwarding;</li>
+<li>middleboxes;</li>
+<li>SDN;</li>
+<li>introdução aos algoritmos de roteamento;</li>
+<li>Dijkstra;</li>
+<li>Bellman-Ford / Distance Vector;</li>
+<li>OSPF e BGP.</li>
+</ul>
+<hr />
+<h2 id="ipv4-ipv6-e-transicao-entre-versoes">IPv4, IPv6 e transição entre versões</h2>
+<h3 id="nucleo-da-rede-e-simplicidade">Núcleo da rede e simplicidade</h3>
+<p>Nas anotações aparece a ideia de que o núcleo da rede foi originalmente pensado para ser relativamente simples.</p>
+<p>Funções mais complexas surgem com mecanismos como:</p>
+<ul>
+<li>NAT;</li>
+<li>firewall;</li>
+<li>middleboxes;</li>
+<li>VPNs.</li>
+</ul>
+<p>Esses elementos passam a executar ações além do simples encaminhamento de datagramas.</p>
+<blockquote>
+<p><strong>Complemento do Kurose:</strong> o livro destaca que middleboxes rompem parcialmente a separação arquitetural tradicional, pois podem examinar e modificar campos de diferentes camadas.</p>
+</blockquote>
+<hr />
+<h3 id="escassez-de-enderecos-ipv4">Escassez de endereços IPv4</h3>
+<p>A pergunta anotada foi:</p>
+<blockquote>
+<p><strong>Como lidar com a escassez de endereços IP?</strong></p>
+</blockquote>
+<p>Duas respostas principais foram destacadas:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{NAT}
+}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{IPv6}
+}
+\]</div>
+<p>O NAT prolonga a utilização do espaço de endereços IPv4.</p>
+<p>O IPv6, por outro lado, amplia estruturalmente o espaço de endereçamento.</p>
+<hr />
+<h3 id="compatibilidade-entre-ipv4-e-ipv6">Compatibilidade entre IPv4 e IPv6</h3>
+<p>Um dos problemas da migração é que a Internet não pode simplesmente substituir todos os dispositivos IPv4 por IPv6 de uma única vez.</p>
+<p>Durante a transição, existem:</p>
+<ul>
+<li>dispositivos IPv4;</li>
+<li>dispositivos IPv6;</li>
+<li>redes que suportam ambos.</li>
+</ul>
+<p>Por isso, são necessários mecanismos de compatibilidade.</p>
+<hr />
+<h3 id="tunneling">Tunneling</h3>
+<p>Nas anotações aparece o <strong>tunneling</strong> como mecanismo para permitir que tráfego IPv6 atravesse uma região IPv4.</p>
+<p>A ideia é encapsular um datagrama IPv6 dentro de um datagrama IPv4.</p>
+<p>De forma simplificada:</p>
+<div class="highlight"><pre><span></span><code>IPv6
+ |
+ | encapsulamento
+ v
+IPv4
+ |
+ | atravessa rede IPv4
+ v
+IPv4
+ |
+ | desencapsulamento
+ v
+IPv6
+</code></pre></div>
+<p>Assim, logicamente temos:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{IPv6}
+\rightarrow
+\text{túnel IPv4}
+\rightarrow
+\text{IPv6}
+}
+\]</div>
+<p>No exemplo do Kurose, o datagrama IPv6 é transportado como payload de um datagrama IPv4.</p>
+<p>O campo <code>Protocol</code> do IPv4 pode indicar que o payload contém um datagrama IPv6.</p>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.3.4, Figura 4.27.</p>
+</blockquote>
+<p><strong>O que caracteriza o túnel?</strong></p>
+<p>A anotação pergunta:</p>
+<blockquote>
+<p><strong>O que existe em comum entre esses casos?</strong></p>
+</blockquote>
+<p>A resposta registrada é:</p>
+<blockquote>
+<p><strong>Tunnel.</strong></p>
+</blockquote>
+<p>Em todos os casos, uma unidade de protocolo é encapsulada dentro de outra para atravessar uma região da rede que não oferece diretamente o protocolo original.</p>
+<hr />
+<h3 id="adocao-do-ipv6">Adoção do IPv6</h3>
+<p>Nas anotações aparece uma observação de que a implantação do IPv6 ocorre de forma gradual e lenta.</p>
+<p>Isso reforça a necessidade de mecanismos de transição.</p>
+<blockquote>
+<p><strong>Observação:</strong> há uma anotação com um percentual de adoção de IPv6 em determinado ano, mas o valor é circunstancial e foi mantido apenas como comentário de aula, não como dado atualizado.</p>
+</blockquote>
+<hr />
+<h3 id="ipsec-e-vpn">IPsec e VPN</h3>
+<h3 id="ipsec">IPsec</h3>
+<p>Nas anotações aparece:</p>
+<p><strong>IPsec</strong></p>
+<p>relacionado à segurança na camada de rede.</p>
+<p>IPsec pode fornecer mecanismos como:</p>
+<ul>
+<li>confidencialidade;</li>
+<li>autenticação da origem;</li>
+<li>integridade;</li>
+<li>proteção contra replay.</li>
+</ul>
+<p>O objetivo é proteger tráfego IP independentemente da aplicação utilizada.</p>
+<hr />
+<h3 id="vpn-virtual-private-network">VPN — Virtual Private Network</h3>
+<p>VPN significa:</p>
+<p><strong>Virtual Private Network</strong>.</p>
+<p>A ideia é utilizar uma infraestrutura pública, como a Internet, para criar uma comunicação que se comporte como uma rede privada.</p>
+<p>De forma simplificada:</p>
+<div class="highlight"><pre><span></span><code>Rede A
+  |
+Gateway
+  |
+  |==== túnel protegido pela Internet ====|
+                                      Gateway
+                                         |
+                                       Rede B
+</code></pre></div>
+<p>O tráfego entre as redes pode ser:</p>
+<ul>
+<li>encapsulado;</li>
+<li>autenticado;</li>
+<li>criptografado.</li>
+</ul>
+<p><strong>Relação entre IPsec, VPN e tunneling.</strong></p>
+<p>Os três conceitos podem aparecer juntos:</p>
+<ul>
+<li><strong>tunneling</strong>: encapsula o tráfego;</li>
+<li><strong>IPsec</strong>: fornece proteção ao tráfego IP;</li>
+<li><strong>VPN</strong>: utiliza esses mecanismos para criar uma rede privada lógica sobre uma rede pública.</li>
+</ul>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 8.7.</p>
+</blockquote>
+<hr />
+<h2 id="generalized-forwarding">Generalized Forwarding</h2>
+<h3 id="flow-table-abstraction">Flow Table Abstraction</h3>
+<p>A aula retoma a abstração de <strong>flow table</strong>.</p>
+<p>Em generalized forwarding, uma regra pode ser expressa de forma conceitual como:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{match}
+\rightarrow
+\text{action}
+}
+\]</div>
+<p>As ações anotadas incluem:</p>
+<ul>
+<li><code>forward</code>;</li>
+<li><code>drop</code>;</li>
+<li><code>send to controller</code>.</li>
+</ul>
+<p><strong>Forward e Drop.</strong></p>
+<p>Ações como:</p>
+<ul>
+<li>encaminhar;</li>
+<li>descartar;</li>
+</ul>
+<p>podem ser realizadas diretamente no plano de dados.</p>
+<p>Por isso, são operações rápidas.</p>
+<p><strong>Send to Controller.</strong></p>
+<p>Em alguns casos, um pacote pode ser enviado ao controlador.</p>
+<p>Essa operação é mais lenta, pois envolve comunicação com o plano de controle.</p>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{forward/drop}
+\rightarrow
+\text{mais rápido}
+}
+\]</div>
+<p>e:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{send to controller}
+\rightarrow
+\text{mais lento}
+}
+\]</div>
+<hr />
+<h3 id="campos-utilizados-no-match">Campos utilizados no match</h3>
+<p>No forwarding tradicional, o principal campo utilizado é:</p>
+<div class="arithmatex">\[
+\text{Destination IP}.
+\]</div>
+<p>No generalized forwarding, podem ser usados vários campos.</p>
+<p>Por exemplo:</p>
+<ul>
+<li>IP de origem;</li>
+<li>IP de destino;</li>
+<li>protocolo;</li>
+<li>porta TCP/UDP de origem;</li>
+<li>porta TCP/UDP de destino.</li>
+</ul>
+<p><strong>NAT como exemplo.</strong></p>
+<p>Para implementar NAT, não basta observar apenas:</p>
+<ul>
+<li>IP origem;</li>
+<li>IP destino.</li>
+</ul>
+<p>Também é necessário, em muitos casos, considerar:</p>
+<ul>
+<li>porta de origem;</li>
+<li>porta de destino.</li>
+</ul>
+<p>Assim, o generalized forwarding oferece a flexibilidade necessária para implementar funções mais complexas.</p>
+<hr />
+<h2 id="middleboxes">Middleboxes</h2>
+<p>Middleboxes são dispositivos que realizam funções além do encaminhamento IP tradicional.</p>
+<p>Exemplos citados ou relacionados às anotações:</p>
+<ul>
+<li>NAT;</li>
+<li>firewall;</li>
+<li>balanceador de carga;</li>
+<li>dispositivos de segurança;</li>
+<li>proxies.</li>
+</ul>
+<p>Esses dispositivos podem:</p>
+<ul>
+<li>modificar cabeçalhos;</li>
+<li>bloquear pacotes;</li>
+<li>redirecionar tráfego;</li>
+<li>distribuir carga.</li>
+</ul>
+<p><strong>Exemplos.</strong></p>
+<p><strong>Firewall.</strong></p>
+<p>Pode decidir:</p>
+<div class="arithmatex">\[
+\text{match}
+\rightarrow
+\text{drop}
+\]</div>
+<p><strong>NAT.</strong></p>
+<p>Pode realizar:</p>
+<div class="arithmatex">\[
+\text{match}
+\rightarrow
+\text{reescrever endereço/porta}
+\]</div>
+<p><strong>Load Balancer.</strong></p>
+<p>Pode escolher entre vários servidores de destino.</p>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 4.5.</p>
+</blockquote>
+<hr />
+<h2 id="sdn-software-defined-networking">SDN — Software-Defined Networking</h2>
+<p>A ideia central do SDN é separar mais claramente:</p>
+<ul>
+<li>plano de dados;</li>
+<li>plano de controle.</li>
+</ul>
+<p>Nas anotações:</p>
+<blockquote>
+<p>implementar um dispositivo responsável pelo plano de controle: <strong>o controlador</strong>.</p>
+</blockquote>
+<p>De forma simplificada:</p>
+<div class="highlight"><pre><span></span><code>          Controlador SDN
+             |
+      -------------------
+      |        |        |
+      v        v        v
+   Switch    Switch    Switch
+</code></pre></div>
+<p>O controlador possui uma visão mais global da rede e instala regras nos dispositivos do plano de dados.</p>
+<p><strong>Implementações.</strong></p>
+<p>Foi citado em aula o uso de SDN em redes de grande escala, como redes do Google.</p>
+<p>O ponto principal é que o controle centralizado logicamente permite tomar decisões considerando uma visão ampla da rede.</p>
+<blockquote>
+<p><strong>Observação:</strong> o SDN possui controle <strong>logicamente centralizado</strong>, mas a implementação física do controlador pode ser distribuída.</p>
+</blockquote>
+<hr />
+<h2 id="fim-do-capitulo-4">Fim do Capítulo 4</h2>
+<p>A aula marca o encerramento dos principais tópicos do Capítulo 4:</p>
+<ul>
+<li>forwarding;</li>
+<li>arquitetura interna de roteadores;</li>
+<li>IPv4;</li>
+<li>NAT;</li>
+<li>IPv6;</li>
+<li>generalized forwarding;</li>
+<li>SDN;</li>
+<li>middleboxes.</li>
+</ul>
+<hr />
+<h2 id="capitulo-5-camada-de-rede-control-plane">Capítulo 5 — Camada de Rede: Control Plane</h2>
+<p>O foco passa agora a ser:</p>
+<blockquote>
+<p><strong>Como calcular os caminhos utilizados pela rede?</strong></p>
+</blockquote>
+<p>Isso é um problema de:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{roteamento}
+}
+\]</div>
+<hr />
+<h2 id="problema-de-caminho-de-menor-custo">Problema de caminho de menor custo</h2>
+<p>Uma rede pode ser representada por um grafo:</p>
+<div class="arithmatex">\[
+G=(V,E),
+\]</div>
+<p>onde:</p>
+<ul>
+<li><span class="arithmatex">\(V\)</span>: conjunto de nós/roteadores;</li>
+<li><span class="arithmatex">\(E\)</span>: conjunto de enlaces.</li>
+</ul>
+<p>Cada enlace possui um custo:</p>
+<div class="arithmatex">\[
+c(u,v).
+\]</div>
+<p>O objetivo é encontrar um caminho entre origem e destino com menor custo total.</p>
+<p>Se o caminho é:</p>
+<div class="arithmatex">\[
+(v_0,v_1,\ldots,v_k),
+\]</div>
+<p>seu custo é:</p>
+<div class="arithmatex">\[
+\boxed{
+\sum_{i=0}^{k-1}c(v_i,v_{i+1})
+}
+\]</div>
+<hr />
+<h3 id="caso-sem-pesos">Caso sem pesos</h3>
+<p>Se todos os enlaces possuem o mesmo custo, o problema se reduz a encontrar o caminho com menor número de saltos.</p>
+<p>Nesse caso, algoritmos como busca em largura podem ser utilizados.</p>
+<hr />
+<h2 id="dijkstra">Dijkstra</h2>
+<p>Nas anotações:</p>
+<blockquote>
+<p><strong>Dijkstra → algoritmo guloso.</strong></p>
+</blockquote>
+<p>O algoritmo de Dijkstra utiliza informação global da topologia.</p>
+<p>Ele conhece:</p>
+<ul>
+<li>os nós;</li>
+<li>os enlaces;</li>
+<li>os custos dos enlaces.</li>
+</ul>
+<p>Por isso, é associado a algoritmos de:</p>
+<p><strong>Link State — LS</strong></p>
+<hr />
+<h3 id="ideia-gulosa">Ideia gulosa</h3>
+<p>A cada passo, Dijkstra escolhe o nó ainda não finalizado com menor custo conhecido a partir da origem.</p>
+<p>Essa escolha é considerada definitiva.</p>
+<p>Assim, o algoritmo constrói a solução de forma incremental.</p>
+<p>A anotação resume a ideia como:</p>
+<blockquote>
+<p>sempre tomar como próximo passo o menor custo já conhecido.</p>
+</blockquote>
+<hr />
+<h3 id="estruturas-conceituais">Estruturas conceituais</h3>
+<p>Seja:</p>
+<div class="arithmatex">\[
+D(v)
+\]</div>
+<p>o menor custo atualmente conhecido da origem até <span class="arithmatex">\(v\)</span>.</p>
+<p>Quando um novo nó <span class="arithmatex">\(w\)</span> é incorporado ao conjunto de nós já resolvidos, os vizinhos são atualizados por:</p>
+<div class="arithmatex">\[
+\boxed{
+D(v)
+=
+\min
+\left(
+D(v),
+D(w)+c(w,v)
+\right)
+}
+\]</div>
+<p>Esse procedimento continua até determinar os menores caminhos.</p>
+<hr />
+<h3 id="informacao-utilizada-pelo-dijkstra">Informação utilizada pelo Dijkstra</h3>
+<p>O algoritmo possui informação global:</p>
+<ul>
+<li>conectividade entre todos os nós;</li>
+<li>custo dos enlaces.</li>
+</ul>
+<p>Essa informação precisa ser disponibilizada aos roteadores.</p>
+<p>Em protocolos Link State, isso ocorre por meio da divulgação de informações de estado dos enlaces.</p>
+<hr />
+<h3 id="complexidade">Complexidade</h3>
+<p>A implementação básica apresentada pelo Kurose possui complexidade:</p>
+<div class="arithmatex">\[
+\boxed{
+O(V^2)
+}
+\]</div>
+<p>para <span class="arithmatex">\(V\)</span> nós.</p>
+<p>O livro observa que implementações mais sofisticadas, usando estruturas como heap, podem melhorar esse custo.</p>
+<blockquote>
+<p><strong>Correção:</strong> na anotação manuscrita aparece uma expressão de complexidade acompanhada de ponto de interrogação. Para a implementação do Dijkstra apresentada no Kurose, a complexidade explicitamente indicada é <span class="arithmatex">\(O(V^2)\)</span>.</p>
+</blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 5.2.1, p. 386.</p>
+<hr />
+<h2 id="bellman-ford">Bellman-Ford</h2>
+<p>O segundo algoritmo trabalhado é baseado na equação de:</p>
+<p><strong>Bellman-Ford</strong>.</p>
+<p>Ele está associado à abordagem:</p>
+<p><strong>Distance Vector — DV</strong></p>
+<p>Diferentemente de Dijkstra, um nó não precisa possuir a topologia completa da rede.</p>
+<p>Cada nó começa conhecendo principalmente:</p>
+<ul>
+<li>seus vizinhos;</li>
+<li>o custo dos enlaces diretamente conectados.</li>
+</ul>
+<p>Em seguida, os nós trocam informações com seus vizinhos.</p>
+<hr />
+<h3 id="equacao-de-bellman-ford">Equação de Bellman-Ford</h3>
+<p>Se:</p>
+<div class="arithmatex">\[
+d_x(y)
+\]</div>
+<p>é o menor custo do nó <span class="arithmatex">\(x\)</span> até o destino <span class="arithmatex">\(y\)</span>, então:</p>
+<div class="arithmatex">\[
+\boxed{
+d_x(y)
+=
+\min_{v\in N(x)}
+\left\{
+c(x,v)+d_v(y)
+\right\}
+}
+\]</div>
+<p>onde:</p>
+<ul>
+<li><span class="arithmatex">\(N(x)\)</span> é o conjunto de vizinhos de <span class="arithmatex">\(x\)</span>;</li>
+<li><span class="arithmatex">\(c(x,v)\)</span> é o custo imediato de ir de <span class="arithmatex">\(x\)</span> até o vizinho <span class="arithmatex">\(v\)</span>;</li>
+<li><span class="arithmatex">\(d_v(y)\)</span> é o custo estimado do vizinho <span class="arithmatex">\(v\)</span> até o destino <span class="arithmatex">\(y\)</span>.</li>
+</ul>
+<p>Podemos interpretar como:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{custo imediato}
++
+\text{cost-to-go}
+}
+\]</div>
+<hr />
+<h3 id="cost-to-go">Cost-to-go</h3>
+<p>A anotação destaca a ideia de:</p>
+<blockquote>
+<p><strong>cost-to-go</strong></p>
+</blockquote>
+<p>Isto é, quanto ainda falta pagar, em termos de custo, para alcançar o destino depois de tomar determinada decisão.</p>
+<p>No Bellman-Ford:</p>
+<ol>
+<li>escolhe-se um vizinho possível;</li>
+<li>soma-se:</li>
+<li>o custo para chegar a esse vizinho;</li>
+<li>o custo estimado desse vizinho até o destino;</li>
+<li>escolhe-se o menor valor.</li>
+</ol>
+<p>Essa ideia também aparece em outros problemas de otimização e programação dinâmica.</p>
+<hr />
+<p><strong>Dijkstra.</strong> × Bellman-Ford</p>
+<h3 id="informacao-disponivel">Informação disponível</h3>
+<p>A comparação feita em aula pode ser organizada assim:</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Dijkstra / Link State</th>
+<th>Bellman-Ford / Distance Vector</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Informação inicial</td>
+<td>Topologia e custos globais</td>
+<td>Custos para vizinhos</td>
+</tr>
+<tr>
+<td>Com quem troca informações</td>
+<td>Informação é difundida pela rede</td>
+<td>Apenas com vizinhos</td>
+</tr>
+<tr>
+<td>Informação disponível ao nó</td>
+<td>Custos de todos os enlaces</td>
+<td>Vetores de distância dos vizinhos</td>
+</tr>
+<tr>
+<td>Forma de cálculo</td>
+<td>Global</td>
+<td>Distribuída</td>
+</tr>
+<tr>
+<td>Evolução</td>
+<td>Calcula a partir do mapa completo</td>
+<td>Melhora estimativas iterativamente</td>
+</tr>
+</tbody>
+</table>
+<h1 id="dijkstra_1"><strong>Dijkstra.</strong></h1>
+<p>Cada nó possui um mapa da topologia e calcula localmente os menores caminhos.</p>
+<h1 id="bellman-ford_1"><strong>Bellman-Ford.</strong></h1>
+<p>Cada nó troca seu vetor de distâncias com seus vizinhos.</p>
+<p>Quando recebe novas informações:</p>
+<div class="arithmatex">\[
+D_x(y)
+=
+\min_v
+\left\{
+c(x,v)+D_v(y)
+\right\}.
+\]</div>
+<p>Se o vetor mudar, ele pode ser enviado novamente aos vizinhos.</p>
+<hr />
+<h3 id="centralizado-distribuido">Centralizado × distribuído</h3>
+<p><strong>Link State.</strong></p>
+<p>O algoritmo é considerado <strong>centralizado em termos de informação</strong> porque utiliza conhecimento global da topologia.</p>
+<p>Isso não significa necessariamente que exista somente uma máquina calculando.</p>
+<p>Cada roteador pode possuir uma cópia do mapa e executar Dijkstra localmente.</p>
+<p><strong>Distance Vector.</strong></p>
+<p>É:</p>
+<ul>
+<li>distribuído;</li>
+<li>iterativo;</li>
+<li>assíncrono.</li>
+</ul>
+<p>Os nós atualizam seus valores conforme recebem informações dos vizinhos.</p>
+<blockquote>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seções 5.2.1 e 5.2.2.</p>
+</blockquote>
+<hr />
+<h2 id="convergencia">Convergência</h2>
+<p>Nas anotações aparece uma preocupação com:</p>
+<blockquote>
+<p><strong>problema de convergência</strong></p>
+</blockquote>
+<p>em algoritmos do tipo Bellman-Ford / Distance Vector.</p>
+<p>Como a informação é propagada gradualmente entre vizinhos, uma mudança na rede não é conhecida imediatamente por todos os roteadores.</p>
+<p>Podem ocorrer situações em que:</p>
+<ul>
+<li>diferentes roteadores possuem temporariamente informações diferentes;</li>
+<li>a atualização leva várias rodadas;</li>
+<li>podem ocorrer loops temporários.</li>
+</ul>
+<p>Um problema clássico estudado posteriormente é:</p>
+<p><strong>count-to-infinity</strong>.</p>
+<hr />
+<h2 id="ospf">OSPF</h2>
+<p>Nas anotações, Dijkstra é associado ao:</p>
+<p><strong>OSPF — Open Shortest Path First</strong></p>
+<p>O OSPF é um protocolo:</p>
+<ul>
+<li><strong>intra-AS</strong>;</li>
+<li>baseado em <strong>Link State</strong>;</li>
+<li>que utiliza o algoritmo de Dijkstra.</li>
+</ul>
+<p>Em OSPF:</p>
+<ol>
+<li>os roteadores divulgam informações de estado dos enlaces;</li>
+<li>cada roteador constrói um mapa da topologia do AS;</li>
+<li>executa Dijkstra localmente;</li>
+<li>constrói sua tabela de forwarding.</li>
+</ol>
+<div class="arithmatex">\[
+\boxed{
+\text{OSPF}
+\rightarrow
+\text{Link State}
+\rightarrow
+\text{Dijkstra}
+}
+\]</div>
+<p><strong>Referência:</strong> Kurose &amp; Ross, 8ª ed., Seção 5.3.</p>
+<hr />
+<h2 id="bgp">BGP</h2>
+<p>Nas anotações, Bellman-Ford aparece associado ao:</p>
+<p><strong>BGP — Border Gateway Protocol</strong></p>
+<p>e ao roteamento:</p>
+<p><strong>inter-AS</strong>.</p>
+<p>Essa associação é útil como aproximação, mas precisa de uma precisão conceitual.</p>
+<h3 id="correcao-importante">Correção importante</h3>
+<p>O BGP não é simplesmente uma implementação direta do algoritmo de Bellman-Ford.</p>
+<p>O Kurose descreve o BGP como um protocolo:</p>
+<ul>
+<li>distribuído;</li>
+<li>assíncrono;</li>
+<li>com características relacionadas a Distance Vector;</li>
+<li>mais precisamente classificado como <strong>Path Vector</strong>.</li>
+</ul>
+<p>Além do custo, o BGP considera:</p>
+<ul>
+<li>sequência de ASs;</li>
+<li>políticas;</li>
+<li>atributos das rotas.</li>
+</ul>
+<p>Assim:</p>
+<div class="arithmatex">\[
+\boxed{
+\text{BGP}
+\neq
+\text{Bellman-Ford puro}
+}
+\]</div>
+<p>mas há uma relação conceitual com algoritmos distribuídos do tipo Distance Vector.</p>
+<hr />
+<p><strong>Intra-AS.</strong> × Inter-AS</p>
+<table>
+<thead>
+<tr>
+<th>Protocolo</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OSPF</td>
+<td>Intra-AS</td>
+</tr>
+<tr>
+<td>BGP</td>
+<td>Inter-AS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Intra-AS.</strong></p>
+<p>Roteamento dentro de um mesmo Sistema Autônomo.</p>
+<p><strong>Inter-AS.</strong></p>
+<p>Roteamento entre Sistemas Autônomos diferentes.</p>
+<hr />
+<h2 id="comparacao-resumida">Comparação resumida</h2>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Dijkstra / LS</th>
+<th>Bellman-Ford / DV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conhecimento</td>
+<td>Global</td>
+<td>Local + vizinhos</td>
+</tr>
+<tr>
+<td>Troca</td>
+<td>Estado dos links</td>
+<td>Vetores de distância</td>
+</tr>
+<tr>
+<td>Comunicação</td>
+<td>Informação difundida amplamente</td>
+<td>Entre vizinhos</td>
+</tr>
+<tr>
+<td>Execução</td>
+<td>Local sobre mapa global</td>
+<td>Distribuída e iterativa</td>
+</tr>
+<tr>
+<td>Exemplo de protocolo</td>
+<td>OSPF</td>
+<td>Base conceitual para DV</td>
+</tr>
+<tr>
+<td>Escopo típico citado</td>
+<td>Intra-AS</td>
+<td>Algoritmos distribuídos</td>
+</tr>
+</tbody>
+</table>
+<p>E, no contexto da Internet:</p>
+<table>
+<thead>
+<tr>
+<th>Protocolo</th>
+<th>Tipo</th>
+<th>Escopo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OSPF</td>
+<td>Link State</td>
+<td>Intra-AS</td>
+</tr>
+<tr>
+<td>BGP</td>
+<td>Path Vector</td>
+<td>Inter-AS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="observacoes-da-aula">Observações da aula</h2>
+<p>As anotações também destacam:</p>
+<ul>
+<li>problemas de caminho mais curto aparecem frequentemente em exercícios pequenos;</li>
+<li>os exemplos podem ser resolvidos manualmente para poucos nós;</li>
+<li>o foco é entender:</li>
+<li>como o algoritmo evolui;</li>
+<li>quais informações cada nó conhece;</li>
+<li>quais informações são trocadas;</li>
+<li>como a tabela de forwarding é construída.</li>
+</ul>
+<hr />
+<h2 id="resumo">Resumo</h2>
+<p>Os principais tópicos desta aula foram:</p>
+<ul>
+<li>transição IPv4 → IPv6;</li>
+<li>escassez de endereços IPv4;</li>
+<li>tunneling;</li>
+<li>IPv6 sobre infraestrutura IPv4;</li>
+<li>IPsec;</li>
+<li>VPN;</li>
+<li>generalized forwarding;</li>
+<li>flow tables;</li>
+<li>ações:</li>
+<li>forward;</li>
+<li>drop;</li>
+<li>send to controller;</li>
+<li>NAT, firewall e load balancing como funções de middleboxes;</li>
+<li>SDN;</li>
+<li>fim do Capítulo 4;</li>
+<li>início do Capítulo 5;</li>
+<li>representação da rede por grafos;</li>
+<li>problema de menor custo;</li>
+<li>Dijkstra;</li>
+<li>algoritmo Link State;</li>
+<li>Bellman-Ford;</li>
+<li>algoritmo Distance Vector;</li>
+<li>cost-to-go;</li>
+<li>informação global × informação local;</li>
+<li>convergência;</li>
+<li>OSPF;</li>
+<li>BGP;</li>
+<li>intra-AS × inter-AS;</li>
+<li>correção conceitual: BGP é Path Vector, não Bellman-Ford puro.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Aula21/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 21 | 04/11/2026">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 21 | 04/11/2026
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Aula23/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 23 | 11/11/2026">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 23 | 11/11/2026
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lcarlosazeredo/notas-redes" target="_blank" rel="noopener" title="Repositório no GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>
